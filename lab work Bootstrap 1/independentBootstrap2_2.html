@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <title>
+      Самостоятельное задание 2.2 Создание резиновой модульной сетки
+    </title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+      .demo {
+        background-color: #ffaf5f;
+        border: 1px #fff solid;
+        font-weight: bold;
+        color: white;
+        padding: 0 16px;
+        padding-bottom: 30px;
+        /* box-sizing: border-box; */
+      }
+
+      .inner {
+        border: 1px #fff solid;
+        background-color: #ff8000;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row demo">
+        <p>Основной</p>
+        <div class="row">
+          <div class="col-md-2 inner">.col-md-2</div>
+          <div class="col-md-2 col-md-offset-3 inner">.col-md-2</div>
+          <div class="col-md-2 col-md-offset-3 inner">.col-md-2</div>
+        </div>
+      </div>
+      <div class="row demo">
+        <p>Основной 2</p>
+        <div class="row">
+          <div class="col-md-2 col-md-push-10 inner">.col-md-2</div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 inner">.col-md-2</div>
+          <div class="col-md-2 inner">.col-md-2</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

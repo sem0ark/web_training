@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="jquery.js"></script>
+    <title>Индивидуальное задание 1 Вариант 3</title>
+  </head>
+  <body>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <br />
+    <button id="1">Show</button>
+    <button id="2">Hide</button>
+    <script>
+      $(document).ready(() => {
+        $("#1").click(() => {
+          $("[href]").show();
+        });
+        $("#2").click(() => {
+          $("[href]").hide();
+        });
+      });
+    </script>
+  </body>
+</html>

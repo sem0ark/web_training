@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+      integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+      crossorigin="anonymous"
+    />
+    <title>Skeleton CSS Crash Course & Landing Page</title>
+    <style>
+      .columns,
+      .column {
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        padding: 10px !important;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Headings -->
+      <h1>Heading</h1>
+      <h2>Heading</h2>
+      <h3>Heading</h3>
+      <h4>Heading</h4>
+      <h5>Heading</h5>
+      <h6>Heading</h6>
+
+      <!-- Floating -->
+      <h2 class="u-pull-left">Left</h2>
+      <h2 class="u-pull-right">Right</h2>
+      <div class="u-cf"></div>
+      <!-- Clear -->
+
+      <!-- Buttons -->
+      <!-- default colors -->
+      <button>Button</button>
+      <input type="submit" value="Submit" />
+      <input type="button" value="Submit" />
+      <a href="#" class="button">Link</a>
+
+      <br />
+
+      <!-- primary colors -->
+      <button class="button-primary">Button</button>
+      <input class="button-primary" type="submit" value="Submit" />
+      <input class="button-primary" type="button" value="Submit" />
+      <a href="#" class="button button-primary">Link</a>
+
+      <br />
+
+      <!-- full width (not just buttons) -->
+      <button class="u-full-width button-primary">Full Width Button</button>
+
+      <!-- lists -->
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>
+          Services
+          <ul>
+            <li>WebDev</li>
+            <li>Programming</li>
+          </ul>
+        </li>
+        <li>Contact</li>
+      </ul>
+
+      <!-- Code block -->
+      <pre>
+        <code>
+          body {
+            color: white;
+            background-color: black;
+          }
+        </code>
+      </pre>
+
+      <!-- Tables -->
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jane</td>
+            <td>jane@gmail.com</td>
+            <td>Boston</td>
+          </tr>
+          <tr>
+            <td>Jane</td>
+            <td>jane@gmail.com</td>
+            <td>Boston</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- forms -->
+      <form>
+        <div>
+          <label>Name</label>
+          <input class="u-full-width" type="text" placeholder="Enter name" />
+        </div>
+        <div>
+          <label>Membership</label>
+          <select class="u-full-width">
+            <option value="1">Membership 1</option>
+            <option value="2">Membership 2</option>
+            <option value="3">Membership 3</option>
+          </select>
+        </div>
+        <div>
+          <label>Message</label>
+          <textarea class="u-full-width" placeholder="Enter message"></textarea>
+        </div>
+        <div>
+          <label class="">
+            <input type="checkbox" />
+            <span class="label-body">Subscribe to email</span>
+          </label>
+        </div>
+        <input class="button-primary" type="submit" value="Submit" />
+      </form>
+
+      <!-- grid -->
+      <div class="row">
+        <div class="eight columns">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur
+          quam omnis perferendis ipsa voluptate? Impedit nam, dolores enim id
+          eveniet alias. Adipisci, voluptatem ea consequatur ipsum consectetur
+          quibusdam velit quidem eos tempora vitae voluptas impedit mollitia
+          accusantium eligendi ex voluptates.
+        </div>
+        <div class="four columns">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur
+          quam omnis perferendis ipsa voluptate? Impedit nam, dolores enim id
+          eveniet alias.
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="one columns">one column</div>
+        <div class="eleven columns">eleven columns</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="two columns">two columns</div>
+        <div class="ten columns">ten columns</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="three columns">three columns</div>
+        <div class="nine columns">nine columns</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="four columns">four columns</div>
+        <div class="eight columns">eight columns</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="five columns">five columns</div>
+        <div class="seven columns">seven columns</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="six columns">six columns</div>
+        <div class="six columns">six columns</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="one-third column">one-third column</div>
+        <div class="two-thirds column">two-thirds column</div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="one-half column">one-half column</div>
+        <div class="one-half column">one-half column</div>
+      </div>
+    </div>
+    <div style="margin-top: 500px"></div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+</head>
+<body>
+	<button onclick='start()' id='b1'>старт</button>
+	<button onclick='stop()'>стоп</button>
+	<p id='text1'></p>
+	<script type='text/javascript'>
+		var t1=0;
+		var t2=0;
+		var sw=0;
+		var button1 = document.getElementById('b1');
+		const start = () => {
+			let d = new Date;
+			t1 = d.getTime();
+			switch1();
+		};
+		const switch1 = () => {
+			if (sw == 0) {
+				button1.innerHTML='стоп';
+				button1.onclick=stop();
+				sw=1;
+			} else {
+				button1.innerHTML='старт';
+				button1.onclick=start();
+				sw=0;
+			};
+		};
+		const stop = () => {
+			let d = new Date;
+			t2 = d.getTime();
+			let b = document.getElementById('text1');
+			b.innerHTML=(t2-t1) + 'ms';
+			switch1();
+			};
+		};
+	</script>
+</body>
+<html>

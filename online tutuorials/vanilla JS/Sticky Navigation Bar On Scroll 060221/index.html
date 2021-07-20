@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky Navigation Bar On Scroll</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Logo</a>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Team</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </header>
+    <section class="banner"></section>
+    <section class="section_1">
+      <h3>Hello</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+        voluptates repellat, quam qui velit quia perspiciatis commodi minima
+        facere architecto eos quae officia cupiditate placeat obcaecati est
+        sapiente incidunt! Porro asperiores dolores officia exercitationem
+        voluptatem quos, deserunt tempore quas debitis eaque est expedita
+        necessitatibus pariatur autem reprehenderit in earum minus. Dignissimos
+        eius officiis quas minima quae ratione alias laboriosam ab pariatur
+        tempore quasi ex cum velit modi facere quidem, eaque provident molestias
+        dolores repellendus error magni obcaecati fugiat optio. Iste
+        reprehenderit quam tenetur saepe eveniet perspiciatis perferendis?
+        Molestias, harum!
+      </p>
+    </section>
+    <script type="text/javascript">
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      });
+    </script>
+  </body>
+</html>

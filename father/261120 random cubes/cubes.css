@@ -1,0 +1,64 @@
+.rc {
+  font-family: sans-serif;
+}
+
+.rc.rc-container {
+  display: block;
+  padding: 20px 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.rc.rc-label {
+  font-size: 16px;
+}
+
+.rc.rc-select {
+  display: inline-block;
+  padding: 2px 10px;
+  outline: none;
+  background-color: #f4f4f4;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+
+.rc.rc-button {
+  padding: 5px 15px;
+  margin: 5px;
+  outline: none;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: black;
+}
+
+.rc.rc-button:hover {
+  background-color: #eeeeee;
+}
+
+.rc.rc-button:active {
+  background-color: #e4e4e4;
+}
+
+.rc.rc-cube-img {
+  border-radius: 15px;
+  margin-right: 5px;
+}
+
+.rc.rc-container-inner > .rc.rc-edge {
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px;
+  padding: 5px;
+  border: black 1px solid;
+  border-radius: 3px;
+  background-color: beige;
+}
+
+.rc.rc-container-inner > .rc.rc-edge.active {
+  background-color: aquamarine;
+}

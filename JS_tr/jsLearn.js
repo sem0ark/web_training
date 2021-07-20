@@ -1,0 +1,10 @@
+﻿var x=10;
+var y=2;
+x=(y*x)%3;
+//x++;
+var t=(y==x)? 'yes':'no';
+document.write(x);
+document.write('<hr>');
+document.write(y==x);
+document.write('<hr>');
+document.write(t);

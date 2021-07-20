@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css grid</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: 70% 30%;
+            grid-gap: 1em;
+        }
+
+        .grid > div{
+            background-color: #dbdbdb;
+            padding: 1em;
+        }
+
+        .grid > div:nth-child(odd){
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, aperiam. Placeat sint dolore illum mollitia ad officia adipisci deleniti nihil consequatur praesentium! Cupiditate provident corporis, sit eligendi quibusdam quam veniam non harum culpa esse consectetur molestiae suscipit recusandae, ex sequi, illum cum a similique maiores odio ipsam quos! Odio, in quam mollitia magni amet neque quas hic modi quibusdam, quia sint corrupti sequi debitis velit ad, placeat expedita assumenda nisi. Repudiandae illo, molestias commodi quam aut iusto quisquam placeat rem!
+        </div>
+        <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, repellat maiores. Consequuntur quia quas deserunt rem suscipit quasi sint nihil reprehenderit, tenetur quis impedit soluta neque voluptates aspernatur officia vel.
+        </div>
+        <div>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, aperiam. Placeat sint dolore illum mollitia ad
+            officia adipisci deleniti nihil consequatur praesentium! Cupiditate provident corporis, sit eligendi quibusdam quam
+            veniam non harum culpa esse consectetur molestiae suscipit recusandae, ex sequi, illum cum a similique maiores odio
+            ipsam quos! Odio, in quam mollitia magni amet neque quas hic modi quibusdam, quia sint corrupti sequi debitis velit
+            ad, placeat expedita assumenda nisi. Repudiandae illo, molestias commodi quam aut iusto quisquam placeat rem!
+        </div>
+        <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, repellat maiores. Consequuntur quia quas deserunt
+            rem suscipit quasi sint nihil reprehenderit, tenetur quis impedit soluta neque voluptates aspernatur officia vel.
+        </div>
+    </div>
+</body>
+</html>

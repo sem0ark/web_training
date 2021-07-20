@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="jquery.js"></script>
+    <title>Индивидуальное задание 3 Вариант 3</title>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores,
+      possimus.
+    </p>
+    <br />
+    <button>Click</button>
+    <script>
+      let x = 0;
+      $(document).ready(() => {
+        $("p").hide();
+        $("button").click(() => {
+          if (x % 2 == 0) {
+            $("p:even").fadeIn(2000);
+            $("p:odd").fadeOut(2000);
+            x = 1;
+          } else {
+            $("p:odd").fadeIn(2000);
+            $("p:even").fadeOut(2000);
+            x = 0;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
