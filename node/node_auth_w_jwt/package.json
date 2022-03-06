@@ -1,0 +1,17 @@
+{
+  "name": "node_auth_w_jwt",
+  "version": "1.0.0",
+  "description": "node auth w JWT example",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "author": "Arcadii",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
