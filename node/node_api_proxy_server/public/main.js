@@ -4,12 +4,10 @@ const cityInput = document.querySelector('#city-input');
 
 // fetch data from weather api
 const fetchWeather = async (city) => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=37616b7ab425b6d58ee9791670a7c580`;
+  const url = `/api?q=${city}`;
 
   const res = await fetch(url);
   const data = await res.json();
-
-  console.log(data);
 
   if (data.cod === '404') {
     alert('City not found');
