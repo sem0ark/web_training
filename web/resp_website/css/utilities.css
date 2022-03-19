@@ -14,6 +14,33 @@
   margin: 10px;
 }
 
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* buttons */
+
 .btn {
   display: inline-block;
   padding: 10px 30px;
@@ -64,36 +91,23 @@
   font-size: 20px;
 }
 
+.xl {
+  font-size: 4rem;
+}
+
+.lg {
+  font-size: 3rem;
+}
+
+
+.md {
+  font-size: 2rem;
+}
+
 .sm {
   font-size: 1rem;
 }
 
-
-
-
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.text-center {
-  text-align: center;
-}
 
 /* Margin */
 .my-1 {
