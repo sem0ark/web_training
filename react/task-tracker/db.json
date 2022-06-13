@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Message 1",
+      "day": "Feb 6th at 20:00",
+      "reminder": false
+    },
+    {
+      "text": "Take task",
+      "day": "eee",
+      "reminder": true,
+      "id": 3
+    },
+    {
+      "text": "Take tesy",
+      "day": "",
+      "reminder": false,
+      "id": 4
+    },
+    {
+      "text": "ww",
+      "day": "",
+      "reminder": true,
+      "id": 6
+    }
+  ]
+}
