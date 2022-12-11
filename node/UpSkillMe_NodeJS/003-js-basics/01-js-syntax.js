@@ -1,4 +1,8 @@
 /**
+ * Notes on the course
+ * UpSkillMe_Node.js. JavaScript Basics
+ * Completed by Arkadii Semenov
+ * 
  * Goal of the course: become a conversant
  * 
  * Versions of JS:
