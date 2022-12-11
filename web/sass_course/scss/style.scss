@@ -1,0 +1,74 @@
+@import 'config';
+@import 'utilities';
+@import 'buttons';
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $light-color;
+  font-family: $font-stack;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.img {
+  width: 400px;
+  height: 300px;
+  background-color: green;
+}
+
+.showcase {
+  @include set-background($primary-color);
+  height: 600px;
+
+  a:hover {
+    color: $secondary-color;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      color: set-text-color($primary-color);
+    }
+
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    li {
+      padding: 15px;
+    }
+  }
+
+  &-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+    .img {
+      width: 50%;
+    }
+
+    h1 {
+      font-size: 50px;
+      line-height: 1.2;
+    }
+  }
+}
+
+@import 'mobile';
