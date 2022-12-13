@@ -1,7 +1,7 @@
 /**
  * Notes on the course
  * UpSkillMe_Node.js. JavaScript Basics
- * Completed by Arkadii Semenov on 2022.12.12
+ * Completed by Arkadii Semenov on 2022.12.13
  * 
  * Switch statements
  * They work mostly as if staements, but be careful with *break*
@@ -10,7 +10,7 @@
  * 
  * */
 
- (() => {
+(() => {
   answer = window.prompt("Y/N/M");
   switch (answer) {
     case "Y":
