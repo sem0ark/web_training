@@ -22,4 +22,24 @@
   } else {
     console.log("Something else");
   }
+
+  // compression of if statements
+  let cherub = "Cupid";
+  if (cherub === "Cupid") console.log("Watch out an arrow.");
+  
+  let thruth = true;
+  if (thruth) console.log("It's true");
+
+  // Ternary operator
+  // mostly used with variable initialization
+  // condition ? true_action : false_action
+
+  let animal = "cat";
+  // let animal = "dog";
+
+  animal === "cat"
+    ? "It is true statement"
+    : "It is false statement";
+
+  let job = (animal==="cat") ? "cat herder" : "dog catcher";
 })();
