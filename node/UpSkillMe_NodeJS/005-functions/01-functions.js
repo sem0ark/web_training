@@ -84,7 +84,7 @@
   let speak_2 = function(what) {console.log(what || "Something");}
   
   // Ex:
-  setTimeout(speak_2, 5000);
+  setTimeout(speak_2, 1000);
   let obj_2 = {
     sayHello: function() {
       console.log("Hello!");
@@ -92,8 +92,28 @@
   }
 
   obj_2.sayHello()
+
+  let animals = [
+    "cat",
+    "dog",
+    "whale",
+    "shark",
+    "snake"
+  ];
+  
+  console.log(animals.map((x) => x.toUpperCase()));
 })();
 
 // further reading
 // https://javascript.info/function-basics
 // https://javascript.info/function-expressions
+
+/**
+ * Jargon:
+ * 1. Scope - where are variables are defined!
+ *          Global scope - acces from anywhere    -> use only if needed
+ *          Local  scope - acess only from scope  -> use var/let/const
+ * 2. Callback functions -> function that passed as an argument to another functions
+ *                          and then called in that function
+ *  Ex: arr.map(callback)
+ */
