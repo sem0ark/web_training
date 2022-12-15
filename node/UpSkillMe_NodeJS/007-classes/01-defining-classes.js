@@ -13,6 +13,13 @@
  * 1. class declaration
  * 2. class expression (rarely used)
  * 
+ * Differences between functions and classes:
+ * 1. functions are hoisted
+ * 2. functions can be overwritten
+ * 
+ * Blueprint and still need functions -> use classes
+ * If you need brand new function without methods -> use functions
+ * 
  * Further reading:
  * 1. Class syntax  https://javascript.info/class
  * 
