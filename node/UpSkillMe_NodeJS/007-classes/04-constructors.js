@@ -11,6 +11,8 @@
  *    a new object from the class with some additional properties
  * 4. we can use "super()" to access to the methods of a parent class
  * 
+ * Further raeding:
+ * 1. inherirtance in JS:  https://javascript.info/class-inheritance
  * */
 
 class Car {
@@ -42,6 +44,8 @@ class Car {
   }
 }
 
+// Here we use extends operator that works as a mechanism of inheritance
+// So the prototype of the class inherits properties from the parent prototype
 class SUV extends Car {
   /**
    * 
@@ -72,5 +76,3 @@ const cx5 = new SUV(4, 'V6', 'grey', 'Mazda');
 console.log(cx5);
 console.log(cx5.carStats());
 console.log(cx5.myBrand());
-
-
