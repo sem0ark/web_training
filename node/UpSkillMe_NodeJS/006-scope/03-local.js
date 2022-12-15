@@ -1,7 +1,7 @@
 /**
  * Notes on the course
  * UpSkillMe_Node.js. JavaScript Basics
- * Completed by Arkadii Semenov on 2022.12.14
+ * Completed by Arkadii Semenov on 2022.12.15
  * 
  * Local values can be accessed fromonly a specific place where they are defined.
  * 
