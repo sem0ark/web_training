@@ -42,3 +42,28 @@ const swr = () => {
 swr()
 
 // console.log(wr3); // Throws an error
+
+const a = [
+  {
+    name: 'Healer',
+    agility: 15,
+  },
+  {
+    name: 'Tank',
+    agility: 3,
+  },
+  {
+    name: 'Ninja',
+    agility: 30,
+  },
+]
+
+const fn = () => {
+  a.map((x) => {
+    if(x.agility === 3) {
+      let ag = x.agility;
+      console.log(`Agility of ${x.name} is ${ag}`);
+    }
+  });
+}
+fn();
