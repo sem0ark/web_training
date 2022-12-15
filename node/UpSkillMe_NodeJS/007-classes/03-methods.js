@@ -7,6 +7,13 @@
  * Methods in class:
  * 1. static - used only by the class itself, usually for utility functions
  * 2. prototype methods
+ *    - methods inherited from prototype object
+ *    - we can use them with our class
+ *    - we can check them in, for example, in browser console
+ * 3.:: There are private (#) and protected methods, but they are still partially supported...
+ * 
+ * Further reading:
+ * 1. Pivate and protected methods: https://javascript.info/private-protected-properties-methods
  * 
  * */
 
@@ -37,3 +44,5 @@ console.log(cx5);
 // console.log(civic);
 // console.log(civic.carStats());
 // console.log(Car.totalDoors(cx5, civic));
+
+// console.log(cx5.color.toString());
