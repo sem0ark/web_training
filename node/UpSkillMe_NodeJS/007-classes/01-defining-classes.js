@@ -6,7 +6,7 @@
  * Classe in JS are:
  * 1. Syntactic sugar over prototypes
  * 2. Class changes get passed down by inheritance even dynamically.
- * 3. There is a different hoisting strategy with classes compared to the variables
+ * 3. There is no hoisting with classes compared to the variables
  *    
  * 
  * Classes are defined with:
@@ -48,6 +48,9 @@ class Car_dec {
 
 // ======================================================
 
+// const cx5 = new Car(4, 'V6', 'grey'); // this would create an error
+// with functions and variables you can you them anywhere, but we should be careful with classes
+
 class Car {
   constructor(doors, engine, color) {
     this.doors = doors;
@@ -60,7 +63,7 @@ class Car {
   }
 }
 
-const cx5 = new Car(4, 'V6', 'grey'); // instancing of a class
+// const cx5 = new Car(4, 'V6', 'grey'); // instancing of a class
 
-console.log(cx5);
-console.log(cx5.carStats());
+// console.log(cx5);
+// console.log(cx5.carStats());
