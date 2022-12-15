@@ -4,11 +4,9 @@
  * UpSkillMe_Node.js. JavaScript Basics
  * Completed by Arkadii Semenov on 2022.12.15
  * 
- * Strict mode:
- * 1. it is enabled in classes as a standard
- * 2. it block programming from using some rather dangerous functioonality in JS
- * 3. it forces JS to throw errors in replace of being adaptive, which enchanses
- * 
+ * Methods in class:
+ * 1. static - used only by the class itself, usually for utility functions
+ * 2. prototype methods
  * 
  * */
 
@@ -22,5 +20,20 @@ class Car {
   carStats() { // here we use a shorter version of function declaration
     return `This car has ${this.doors} doors, a ${this.engine} engine and a beautiful ${this.color}!`
   }
+
+  static totalDoors(car1, car2) {
+    const doors1 = car1.doors;
+    const doors2 = car2.doors;
+
+    return doors1 + doors2;
+  }
 }
 
+const cx5 = new Car(4, 'V6', 'grey');
+const civic = new Car(3, 'V4', 'blue');
+
+console.log(cx5);
+// console.log(cx5.carStats());
+// console.log(civic);
+// console.log(civic.carStats());
+// console.log(Car.totalDoors(cx5, civic));
