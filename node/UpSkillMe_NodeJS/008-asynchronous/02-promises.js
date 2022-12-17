@@ -48,9 +48,17 @@
  *    return(finalResult);
  *  });
  * 
+ * Promises batching:
+ * we have, for exmaple, check if all promises in the array are finished, and only then process them.
+ * Promise.all([...arr...])
+ *  .then(...)
+ *  .catch(...)
+ *  ..........
+ * 
  * Further reading:
  * 1. Promises: https://javascript.info/promise-basics
  * 2. Promise chaining: https://javascript.info/promise-chaining
  * 3. Error handling: https://javascript.info/promise-error-handling
+ * 4. Promise API: https://javascript.info/promise-api
  * */
 
