@@ -39,9 +39,18 @@
  *    // do somethign else...
  *    return(finalResult);
  *  });
+ *  .catch((err) => { // runs if the promise is rejected
+ *    // deal with error...
+ *    return(finalResult);
+ *  });
+ *  .finally(() => { // runs no matter the promise is reso;ved or rejected
+ *    // deal with error...
+ *    return(finalResult);
+ *  });
  * 
  * Further reading:
- * 1. Promises https://javascript.info/promise-basics
- * 
+ * 1. Promises: https://javascript.info/promise-basics
+ * 2. Promise chaining: https://javascript.info/promise-chaining
+ * 3. Error handling: https://javascript.info/promise-error-handling
  * */
 
