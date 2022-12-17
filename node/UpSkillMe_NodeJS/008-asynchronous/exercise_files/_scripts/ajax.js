@@ -24,10 +24,10 @@ function get(url) {
 };
 
 function successHandler(data) {
+  console.log(data);
   const dataObj = JSON.parse(data);
   const weatherDiv = document.querySelector('#weather');
-  const weatherFragment = `
-        <h1>Weather</h1>
+  const div = `
         <h2 class="top">
         <img
             src="http://openweathermap.org/img/w/${dataObj.weather[0].icon}.png"
@@ -40,8 +40,7 @@ function successHandler(data) {
         <span class="tempF">${tempToF(dataObj.main.temp)}&deg;</span> | ${dataObj.weather[0].description}
         </p>
     `
-  weatherDiv.innerHTML = weatherFragment;
-  // weatherDiv.classList.remove('hidden');
+  return div;
 }
 
 function failHandler(err) {
@@ -54,24 +53,51 @@ function tempToF(kelvin) {
   return ((kelvin - 273.15) * 1.8 + 32).toFixed(0);
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  var rawFile = new XMLHttpRequest();
-  rawFile.open("GET", './key.txt', false);
-  rawFile.onreadystatechange = function () {
-    if (rawFile.readyState === 4) {
-      if (rawFile.status === 200 || rawFile.status == 0) {
-        const url = '0https://api.openweathermap.org/data/2.5/weather?q=los+angeles&APPID=' + rawFile.responseText;
-        get(url, successHandler)
-          .then((data) => successHandler(data)) // we use .then notation for the success
-          .catch((err) => failHandler(err))     // we use .catch notation for the fail
-          .finally(() => {
-            const weatherDiv = document.querySelector('#weather');
-            weatherDiv.classList.remove('hidden');
-          }); // runs in the end
-          // we can use there as many .then as we want and all of them would go to the catch in case of error
+function readFilePromise(filename) {
+  return new Promise((resolve, reject) => {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", filename, false);
+    rawFile.onreadystatechange = function () {
+      if (rawFile.readyState === 4) {
+        if (rawFile.status === 200 || rawFile.status == 0) {
+          resolve(rawFile.responseText);
+        } else {
+          reject(rawFile.status);
+        }
       }
     }
-  }
-  rawFile.send(null);
+    rawFile.send(null);
+  })
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const weatherDiv = document.querySelector('#weather');
+
+  const locations = [
+    'los+angeles,us',
+    'san+francisco,us',
+    'lone+pine,us',
+    'mariposa,us',
+  ];
+
+  readFilePromise('./key.txt')
+  .then((key) => {
+    const urls = locations.map((location) => {
+      return `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${key}`
+    });
+    Promise.all(urls.map((e) => get(e)))
+      .then((responses) => {
+        return responses.map((res) => successHandler(res))
+      }) // we use .then notation for the success
+      .then((literals) => {
+        weatherDiv.innerHTML = `<h1>Weather</h1>${literals.join('')}`;
+      })
+      .catch((err) => failHandler(err))     // we use .catch notation for the fail
+      .finally(() => {
+        weatherDiv.classList.remove('hidden');
+      }); // runs in the end
+      // we can use there as many .then as we want and all of them would go to the catch in case of error
+  })
+  .catch((err) => console.error(err));
 });
