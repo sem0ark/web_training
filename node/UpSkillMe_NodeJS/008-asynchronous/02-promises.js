@@ -55,10 +55,18 @@
  *  .catch(...)
  *  ..........
  * 
+ * Poylfill for Promises:
+ *    Promises aren't supported on th eolder versions of browsers,
+ *    so you sohuld use a polyfill that replicate promise functionality for compatability purposes
+ *    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+ *    Enter it before your code in the html file!
+ * 
  * Further reading:
  * 1. Promises: https://javascript.info/promise-basics
  * 2. Promise chaining: https://javascript.info/promise-chaining
  * 3. Error handling: https://javascript.info/promise-error-handling
  * 4. Promise API: https://javascript.info/promise-api
+ * 
+ * 
  * */
 
