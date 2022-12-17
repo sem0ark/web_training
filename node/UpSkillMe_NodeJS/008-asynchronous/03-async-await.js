@@ -9,6 +9,8 @@
  * We can use them by defining function that returns a Promise with *async*
  *  and later use *await* to stop teh execution flow and get data from the asynchronous function.
  * 
+ * The notation doesn't have thespecific error notation, but we can use try/catch functionality!
+ * 
  * Further reading:
  * 1. Asynch/await: https://javascript.info/async-await
  * 
