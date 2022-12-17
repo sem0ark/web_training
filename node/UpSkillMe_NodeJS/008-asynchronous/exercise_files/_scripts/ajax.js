@@ -1,14 +1,26 @@
-function get(url, success, fail) {
-  let httpRequest = new XMLHttpRequest(); // we use AJAX request to get the data
-  httpRequest.open('GET', url);
-  httpRequest.onload = function () { // we use the callback to process the data
-    if (httpRequest.status === 200) {
-      success(httpRequest.responseText);
-    } else {
-      fail(httpRequest.responseText);
+// function get(url, success, fail) {
+function get(url) {
+  return new Promise((res, rej) => {  
+    let httpRequest = new XMLHttpRequest(); // we use AJAX request to get the data
+    httpRequest.open('GET', url);
+    
+    httpRequest.onload = function () { // we use the callback to process the data
+      if (httpRequest.status === 200) {
+        res(httpRequest.responseText);
+      } else {
+        rej(Error(httpRequest.status));
+      }
     }
-  }
-  httpRequest.send();
+    
+    // httpRequest.onload = function () { // we use the callback to process the data
+    //   if (httpRequest.status === 200) {
+    //     success(httpRequest.responseText);
+    //   } else {
+    //     fail(httpRequest.responseText);
+    //   }
+    // }
+    httpRequest.send();
+  });
 };
 
 function successHandler(data) {
@@ -29,13 +41,13 @@ function successHandler(data) {
         </p>
     `
   weatherDiv.innerHTML = weatherFragment;
-  weatherDiv.classList.remove('hidden');
+  // weatherDiv.classList.remove('hidden');
 }
 
-function failHandler(status) {
-  console.log('There is an error: ', status);
-  const weatherDiv = document.querySelector('#weather');
-  weatherDiv.classList.remove('hidden');
+function failHandler(err) {
+  console.error('There is an error: ', err);
+  // const weatherDiv = document.querySelector('#weather');
+  // weatherDiv.classList.remove('hidden');
 }
 
 function tempToF(kelvin) {
@@ -49,8 +61,15 @@ document.addEventListener('DOMContentLoaded', function () {
   rawFile.onreadystatechange = function () {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status == 0) {
-        const url = 'https://api.openweathermap.org/data/2.5/weather?q=los+angeles&APPID=' + rawFile.responseText;
-        get(url, successHandler);
+        const url = '0https://api.openweathermap.org/data/2.5/weather?q=los+angeles&APPID=' + rawFile.responseText;
+        get(url, successHandler)
+          .then((data) => successHandler(data)) // we use .then notation for the success
+          .catch((err) => failHandler(err))     // we use .catch notation for the fail
+          .finally(() => {
+            const weatherDiv = document.querySelector('#weather');
+            weatherDiv.classList.remove('hidden');
+          }); // runs in the end
+          // we can use there as many .then as we want and all of them would go to the catch in case of error
       }
     }
   }
