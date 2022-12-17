@@ -8,7 +8,7 @@ function get(url) {
       if (httpRequest.status === 200) {
         res(httpRequest.responseText);
       } else {
-        rej(Error(httpRequest.status));
+        rej(httpRequest.status);
       }
     }
     
@@ -24,9 +24,7 @@ function get(url) {
 };
 
 function successHandler(data) {
-  console.log(data);
   const dataObj = JSON.parse(data);
-  const weatherDiv = document.querySelector('#weather');
   const div = `
         <h2 class="top">
         <img
@@ -81,23 +79,49 @@ document.addEventListener('DOMContentLoaded', function () {
     'mariposa,us',
   ];
 
-  readFilePromise('./key.txt')
-  .then((key) => {
+  // readFilePromise('./key.txt')
+  // .then((key) => {
+  //   const urls = locations.map((location) => {
+  //     return `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${key}`
+  //   });
+  //   Promise.all(urls.map((e) => get(e)))
+  //     .then((responses) => {
+  //       return responses.map((res) => successHandler(res))
+  //     }) // we use .then notation for the success
+  //     .then((literals) => {
+  //       weatherDiv.innerHTML = `<h1>Weather</h1>${literals.join('')}`;
+  //     })
+  //     .catch((err) => failHandler(err))     // we use .catch notation for the fail
+  //     .finally(() => {
+  //       weatherDiv.classList.remove('hidden');
+  //     }); // runs in the end
+  //     // we can use there as many .then as we want and all of them would go to the catch in case of error
+  // })
+  // .catch((err) => console.error(err));
+
+  (async () => { // we create and execute an asynchronous function
+    let key = await readFilePromise('./key.txt');
     const urls = locations.map((location) => {
       return `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${key}`
     });
-    Promise.all(urls.map((e) => get(e)))
-      .then((responses) => {
-        return responses.map((res) => successHandler(res))
-      }) // we use .then notation for the success
-      .then((literals) => {
-        weatherDiv.innerHTML = `<h1>Weather</h1>${literals.join('')}`;
-      })
-      .catch((err) => failHandler(err))     // we use .catch notation for the fail
-      .finally(() => {
-        weatherDiv.classList.remove('hidden');
-      }); // runs in the end
-      // we can use there as many .then as we want and all of them would go to the catch in case of error
-  })
-  .catch((err) => console.error(err));
+
+
+    try {
+      let responses = [];
+      for (let url of urls) {
+        responses.push(await get(url));
+        // we use await notation to get information from 
+        // so it is waiting one by one for all the responses 
+      }
+      
+      let literals = responses.map((res) => successHandler(res));
+
+      weatherDiv.innerHTML = `<h1>Weather</h1>${literals.join('')}`;
+      weatherDiv.classList.remove('hidden');
+    } catch (status) {
+      failHandler(status);
+    } finally {
+      weatherDiv.classList.remove('hidden');
+    }
+  })();
 });
