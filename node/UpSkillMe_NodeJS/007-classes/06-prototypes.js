@@ -123,8 +123,33 @@ function main_flowers() {
         console.log(' ', prop, ': ', this[prop]);
       }
     }
-  }
+  }  
+  // If we create similar, but a lot of objects, we can use constructors and even create cutom ones
+  // Name constructros with a capital letter.
 }
 
-// If we create similar, but a lot of objects, we can use constructors and even create cutom ones
-// Name constructros with a capital letter.
+function main_proto() {
+  // Prototypes are used to save data and create programs more efficient
+  // Prototypes can collect and store common properties of a set of objects (seuch as methods)
+  // We can even use prototypes as a "Parent object", so inheritants would use it as a reference for common properties 
+
+  // We create constructor function that gets changing properties to the object
+  
+  let Name = function (value1, value2) {
+    this.key1 = value1;
+    this.key2 = value2;
+  }
+
+  Name.prototype.key3 = "key3_value";
+  Name.prototype.key4 = "key4_value";
+
+
+  my_name = new Name("key1_value", "key2_value");
+
+  console.log(my_name, my_name.__proto__);
+
+  // Identify which keys and values are common to all objects constructed by a given constructor
+  // Assign those properties and methods to the prototype of the constructor!
+}
+
+main_proto();
