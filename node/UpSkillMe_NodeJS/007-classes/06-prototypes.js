@@ -7,6 +7,7 @@
  * Further reading:
  * 1. Prototypal inheritance: https://javascript.info/prototype-inheritance
  * 2. F.prototype: https://javascript.info/function-prototype
+ * 3. Prototype methods: https://javascript.info/prototype-methods
  * 
  * */
 
@@ -69,15 +70,20 @@ function main_flowers() {
     else newItem.flowers.addStem(key, dataObject[item]);
   }
 
-  function Arrangement(name, vase, quality = 1) {
-    this.vase = vase;
-    this.name = name;
-    this.quantity = quantity;
-    
-  }
-  Arrangement.prototype.type = 'floral';
-  Arrangement.prototype.storage = 'cool';
-  Arrangement.prototype.logItem = function () {
+  // Idea for protoype chaining / inheritance
+  /**
+   * Item
+   *    Live
+   *    Flower
+   *    Cut
+   *    - Bouquet
+   *    - Arrangement
+   */
+
+  function Item() {  } // Empty function for prototypes inheritance strategy
+  
+  Item.prototype.type = 'floral';
+  Item.prototype.logItem = function () {
     console.log('%c' + this.name, 'font-weight:bold');
     for (let prop in this) {
       console.log(' ', prop, ': ', this[prop]);
@@ -89,41 +95,36 @@ function main_flowers() {
     this.name = name;
     this.quantity = quantity;
   }
-  Live.prototype.type = 'floral';
-  Live.prototype.storage = 'warm';
-  Live.prototype.logItem = function () {
-    console.log('%c' + this.name, 'font-weight:bold');
-    for (let prop in this) {
-      console.log(' ', prop, ': ', this[prop]);
-    }
-  }
 
+  Live.prototype = new Item(); // Here we pass proto arguments from Item to Live
+  Live.prototype.storage = 'warm';
+
+
+  function Flower(quantity, color) {
+    this[color] = quantity;
+  }
+  Flower.prototype = new Item();
+
+  function Cut() { } // Blank constructor for the Arrangement and Bouquet
+  Cut.prototype = new Item();
+  Cut.prototype.storage = 'cool';
+
+  function Arrangement(name, vase, quality = 1) {
+    this.vase = vase;
+    this.name = name;
+    this.quantity = quantity;
+    
+  }
+  Arrangement.prototype = new Cut();
 
   function Bouquet(name, vase, quality = 1) {
     this.vase = vase;
     this.name = name;
   }
-  Bouquet.prototype.type = 'floral';
-  Bouquet.prototype.storage = 'cool';
-  Bouquet.prototype.logItem = function () {
-    console.log('%c' + this.name, 'font-weight:bold');
-    for (let prop in this) {
-      console.log(' ', prop, ': ', this[prop]);
-    }
-  }
+  Bouquet.prototype = new Cut();
   Bouquet.prototype.flowers = {
     addStem: function (name, quantity = 1, color = 'Default') {
       this[name] = new Flower(quantity, color);
-    }
-  }
-
-  function Flower(quantity, color) {
-    this[color] = quantity;
-  }
-  Flower.prototype.logItem = function () {
-    console.log('%c' + this.name, 'font-weight:bold');
-    for (let prop in this) {
-      console.log(' ', prop, ': ', this[prop]);
     }
   }
 
@@ -153,6 +154,13 @@ function main_proto() {
 
   // Identify which keys and values are common to all objects constructed by a given constructor
   // Assign those properties and methods to the prototype of the constructor!
+
+  // We can even create prototypes for prototypes!
+  // It's called protoypes *chaining*!
+  // Basically speaking it works in the same way as inheritance.
+
+  // It works in a way, so changing of the prototype of higher
+  // order would change branches even dynamically!
 }
 
 main_proto();
