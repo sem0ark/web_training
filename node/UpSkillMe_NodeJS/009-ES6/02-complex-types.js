@@ -8,14 +8,18 @@
  *    We can change values with 'set' method and get them with 'get'.
  *    It stores elements in the order in insertion.
  *    When to use:
- *      1) if you want to use something other then a string as a key.
- *      2) if you want to preserve teh order of elements.
- * 
- * 2. Set - colletion of values of any type, but unique. We can access it, add/delete elements or check if the elelment is in the set.
+ *      1. if you want to use something other then a string as a key.
+ *      2. if you want to preserve teh order of elements.
+ * 2. WeakMaps work mostly like Maps, with the following differences:
+ *    1. WeakMap keys are objects (values can be arbitrary values)
+ *    2. WeakMap keys are weakly held
+ *    3. You can’t get an overview of the contents of a WeakMap
+ *    4.You can’t clear a WeakMap
+ * 3. Set - colletion of values of any type, but unique. We can access it, add/delete elements or check if the elelment is in the set.
  *        When to use:
  *          1) When you need to keep track fo the unique values.
  *          2) Whwn you need to protect from repetiotions.
- * 3. Symbols - unique ID's that don't conflict with strings or objects.
+ * 4. Symbols - unique ID's that don't conflict with strings or objects.
  *    When to use :
  *      1) to avoid naming conflicts
  *      2) create unqiue identifier
