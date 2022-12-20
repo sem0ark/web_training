@@ -4,7 +4,9 @@
   "description": "NPM introduction project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js --exec babel-node -e js",
+    "run": "npx cowsay hello"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,14 @@
   },
   "homepage": "https://github.com/sem0ark/web_training#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "glob-parent": "^6.0.2",
+    "npm": "^9.2.0",
+    "npm-check-updates": "^16.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
   }
 }
