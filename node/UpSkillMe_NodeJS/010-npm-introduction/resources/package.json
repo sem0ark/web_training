@@ -1,0 +1,27 @@
+{
+  "name": "npm-course-sem0ark",
+  "version": "1.0.0",
+  "description": "NPM introduction project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sem0ark/web_training"
+  },
+  "keywords": [
+    "npm",
+    "course",
+    "testing"
+  ],
+  "author": "Arkadii Semenov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sem0ark/web_training/issues"
+  },
+  "homepage": "https://github.com/sem0ark/web_training#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
