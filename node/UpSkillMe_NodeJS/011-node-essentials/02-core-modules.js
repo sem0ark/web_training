@@ -47,9 +47,9 @@ function main_readline() {
   // });
 
   const questions = [
-    "what is your name?",
-    "Where do you live?",
-    "What are you going to do with Node.js",
+    "what is your name? ",
+    "Where do you live? ",
+    "What are you going to do with Node.js? ",
   ];
 
   const collectAnswers = (questions, done) => {
@@ -91,15 +91,23 @@ function main_modules() {
   dec();
   console.log(getCount());
 
-  collectAnswers([
+  const answerEvents = collectAnswers([
     "what is your name? ",
     "Where do you live? ",
-    "What are you going to do with Node.js ",
-  ], answers => {
+    "What are you going to do with Node.js? "]);
+  // ], answers => {
+  //   console.log("Thank you for your answers!");
+  //   console.log(answers);
+  //   process.exit();
+  // });
+
+  answerEvents.on("answer", (a) => console.log(`question answered: ${a}`));
+  answerEvents.on("complete", (a) => {
     console.log("Thank you for your answers!");
-    console.log(answers);
-    process.exit();
+    console.log(a);
   });
+
+  answerEvents.on("complete", () => process.exit()); // we can wire up as many events as we want
 }
 
 function main_events() {
@@ -135,3 +143,5 @@ function main_events() {
     emitter.emit("customEvent", input, "terminal");
   });
 }
+
+main_modules();
