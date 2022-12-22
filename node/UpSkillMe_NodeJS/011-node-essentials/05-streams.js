@@ -7,6 +7,10 @@
  *    a data source (a readable stream) and
  *    a data consumer (a writable stream).
  * 
+ * Further reading:
+ * 1. Node.js Child Processes: https://www.freecodecamp.org/news/node-js-child-processes-everything-you-need-to-know-e69498fe970a/
+ * 2. How to Use Buffers in Node.js: https://nodejs.org/en/knowledge/advanced/buffers/how-to-use-buffers/#:~:text=What%20Are%20Buffers%3F,methods%20specifically%20for%20binary%20data
+ * 
  * */
 
 function main_stream_read() {
@@ -52,4 +56,5 @@ function main_stream_write() {
   readStream.pipe(writeStream);
 }
 
-main_stream_write();
+// main_stream_write();
+main_stream_read();

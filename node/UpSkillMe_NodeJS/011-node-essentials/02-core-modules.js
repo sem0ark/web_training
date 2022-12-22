@@ -13,7 +13,7 @@
  * util     - provides with the set of additional functionality
  * path     - provides with the set of functions to work with paths
  * 
- * We can use EvenEmitters to create a pop-sub structure with Node.js
+ * We can use EvenEmitters to create publisher/subscriber pattern in Node.js
  * 
  * */
 
