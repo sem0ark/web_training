@@ -110,9 +110,9 @@ function main_rename_remove_file() {
 
 function main_rename_remove_directory() {
   const fs = require("fs");
-  fs.renameSync("./files", "./files_data"); // for renaming
+  // fs.renameSync("./files", "./files_data"); // for renaming
 
-  fs.readdirSync("./files_data").forEach((file) => fs.unlinkSync(file));
+  fs.readdirSync("./files_data").forEach((file) => fs.unlinkSync("./files_data/" + file));
   fs.rmdir("./files_data", (err) => { // for removing, we can't delete te dirctory if it has something in it
     if (err) throw err;
     console.log("removed ./files_data");
@@ -120,3 +120,5 @@ function main_rename_remove_directory() {
   // To get a behavior similar to the rm -rf Unix command,
   // use fs.rm() with options { recursive: true, force: true }.
 }
+
+// main_rename_remove_directory();
