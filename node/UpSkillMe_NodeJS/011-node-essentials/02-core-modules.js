@@ -13,8 +13,12 @@
  * util     - provides with the set of additional functionality
  * path     - provides with the set of functions to work with paths
  * 
+ * We can use EvenEmitters to create a pop-sub structure with Node.js
  * 
  * */
+
+const { count } = require("console");
+const { stderr } = require("process");
 
 function main_core() {  
   const path = require("path"); // Used for safely using paths
@@ -72,5 +76,62 @@ function main_readline() {
   });
 }
 
-main_readline();
+function main_modules() {
+  // const counter = require("./03-my-module"); // it will export the values form my-module
+  const {
+    inc,
+    dec,
+    getCount,
+    collectAnswers,
+  } = require("./03-my-module"); // we can just destructure the object of export
 
+  inc();
+  inc();
+  inc(); // Here we use imported methods
+  dec();
+  console.log(getCount());
+
+  collectAnswers([
+    "what is your name? ",
+    "Where do you live? ",
+    "What are you going to do with Node.js ",
+  ], answers => {
+    console.log("Thank you for your answers!");
+    console.log(answers);
+    process.exit();
+  });
+}
+
+function main_events() {
+  const events = require("events");
+
+  const emitter = new events.EventEmitter();
+
+  emitter.on("customEvent", (message, user) => {
+    // we can handle and emit events from any part of our code
+    // That is how we can create custom events
+    // Arcadii -> it can be very useful, if you are careful
+    console.log(`${user}: ${message}`);
+  });
+
+  emitter.emit(
+    "customEvent", // the name of the event
+    "Hello world", // aparamaters of the event, which data would it pass
+    "Computer"
+  );
+  emitter.emit(
+    "customEvent",
+    "That's pretty cool, huh?",
+    "Alex"
+  );
+
+
+  process.stdin.on("data", data => {
+    const input = data.toString().trim();
+    if (input === "exit") {
+      emitter.emit("customEvent", "Goodbye!", "process");
+      process.exit();
+    }
+    emitter.emit("customEvent", input, "terminal");
+  });
+}
