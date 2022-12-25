@@ -14,18 +14,19 @@
  * 
  * */
 
+const fs = require('fs');
+const { promisify } = require('util');
+
+const writeFile = promisify(fs.writeFile);
+const unlink = promisify(fs.unlink);
+const readdir = promisify(fs.readdir);
+
+const delay = (seconds) => new Promise((resolve) =>{
+  setTimeout(resolve, seconds*1000);
+});
+const beep = () => process.stdout.write("\x07");
+
 function main_callback_solution_aa() {
-  const fs = require('fs');
-  const { promisify } = require('util');
-
-  const writeFile = promisify(fs.writeFile);
-  const unlink = promisify(fs.unlink);
-
-  const delay = (seconds) => new Promise((resolve) =>{
-    setTimeout(resolve, seconds*1000);
-  });
-  const beep = () => process.stdout.write("\x07");
-
   const doStuffSequentiallyPR = () => Promise.resolve()
     .then(() => console.log('starting'))
     .then(() => delay(1))
@@ -76,11 +77,6 @@ function main_callback_solution_aa() {
 function main_async_data() {
   // we can get data from async functions in the same way as working with Promises
   // in AA notation - just like standard functions.
-
-  const fs = require('fs');
-  const { promisify } = require('util');
-
-  const readdir = promisify(fs.readdir);
 
   // readdir('.')
   //   .then((files => files.forEach(file => console.log(file))));
