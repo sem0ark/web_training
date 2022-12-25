@@ -1,7 +1,7 @@
 /**
  * Notes on the course
  * UpSkillMe_Node.js. Node.js: Essential Training
- * Completed by Arkadii Semenov on 2022.12.24
+ * Completed by Arkadii Semenov on 2022.12.25
  * 
  * Streams is the way to pas data in doable chuncks,
  *   which can enchance efficiency of RAM usage and shrink
@@ -14,6 +14,10 @@
  * There are two types:
  * 1. Mark-sweep - actually stops the NOde process to clear a lot of garbage data
  * 2. Scavege - clears less data and keep Node running
+ * 
+ * Further reading:
+ * Understanding Streams in Node.js
+ *  https://nodesource.com/blog/understanding-streams-in-nodejs/
  * 
  * */
 
