@@ -7,6 +7,7 @@
  * 
  * */
 
+const multiparty = require('multiparty');
 
 const { createServer } = require('http');
 const { stat, createReadStream, createWriteStream } = require('fs');
@@ -37,14 +38,30 @@ function main_server() {
     // We should be able to handle multiple requests.
     // We can understand it by reading the URL of the request
     if (req.method === "POST") { // we are checking if we are getting the response
-      req.pipe(res);
-      req.pipe(process.stdout);
-      req.pipe(createWriteStream('./dummy.txt'));
+      // req.pipe(res);
+      // req.pipe(process.stdout);
+      // req.pipe(createWriteStream('./dummy.txt'));
       // Here we are sending the data we got from the "user" to some other places,
       // because it also is a Stream
 
       // When we are getting data from the multyform we are getting the data + some additional information in the same stream
       // So we need to somehow get the information from it
+
+      // ======= Parsing form-data with multiparty
+      let form = new multiparty.Form();
+      form
+        .on('part', (part) => {
+          part
+            .pipe(createWriteStream(`./${part.filename}`))
+            .on('close', () => {
+              res.writeHead(200, { 'Content-Type': 'text/html' });
+              res.end(`<h1>File uploaded: ${part.filename}</h1>`);
+            })
+            .on('error', console.log);
+        })
+        .on('error', console.log);
+      
+      form.parse(req);
     } else if (req.url === '/video') {
       respondeWithVideo(req, res);
     } else {
