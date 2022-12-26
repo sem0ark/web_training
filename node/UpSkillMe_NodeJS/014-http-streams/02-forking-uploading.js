@@ -25,7 +25,12 @@ const respondeWithVideo = async (req, res) => {
     let [start, end] = range.replace(/bytes=/, '').split('-');
     start = parseInt(start, 10);
     end   = end ? parseInt(end, 10) : size-1;
-    res.writeHead(206, { 'Content-Type': 'video/mp4', 'Content-Length': (end - start) + 1, 'Content-Range': `bytes ${start}-${end}/${size}`, 'Accept-Range': 'bytes' });
+    res.writeHead(206, {
+      'Content-Type': 'video/mp4',
+      'Content-Length': (end - start) + 1,
+      'Content-Range': `bytes ${start}-${end}/${size}`,
+      'Accept-Range': 'bytes'
+    });
     createReadStream(fileName, { start , end }).pipe(res);
   } else {
     res.writeHead(200,{ 'Content-Type': 'video/mp4', 'Content-Length': size});
@@ -58,7 +63,7 @@ function main_server() {
               res.end(`<h1>File uploaded: ${part.filename}</h1>`);
             })
             .on('error', console.log);
-        })
+        })  
         .on('error', console.log);
       
       form.parse(req);

@@ -36,7 +36,7 @@ const peaks = [
 class StreamFromArray extends Readable {
   constructor(arr) {
     // super({ encoding: 'utf-8' });
-    super({ objectMode: true});
+    super({ objectMode: true });
     // without passing the encoding we would use the binary mode for reading from the stream
     // by passing objectMode:true we would be able to pass any type of JS object
     this.array = arr;
