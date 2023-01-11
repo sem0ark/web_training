@@ -9,7 +9,8 @@
  * 
  * Further reading:
  * 1. using template engines with Express https://expressjs.com/en/guide/using-template-engines.html
- * 
+ * 2. routing https://expressjs.com/en/guide/routing.html
+ * 3. using middleware https://expressjs.com/en/guide/using-middleware.html
  * */
 
 const express = require('express');
@@ -85,3 +86,53 @@ app.listen(PORT, () => {
  * with your include to avoid double-escaping the HTML output.
  * 
  */
+
+/**
+ * mostly everything is created Middleware
+ * 
+ * Syntax
+ * app.use(callback)
+ * app.use(path, callback) // would be used only for the the specific path
+ * 
+ * app.  (path, calback) // specific types of middleware for HTML responses
+ *  get
+ *  post
+ *  put
+ *  delete
+ * 
+ * Middlwares can:
+ * 1. execute any code
+ * 2. change req and res objects
+ * 3. End req-res cycle - mostly sent data back to the user
+ * 4. call the next middleware
+ * 
+ * Example:
+ * app.use((req, res, next) => {
+ *    // Do something 
+ *    return next(); // use it, or the req will hang
+ * });
+ * 
+ *   "verb"   "path"     "Handler function"
+ * app.get('/feedback', (req, res, next) => {
+ *    // Do something 
+ *    return res.send('Hello')
+ * });
+ * 
+ */
+
+// Parameter routes
+// We can use them to get some data from the route
+app.get('/speakers/:speakername', handler); // param. speakername would be available to the handler
+app.get('/speakers/:speakername?', handler);  // param. speakername can be empty
+
+// Express request lifecycle
+// Example:
+
+//                                      next()           next()                       res.send()
+// Request : GET /speakers -> app.use()  ->    app.use()  ->    app.get('/speakers') -> RESPONSE
+//                                                              app.post()
+//                                                              app.get()
+
+// So the reqest first passed through all the app.use() with next() pointing to the next action (control flow)
+//   after it get to some point of the response, the program sends res.send(...) data to the user
+
