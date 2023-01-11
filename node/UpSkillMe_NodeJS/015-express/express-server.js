@@ -54,6 +54,13 @@ app.use(
   })
 );
 
+// EJS Variables
+// we can pass some variables to the reqest through the locsls property
+
+app.use((req, res, next) => {
+  res.locals.greeting = 'hello';
+});
+
 // Moved index.html route to index.js in routes
 // ! We can use Express router to create sub-applications in other files
 
