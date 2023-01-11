@@ -2,69 +2,83 @@
  * Notes on the course
  * UpSkillMe_Node.js. Node.js: Essential Training
  * Completed by Arkadii Semenov on 2022.12.27
- * 
+ *
  * Express is a library for efficient creation and usage of the http servers.
- * 
+ *
  * In the course would be used files as a website that should be controlled on the server ot make it more dinamic.
- * 
+ *
  * Further reading:
  * 1. using template engines with Express https://expressjs.com/en/guide/using-template-engines.html
  * 2. routing https://expressjs.com/en/guide/routing.html
  * 3. using middleware https://expressjs.com/en/guide/using-middleware.html
  * */
 
-const express = require('express');
 const path = require('path');
+
+const express = require('express');
+const cookieSession = require('cookie-session');
+
+const indexRoute = require('./src/routes/index');
+
+const FeedbackService = require('./src/services/FeedbackService');
+const SpeakersService = require('./src/services/SpeakerService');
 
 const app = express();
 
 const PORT = 3000;
 
-app.set('view engine', 'ejs'); // Here we tell express to use EJS
-app.set('views', path.join(__dirname, './src/views')) // Here we tell the folders for templates
+app.set('trust proxy', 1);
+// makes express trust cookies passed through a reverse proxy
+// it can cause a lot of problems in either case
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['ahfbaiweycoiIO7', 'bcrqiuyo39']
+}));
+
+const feedbackService = new FeedbackService('./src/data/feedback.json');
+const speakersService = new SpeakersService('./src/data/speakers.json');
+
+app.set('view engine', 'ejs'); // Here we tell express to use EJS
+app.set('views', path.join(__dirname, './src/views')); // Here we tell the folders for templates
 
 app.use(express.static(path.join(__dirname, './src/static')));
 // Here we use middleware type static,
 //    so express would look for required files
 
-app.get('/', (req, res) => {
-  // ------------------------- static rendering
-  // res.sendFile(path.join(__dirname, './src/static/index.html'))
-  // But there would be a problem, because any images wouldn't be displayed
-  //   the page couldn't loa the files.
-  // To run it we need static.
+app.use(
+  '/',
+  indexRoute({
+    feedbackService, // Here we are passing the data to the routing as an object
+    speakersService,
+  })
+);
 
-  // ------------------------- render with EJS
-  res.render('pages/index', { pageTitle: 'Welcome' });
+// Moved index.html route to index.js in routes
+// ! We can use Express router to create sub-applications in other files
 
-});
-
-
-app.get('/speakers', (req, res) => {
-  res.sendFile(path.join(__dirname, './src/static/speakers.html'))
-});
+// app.get('/speakers', (req, res) => {
+//   res.sendFile(path.join(__dirname, './src/static/speakers.html'))
+// });
 
 app.listen(PORT, () => {
   console.log(`Express server is listenning on PORT ${PORT}`);
 });
 
-
-
 /**
- * we can use template engines to create dinamic and responsive websites 
+ * we can use template engines to create dinamic and responsive websites
  * The engine get templates and some data and combines it into the standard HTML file
  *    So we can create website from the components without any repetitions at all.
- * 
+ *
  * In this course we would use EJS template engine
- * 
+ *
  * ### Installing
  * install with
  * `npm install ejs`
- * 
+ *
  * ### Tags
  * Tags used in the templates:
- * 
+ *
  * <%  -> 'Scriptlet' tag, for control-flow, no output
  * <%_ -> ‘Whitespace Slurping’ Scriptlet tag, strips all whitespace before it
  * <%= -> Outputs the value into the template (HTML escaped)
@@ -74,56 +88,56 @@ app.listen(PORT, () => {
  * %>  -> Plain ending tag
  * -%> -> Trim-mode ('newline slurp') tag, trims following newline
  * _%> -> ‘Whitespace Slurping’ ending tag, removes all whitespace after it
- * 
+ *
  * Including templates:
  * Includes are relative to the template with the include call.
- * 
+ *
  * (This requires the 'filename' option.)
  * For example if you have "./views/users.ejs" and "./views/user/show.ejs" you would use
  * <%- include('user/show'); %>.
- * 
+ *
  * You'll likely want to use the raw output tag (<%-)
  * with your include to avoid double-escaping the HTML output.
- * 
+ *
  */
 
 /**
  * mostly everything is created Middleware
- * 
+ *
  * Syntax
  * app.use(callback)
  * app.use(path, callback) // would be used only for the the specific path
- * 
+ *
  * app.  (path, calback) // specific types of middleware for HTML responses
  *  get
  *  post
  *  put
  *  delete
- * 
+ *
  * Middlwares can:
  * 1. execute any code
  * 2. change req and res objects
  * 3. End req-res cycle - mostly sent data back to the user
  * 4. call the next middleware
- * 
+ *
  * Example:
  * app.use((req, res, next) => {
- *    // Do something 
+ *    // Do something
  *    return next(); // use it, or the req will hang
  * });
- * 
+ *
  *   "verb"   "path"     "Handler function"
  * app.get('/feedback', (req, res, next) => {
- *    // Do something 
+ *    // Do something
  *    return res.send('Hello')
  * });
- * 
+ *
  */
 
 // Parameter routes
 // We can use them to get some data from the route
-app.get('/speakers/:speakername', handler); // param. speakername would be available to the handler
-app.get('/speakers/:speakername?', handler);  // param. speakername can be empty
+// app.get('/speakers/:speakername', handler); // param. speakername would be available to the handler
+// app.get('/speakers/:speakername?', handler);  // param. speakername can be empty
 
 // Express request lifecycle
 // Example:
@@ -136,3 +150,12 @@ app.get('/speakers/:speakername?', handler);  // param. speakername can be empty
 // So the reqest first passed through all the app.use() with next() pointing to the next action (control flow)
 //   after it get to some point of the response, the program sends res.send(...) data to the user
 
+
+/**
+ * HTTP is stateless
+ * If we need to use sessions to keep the data about users
+ * 
+ * for it we can use `cookie-session` module:
+ * npm install cookie-session
+ * 
+ */
