@@ -6,14 +6,17 @@ const feedbackRoute = require('./feedback');
 
 
 module.exports = params => {
-  router.get('/', (req, res) => {
-    if(!req.session.visitCount) { req.session.visitCount = 0; }
+  const { speakersService } = params;
+  
+  router.get('/', async (req, res) => {
+    // if(!req.session.visitCount) { req.session.visitCount = 0; }
     // Keeps the data in Cookies 
-    
-    req.session.visitCount += 1;
-    console.log(`Number of visits: ${req.session.visitCount}`);
+    // req.session.visitCount += 1;
+    // console.log(`Number of visits: ${req.session.visitCount}`);
 
-    res.render('layout/index', { pageTitle: 'Welcome', template: 'index' });
+    const topSpeakers = await speakersService.getList();
+    // console.log(topSpeakers);
+    res.render('layout/index', { pageTitle: 'Welcome', template: 'index', topSpeakers });
   });
 
   router.use('/speakers', speakersRoute(params));

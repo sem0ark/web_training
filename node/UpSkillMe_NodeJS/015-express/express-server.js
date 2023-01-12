@@ -46,6 +46,26 @@ app.use(express.static(path.join(__dirname, './src/static')));
 // Here we use middleware type static,
 //    so express would look for required files
 
+// EJS Variables
+// we can pass some variables to the reqest through the locals property
+// app.use((req, res, next) => {
+//   res.locals.greeting = 'hello';
+//   return next();
+// });
+
+app.locals.siteName = "ROUX Meetups";
+
+app.use( async (req, res, next) => {
+  try {
+    const names = await speakersService.getNames();
+    res.locals.speakerNames = names; // Here we pass the data 
+    // console.log(res.locals);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.use(
   '/',
   indexRoute({
@@ -53,13 +73,6 @@ app.use(
     speakersService,
   })
 );
-
-// EJS Variables
-// we can pass some variables to the reqest through the locsls property
-
-app.use((req, res, next) => {
-  res.locals.greeting = 'hello';
-});
 
 // Moved index.html route to index.js in routes
 // ! We can use Express router to create sub-applications in other files
