@@ -13,10 +13,10 @@ module.exports = params => {
     // Keeps the data in Cookies 
     // req.session.visitCount += 1;
     // console.log(`Number of visits: ${req.session.visitCount}`);
-
+    const artwork = await speakersService.getAllArtwork();
     const topSpeakers = await speakersService.getList();
     // console.log(topSpeakers);
-    res.render('layout/index', { pageTitle: 'Welcome', template: 'index', topSpeakers });
+    res.render('layout/index', { pageTitle: 'Welcome', template: 'index', topSpeakers, artwork});
   });
 
   router.use('/speakers', speakersRoute(params));
