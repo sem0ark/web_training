@@ -11,12 +11,15 @@
  * 1. using template engines with Express https://expressjs.com/en/guide/using-template-engines.html
  * 2. routing https://expressjs.com/en/guide/routing.html
  * 3. using middleware https://expressjs.com/en/guide/using-middleware.html
+ * 4. Error handling https://expressjs.com/en/guide/error-handling.html
+ * 
  * */
 
 const path = require('path');
 
 const express = require('express');
 const cookieSession = require('cookie-session');
+const createError = require('http-errors')
 
 const indexRoute = require('./src/routes/index');
 
@@ -76,10 +79,35 @@ app.use(
 
 // Moved index.html route to index.js in routes
 // ! We can use Express router to create sub-applications in other files
-
 // app.get('/speakers', (req, res) => {
 //   res.sendFile(path.join(__dirname, './src/static/speakers.html'))
 // });
+
+// Error handling
+// we should check and catch possible errors
+// app.get('/throw', (reqm, res, next) => {
+//   // throw new Error('Threw Error.'); // would throw an Error, but the app woiuld still run
+
+//   setTimeout(() => {
+//     // throw new Error('Threw Error.'); // would throw an Error, THE APP WOULD CRASH!
+//     // So any errors in async functions should be handled
+//     return next(new Error('Threw Error.')); // Recommended way of raising errors
+//   }, 500);
+// });
+// If we would throw an Error somewhere in the middleware, the site would hang!
+
+app.use((req, res, next) => {
+  return next(createError(404, 'File not found'))
+});
+
+app.use((err, req, res, next) => { // middleware with four arguments -> error handling
+  res.locals.message = err.message;
+  const status = err.status || 500;
+  res.locals.status = status;
+  console.error(err);
+  res.status(status);
+  res.render('error');
+});
 
 app.listen(PORT, () => {
   console.log(`Express server is listenning on PORT ${PORT}`);

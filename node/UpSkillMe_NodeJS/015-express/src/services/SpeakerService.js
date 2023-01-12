@@ -23,6 +23,7 @@ class SpeakerService {
    */
   async getNames() {
     const data = await this.getData();
+    // throw new Error('Async error'); // Error for testing purposes
 
     // We are using map() to transform the array we get into another one
     return data.map(speaker => {
