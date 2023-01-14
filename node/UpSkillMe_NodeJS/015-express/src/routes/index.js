@@ -16,11 +16,15 @@ module.exports = (params) => {
       const artwork = await speakersService.getAllArtwork();
       const topSpeakers = await speakersService.getList();
       // console.log(topSpeakers);
-      return res.render('layout/index', { pageTitle: 'Welcome', template: 'index', topSpeakers, artwork });
+      return res.render('layout/index', {
+        pageTitle: 'Welcome',
+        template: 'index',
+        topSpeakers,
+        artwork,
+      });
     } catch (err) {
       return next(err);
     }
-    
   });
 
   router.use('/speakers', speakersRoute(params));

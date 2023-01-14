@@ -12,7 +12,7 @@
  * 2. routing https://expressjs.com/en/guide/routing.html
  * 3. using middleware https://expressjs.com/en/guide/using-middleware.html
  * 4. Error handling https://expressjs.com/en/guide/error-handling.html
- * 
+ * 5. How the bodyparser works https://medium.com/@adamzerner/how-bodyparser-works-247897a93b90
  * */
 
 const path = require('path');
