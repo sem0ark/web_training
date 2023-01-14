@@ -13,13 +13,20 @@
  * 3. using middleware https://expressjs.com/en/guide/using-middleware.html
  * 4. Error handling https://expressjs.com/en/guide/error-handling.html
  * 5. How the bodyparser works https://medium.com/@adamzerner/how-bodyparser-works-247897a93b90
+ * 6. Sanitizing Input in Express Using Express-Validator https://flaviocopes.com/express-sanitize-input/
+ * 7. Custom Validators/Sanitizers https://express-validator.github.io/docs/custom-validators-sanitizers.html
+ * 
  * */
 
 const path = require('path');
 
 const express = require('express');
+
+
 const cookieSession = require('cookie-session');
-const createError = require('http-errors')
+const createError = require('http-errors');
+
+const bodyParser = require('body-parser'); // Also a middleware for the form validation
 
 const indexRoute = require('./src/routes/index');
 
@@ -34,10 +41,15 @@ app.set('trust proxy', 1);
 // makes express trust cookies passed through a reverse proxy
 // it can cause a lot of problems in either case
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['ahfbaiweycoiIO7', 'bcrqiuyo39']
-}));
+app.use(
+  cookieSession({
+    name: 'session',
+    keys: ['ahfbaiweycoiIO7', 'bcrqiuyo39'],
+  })
+);
+
+app.use(bodyParser.urlencoded({ extended: true })); // we need it for proper parsing of forms
+app.use(bodyParser.json()); // we need it for proper parsing of API requests
 
 const feedbackService = new FeedbackService('./src/data/feedback.json');
 const speakersService = new SpeakersService('./src/data/speakers.json');
@@ -56,12 +68,12 @@ app.use(express.static(path.join(__dirname, './src/static')));
 //   return next();
 // });
 
-app.locals.siteName = "ROUX Meetups";
+app.locals.siteName = 'ROUX Meetups';
 
-app.use( async (req, res, next) => {
+app.use(async (req, res, next) => {
   try {
     const names = await speakersService.getNames();
-    res.locals.speakerNames = names; // Here we pass the data 
+    res.locals.speakerNames = names; // Here we pass the data
     // console.log(res.locals);
     return next();
   } catch (err) {
@@ -97,10 +109,11 @@ app.use(
 // If we would throw an Error somewhere in the middleware, the site would hang!
 
 app.use((req, res, next) => {
-  return next(createError(404, 'File not found'))
+  return next(createError(404, 'File not found'));
 });
 
-app.use((err, req, res, next) => { // middleware with four arguments -> error handling
+app.use((err, req, res, next) => {
+  // middleware with four arguments -> error handling
   res.locals.message = err.message;
   const status = err.status || 500;
   res.locals.status = status;
@@ -198,12 +211,47 @@ app.listen(PORT, () => {
 // So the reqest first passed through all the app.use() with next() pointing to the next action (control flow)
 //   after it get to some point of the response, the program sends res.send(...) data to the user
 
-
 /**
  * HTTP is stateless
  * If we need to use sessions to keep the data about users
- * 
+ *
  * for it we can use `cookie-session` module:
  * npm install cookie-session
+ *
+ */
+
+
+/**
+ * REST and API's
+ * 
+ * REST - Representational State Transfer
+ * is widely used for the creation of API interfaces
+ * 
+ * Usually in JSON the user can send some data and receive some data from the API.
+ * To talk to the API we need to use HTTP evrbs:
+ * GET - get some data
+ * POST - send some data 
+ * PUT - update some data
+ * DELETE - remove some data
+ * 
+ * Example: Creating a user management system with CRUD actions
+ * CRUD means Create, Read, Update and Delete - four basic operations with the data
+ * 
+ * The API adds meaning to the HTTP verbs + URLs
+ * 
+ * HTTP GET //url
+ * HTTP POST (payload) //url
+ * HTTP PUT (payload) //url
+ * HTTP DELETE //url
+ * 
+ * The APIs are used to talk to the backend for some websites
+ * 
+ * Browser --- HTTP GET "url"     --> Back-end
+ * Browser <-- HTML page with JS  --- Back-end
+ * 
+ * 
+ * Browser                      Back-end
+ * | JS  | <-- XHR (AJAX)   --- |      |
+ * |     | ---    REST      --> |      | 
  * 
  */
