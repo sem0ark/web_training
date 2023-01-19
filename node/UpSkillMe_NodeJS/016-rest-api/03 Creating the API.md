@@ -84,6 +84,7 @@ Do we need a customer resource? -> go to the product owner and ask about changes
 3. Associative -> can be in/dependent, but need additional information to describe it
 
 Example, movie:
+
 1. Independent: movies and actors
 2. Dependent: character in movies
 3. Associative:
@@ -91,6 +92,7 @@ Example, movie:
    one character is played by multiple actors
 
 Book ordering:
+
 - Items - independent
 - Cart must have items (dependent)
 - Orders com from carts (dependent)
@@ -98,4 +100,48 @@ Book ordering:
 
 > Even if it looks like your DB schema, don't just reveal it.
 > The DB and the API have different goals, so the activities can be different.
+
+## Validating API
+We now should validate the API to check if we are missing something or not.
+
+#### Approach 1: Cards
+1. Get the list of use-cases.
+2. For every use-case:
+   - if we can rearrange the cards of activities we've written before to get the desired result -> OK
+   - if there is a problem -> we should check the structure again.
+
+#### Approach 2: Coding
+1. Step through API calls.
+2. Write code as if am API exists.
+3. Looks for gaps and potential issues.
+
+#### Approach 3: Colleagues
+Do Approach 1/2 with your colleague or two.
+
+#### Approach 4: Use a micro-framework
+1. Use hapi.js (Node), Sinatra (Ruby), Slim/Silex (PHP)
+2. Accept incoming requests
+3. Validate verbs and URL patterns
+4. Return static HTTP response code and payloads
+
+#### Approach 5: Write a documentation as if API existed
+1. List the end points -> describe what they do
+2. List the parameters -> describe what they mean
+3. List the response codes -> describe when you get each
+4. Show the response payloads -> define the fields
+
+Goal: Quickly create a simple, imperfect document in a shareable format.
+Use just a Google Doc.
+
+**Risks**:
+1. Team may try to _perfect_ the documentation -> the document should be quick, not perfect.
+2. Documentation mey lead to some _false_ assumptions:
+   - Be clear with stakeholders that this documentation is for evaluation and validation purposes.
+
+**Reward**:
+1. Documentation is almost done.
+2. Regular updates will yield robust production documentation.
+
+> API Modeling and Design Process
+> http://work.haufegroup.io/api-style-guide/api-design-process/api-design-process.html
 
