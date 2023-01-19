@@ -2,16 +2,19 @@ Notes on the course Designing RESTful API's from EPAM-UpSkillMe-Node.js Course
 Complete by Arkadii Semenov on 2023.01.19
 
 Updated set of actions from the previous example:
+
 1. View items.
 2. Add items to the cart.
 3. Place order.
 
 ## Creating API definitions
+
 API resources -> anything users interact with / _nouns_.
 Identifying the resources -> _just circle the nouns_.
 
 Now we should create a list of actions we can do with our nouns:
 From the CRUD model (Create, Read, Update, Delete):
+
 1. Items
    - view items
    - edit items
@@ -32,18 +35,21 @@ From the CRUD model (Create, Read, Update, Delete):
 
 But, how would we checkout the order?
 It looks like we need to create an _account system_. We should:
+
 - ask the product manager
 - make an assumption
 - document it
 
 ## Mapping actions to nouns
+
 From the example we can see that we can use the CRUD scheme for our HTTP requests:
 
 _Verbs_ _CRUD -> HTTP_:
+
 - Create -> POST -> used
-   - to create a new resource
-   - to change the status/state of a resource
-   - for anything else that doesn't fit into other verbs
+  - to create a new resource
+  - to change the status/state of a resource
+  - for anything else that doesn't fit into other verbs
 - Read -> GET -> used to retrieve the data
 - Update -> PUT -> updates an existing resource
 - Delete -> DELETE -> delete the data
@@ -51,11 +57,10 @@ _Verbs_ _CRUD -> HTTP_:
 > Difference between PUT and POST
 > https://restfulapi.net/rest-put-vs-post/
 
-
 Do we need a customer resource? -> go to the product owner and ask about changes.
+
 > Unknowns are OK.
 > **BUT** Don't make assumptions when you have the opportunity to ask the product owner or customer. It could become a hard requirement, which the customer haven't asked at all.
-
 
 1. Item
    - List items -> GET items
@@ -73,3 +78,24 @@ Do we need a customer resource? -> go to the product owner and ask about changes
    - view customer -> GET customer
 
 #### API relationships
+
+1. Independent -> can exist on its own without any other resources
+2. Dependent -> con only exist if another resource already exists
+3. Associative -> can be in/dependent, but need additional information to describe it
+
+Example, movie:
+1. Independent: movies and actors
+2. Dependent: character in movies
+3. Associative:
+   one actor plays multiple characters
+   one character is played by multiple actors
+
+Book ordering:
+- Items - independent
+- Cart must have items (dependent)
+- Orders com from carts (dependent)
+- Orders must have customers (dependent)
+
+> Even if it looks like your DB schema, don't just reveal it.
+> The DB and the API have different goals, so the activities can be different.
+
