@@ -68,7 +68,8 @@ We need to make sure that capabilities/:
 2. Have a consistent process. Any changes 
 3. Involve teams early to get any ideas and prone errors. Various perspectives would help -> reinforce strengths and find weaknesses.
 4. It doesn't count unless it is written down. Document everything:
-  1. Assumptions
-  2. Decisions
-  3. Deferred tasks
-  
+  *Assumptions, Decisions, Deferred tasks*.
+  Document for shared understanding, you would be able to faster understand possible problems and tackle errors in the structure.
+
+> Further reading
+> https://restfulapi.net/what-is-an-api/
