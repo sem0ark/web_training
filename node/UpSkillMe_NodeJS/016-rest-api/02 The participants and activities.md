@@ -75,7 +75,7 @@ Example:
    5. The stock clerk retrieves and ships the book.
    6. Customer support contacts the customer about the book.
 
-![Flow chart](/Attachments/Book online flow chart.png)
+![Flow chart](/Attachments/"Book online flow chart.png")
 
 We should flag all branches and assumptions we are making.
 Instead of guessing, ask the product owner.
