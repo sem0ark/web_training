@@ -60,6 +60,22 @@ Example:
 1. Define boundaries
    - -> Good: we can define the clear structure
    - -> Bad : it can be not what the user wanted
-2. Check assumptions and document them: ask the future users or managers.
+2. Check assumptions and document them: ask the future users or product managers.
 3. What are our participants?
-   1.
+   1. Customer
+   2. Stock clerk
+   3. Customer support
+   4. ~~Developer~~ -> is not in contact with the client
+   5. ~~System admin~~ -> is not in contact with the client
+4. Activities
+   1. The _customer_ searches for the book.
+   2. The customer adds the book to the cart.
+   3. The customer adds or removes more things.
+   4. The customer checks out.
+   5. The stock clerk retrieves and ships the book.
+   6. Customer support contacts the customer about the book.
+
+![Flow chart](./Attachments/Book online flow chart.png)
+
+We should flag all branches and assumptions we are making.
+Instead of guessing, ask the product owner.
