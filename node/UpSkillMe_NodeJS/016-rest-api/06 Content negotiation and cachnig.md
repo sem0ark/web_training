@@ -49,9 +49,26 @@ What are the goals for the documentation:
 
 | Goals            | MediaWiki | Confluence | Others |
 | ---------------- | --------- | ---------- | ------ |
-| Code Snippets    | varies    | V          | Varies |
+| Code Snippets    | plugins   | V          | varies |
 | Page histories   | V         | V          | V      |
 | Easy to maintain | V         | V          | V      |
-| Search friendly  | V         | Varies     | Varies |
-| ---------------- | --------- | ---------- | ------ |
+| Search friendly  | V         | varies     | varies |
 
+_The Big drawback of wikis:_
+It is either updated or not -> there's no workflow/staging space in most systems.
+
+Documentation via _Static Site_ (ex: Jekyll)
+1. leverages generations
+2. Easy to configure
+3. No version control built in; leverages GIT version control
+4. Easy to maintain
+5. Search engine friendly.
+6. _But you are working in raw text/markup, which may be a challenge for your team._
+
+**Slate** - based on Jekyll
+- Five minutes to configure and deploy;
+- Preconfigured with various code samples in mind;
+- Language-specific samples are directly linkable;
+- Consistent look and feel and navigation throughout the site.
+
+__Main Goal__  -> Users need to find answers quickly with clear, accurate descriptions.
