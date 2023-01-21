@@ -72,3 +72,24 @@ Documentation via _Static Site_ (ex: Jekyll)
 - Consistent look and feel and navigation throughout the site.
 
 __Main Goal__  -> Users need to find answers quickly with clear, accurate descriptions.
+
+### SDK design considerations
+> If you've used HTTP properly and established JSON media type, a simple HTTP and JSON parser should be enough.
+
+In reality APIs are usually more complex.
+
+Build a great SDK experience:
+- **S**uccinct: concise btu precise
+- **P**urposeful: apply teh same care as you would to the API
+- **O**pen Source: encourage wrappers, 
+- **I**diomatic: use the patterns and conventions of the language you are using
+- **L**ogical: be consistent and repeat common pattern
+
+The goal of an SDK is to make user's life easier.
+Choose wisely -> Before you build libraries for any language, ask your users which ones matter and which ones they need.
+
+### Next Steps
+1. Join local API groups, like [AustinAPI.com](https://AustinAPI.com)
+2. Read anything, written by Mike Amundsen. [his website](http://amundsen.com/blog)
+3. Read practical approach to API design
+4. [LinkedIn blog](https://link.in/gXN8xacy) or @APiNewsletter on Twitter.
