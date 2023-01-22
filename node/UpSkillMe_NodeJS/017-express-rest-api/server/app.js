@@ -10,7 +10,8 @@
  * 4. Request and Response -> helper classes for handling requests and responses
  *    with it we can use and access data of HTTP requests and responses
  *
- * Popular Express middleware: -> used to add functionality and add transforming of the functionality
+ * #### Popular Express middleware
+ * It is used to add functionality and add transforming of the functionality
  * 1. body-parser -> parse HTTP request body
  * 2. compression -> compress HTTP responses
  * 3. cookie-parser -> parse cookie header and populate req.cookies
@@ -20,13 +21,23 @@
  * 7. helmet -> secure apps by setting various HTTP headers
  * 8. passport -> authentication using "strategies" such as OAuth, OpenID, and may others
  * 
- * MongoDB connection
+ * #### MongoDB connection
  * we can use Mongoose to connect and interact with the MongoDB Cluster
  * but useful functionality come with some performance issues
  * so consider thinking about the usage of Mongoose for the application with big performance requirements.
  * 
  * MongoDB has the concept of 'schemas' - interface of some data.
  * Mongoose created 'models' - programming interfaces that allow manipulate data with schemas.
+ * Further information in the db.js and UserModel.js
+ * 
+ * 
+ * #### bcrypt
+ * It is a really bad practice to store passwords in strings without any encryption.
+ * So we would use the bcrypt library to cipher our passwords and only then store them.
+ * bcrypt implements a hash and compare functions to first hash the password and only then store it in the DB.
+ * Comparison function is linear time, so it is protected from timing attacks, which use the check speed to understand how close the password is.
+ * 
+ * Look into UserModel.js
  */
 
 const express = require("express");
