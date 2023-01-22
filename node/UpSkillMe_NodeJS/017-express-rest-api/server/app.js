@@ -19,6 +19,14 @@
  * 6. session -> establish server-based sessions (development-only)
  * 7. helmet -> secure apps by setting various HTTP headers
  * 8. passport -> authentication using "strategies" such as OAuth, OpenID, and may others
+ * 
+ * MongoDB connection
+ * we can use Mongoose to connect and interact with the MongoDB Cluster
+ * but useful functionality come with some performance issues
+ * so consider thinking about the usage of Mongoose for the application with big performance requirements.
+ * 
+ * MongoDB has the concept of 'schemas' - interface of some data.
+ * Mongoose created 'models' - programming interfaces that allow manipulate data with schemas.
  */
 
 const express = require("express");
