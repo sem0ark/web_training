@@ -38,6 +38,37 @@
  * Comparison function is linear time, so it is protected from timing attacks, which use the check speed to understand how close the password is.
  * 
  * Look into UserModel.js
+ * 
+ * #### Cookies and sessions
+ * We need to understand how would we store the dta about the user on the server.
+ * 
+ * Authentication Flow
+ * 1. Browser --- POST /login {Form data} ---> Server
+ * 1. Server --- createSession(user) ---> App
+ * 1. App --- Save {userId='42'} ---> DB
+ * 1. Server  <--- {sessionId: 123abcdef} --- App // created the session
+ * 1. Browser  <--- HTML {Header: {Set-Cookie: id=123abcdef}} --- Server
+ * 1. Browser  --- GET /account {Header: {Set-Cookie: id=123abcdef}} ---> Server
+ * 1. Server --- find(id: a23abcdef) ---> App
+ * 1. Server <--- Access granted {userId='42'} --- App
+ * 
+ * We should use something like a hash for the user cookies and sessions, so the data could be got only by the Server,
+ *  in either case anyone would be able to become that user.
+ * 
+ * Set-Cookie method properties:
+ * 1. id = 123123;
+ * 1. Expires=Date; // the date of expiration, so the cookies won't function after a period of time
+ * 1. Secure; // access to the cookies should be only through SSL certificate
+ * 1. HttpOnly; // cookies can't be read by teh user on a JS client
+ * 
+ * to get that functionality we can use "cookie-parser" middleware
+ *    also we need to use sessions, we can use "express-session" for that,
+ *    but because it store the data in memory we should move to another solution.
+ *    also express sessions provide additional functionality to connect to other libraries.
+ * 
+ * Further reading:
+ * 1. All You Ever Wanted to Know About Sessions In Node.js  https://stormpath.com/blog/everything-you-ever-wanted-to-know-about-node-dot-js-Sessions
+ * 2. Are You Using Cookies? Then This Ultimate Guide Is For You https://html.com/resources/cookies-ultimate-guide/
  */
 
 const express = require("express");
