@@ -85,8 +85,24 @@
  * 
  * we can user different strategies for the authentication and authorization.
  * Further reading:
- * 1. Learn Using JWT with Passport Authentication https://medium.com/front-end-weekly/learn-using-jwt-with-passport-authentication-9761539c4314
- * 2. How To Implement API Authentication with JSON Web Tokens and Passport https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokensjwt-and-passport
+ * 1. Learn Using JWT with Passport Authentication
+ *    https://medium.com/front-end-weekly/learn-using-jwt-with-passport-authentication-9761539c4314
+ * 2. How To Implement API Authentication with JSON Web Tokens and Passport
+ *    https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokensjwt-and-passport
+ * 3. The Ultimate Guide to Passport JS
+ *    https://dev.to/zachgoll/the-ultimate-guide-to-passport-js-k2l
+ * 
+ * #### Protecting Routes
+ * - Authentication -> **Who is this user?**
+ *    - we store useful data in local memory to show it on the website, etc.
+ * - Authorization -> **What is the user allowed to do?**
+ *    - we grant different access to different users.
+ * 
+ * without proper authorization we wouldn't able to implement good service
+ *    because the user can access some pages without permission, which would result in an error
+ * 
+ * #### Protecting Routes
+ * EX: On the routes we can check the available data for the user and sed the 403 error if anything isn't right.
  * 
  */
 

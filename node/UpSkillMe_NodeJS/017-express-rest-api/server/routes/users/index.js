@@ -5,8 +5,15 @@ const UserModel = require("../../models/UserModel");
 
 const router = express.Router();
 
+function redirectIfLoggedIn(req, res, next) {
+  // Here we added a checker middleware before accessing the route
+  // we just send an error code 403 - access denied if the user isn't authenticated.
+  if(req.user) return res.redirect('/users/account');
+  return next();
+}
+
 module.exports = () => {
-  router.get("/login", (req, res) =>
+  router.get("/login", redirectIfLoggedIn, (req, res) =>
     res.render("users/login", { error: req.query.error })
   );
 
@@ -26,7 +33,7 @@ module.exports = () => {
     });
   });
 
-  router.get("/registration", (req, res) =>
+  router.get("/registration", redirectIfLoggedIn, (req, res) =>
     res.render("users/registration", { success: req.query.success })
   );
 
@@ -47,7 +54,12 @@ module.exports = () => {
     }
   });
 
-  router.get("/account", (req, res) =>
+  router.get("/account", (req, res, next) => {
+    if(req.user) return next();
+    return res.status(403).end();
+    // Here we added a checker before accessing the route
+    // we just send an error code 403 - access denied if the user isn't authenticated.
+  }, (req, res) =>
     res.render("users/account", { user: req.user })
   );
 
