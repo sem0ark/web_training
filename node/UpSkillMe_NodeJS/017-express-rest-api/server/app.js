@@ -104,6 +104,13 @@
  * #### Protecting Routes
  * EX: On the routes we can check the available data for the user and sed the 403 error if anything isn't right.
  * 
+ * #### Handling file submission and multipart form data
+ * Even though we've implemented the registration and form handling, but we are still missing the functionality for the file handling due to one simple reason:
+ *  multipart form data is being encoded and processed in binary, which the body-parser can't handle.
+ * We can use "multer" package for that purpose.
+ * 
+ * Further reading:
+ * 1. Handling File Uploads in Node.js with Express and Multer https://stackabuse.com/handling-file-uploads-in-node-js-with-expres-and-multer/
  */
 
 const path = require("path");
