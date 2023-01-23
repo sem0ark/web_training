@@ -1,5 +1,5 @@
 // Notes on the course EPAM UpSkillMe for Node.js and Express course
-// Completed by Arkadii Semenov on 2023.01.22
+// Completed by Arkadii Semenov from 2023.01.22
 
 /**
  * #### Express main parts:
@@ -69,10 +69,28 @@
  * Further reading:
  * 1. All You Ever Wanted to Know About Sessions In Node.js  https://stormpath.com/blog/everything-you-ever-wanted-to-know-about-node-dot-js-Sessions
  * 2. Are You Using Cookies? Then This Ultimate Guide Is For You https://html.com/resources/cookies-ultimate-guide/
+ * 
+ * #### Passport
+ * Passport provide an 'authenticate' function, this function uses one of
+ *  the whole set of provided strategies (Local, OAuth, Social, ...500+...).
+ * Once the user was authenticated it will also store the user's session and data.
+ * 
+ * Using in Express:
+ * - passport.initialize() -> return a middleware function
+ *    that uses the request (req) object to store passport
+ *    internal data in it.
+ * - passport.session() -> Looks for previously serialized user in the current session
+ *    and uses a provided deserialization function to provide the user in req.user
+ *    to all following middleware-s and routes.
+ * 
+ * 
  */
 
-const express = require("express");
 const path = require("path");
+
+const express = require("express");
+const session = require("express-session");
+
 const createError = require("http-errors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -99,8 +117,21 @@ module.exports = (config) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser()); // initialize Cookie Parser
 
+
+  app.use(session({
+    secret: 'very secret 12345',
+    resave: true,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.DEVELOPMENT_DB_DSN,
+    }),
+  }));
+
   app.use(async (req, res, next) => {
     try {
+      // req.session.visits = req.session.visits ? req.session.visits+1 : 1;
+      // After running the app a couple of time we would be able to see the sessions collection
+
       const names = await speakers.getNames();
       res.locals.speakerNames = names;
       return next();
