@@ -80,12 +80,23 @@ module.exports = (params) => {
     "/account",
     (req, res, next) => {
       if (req.user) return next();
-      return res.status(403).end();
+      return res.status(401).end();
       // Here we added a checker before accessing the route
       // we just send an error code 403 - access denied if the user isn't authenticated.
     },
     (req, res) => res.render("users/account", { user: req.user })
   );
+
+  router.get('/avatar/:filename', (req, res) => {
+    res.type('png');
+    return res.sendFile(avatars.filepath(req.params.filename));
+  });
+
+  router.get('/avatartn/:filename', async (req, res) => {
+    res.type('png');
+    const tn = await avatars.thumbnail(req.params.filename);
+    return res.end(tn, 'binary');
+  });
 
   return router;
 };
