@@ -19,6 +19,13 @@ module.exports = () => {
     })
   );
 
+  router.get('/logout', (req, res) => {
+    req.logout((err) => {
+      if(err) return next(err);
+      return res.redirect('/');
+    });
+  });
+
   router.get("/registration", (req, res) =>
     res.render("users/registration", { success: req.query.success })
   );
