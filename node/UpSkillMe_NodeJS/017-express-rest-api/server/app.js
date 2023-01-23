@@ -83,6 +83,10 @@
  *    and uses a provided deserialization function to provide the user in req.user
  *    to all following middleware-s and routes.
  * 
+ * we can user different strategies for the authentication and authorization.
+ * Further reading:
+ * 1. Learn Using JWT with Passport Authentication https://medium.com/front-end-weekly/learn-using-jwt-with-passport-authentication-9761539c4314
+ * 2. How To Implement API Authentication with JSON Web Tokens and Passport https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokensjwt-and-passport
  * 
  */
 
