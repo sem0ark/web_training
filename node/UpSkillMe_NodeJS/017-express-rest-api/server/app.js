@@ -94,12 +94,14 @@ const session = require("express-session");
 const createError = require("http-errors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 
 const routes = require("./routes");
 const SpeakerService = require("./services/SpeakerService");
 const FeedbackService = require("./services/FeedbackService");
+
+const auth = require('./lib/auth');
 
 module.exports = (config) => {
   const app = express();
@@ -126,6 +128,10 @@ module.exports = (config) => {
       mongoUrl: process.env.DEVELOPMENT_DB_DSN,
     }),
   }));
+
+  app.use(auth.initialize); // Init the passport middleware
+  app.use(auth.session);
+  app.use(auth.setUser); // Set the user to response
 
   app.use(async (req, res, next) => {
     try {
