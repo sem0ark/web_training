@@ -31,6 +31,9 @@ const UserSchema = mongoose.Schema(
       index: { unique: true },
       minLength: 8,
     },
+    avatar: {
+      type: String,
+    },
   },
   {
     timestamps: true,

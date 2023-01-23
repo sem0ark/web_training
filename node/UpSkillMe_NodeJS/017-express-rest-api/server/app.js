@@ -111,6 +111,10 @@
  * 
  * Further reading:
  * 1. Handling File Uploads in Node.js with Express and Multer https://stackabuse.com/handling-file-uploads-in-node-js-with-expres-and-multer/
+ * 
+ * #### Image processing
+ * To resize and convert the image we had received from the user we will use
+ *    "sharp" module, because it provides good amount of functionality and quite good from the performance perspective.
  */
 
 const path = require("path");
@@ -125,8 +129,10 @@ const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 
 const routes = require("./routes");
+
 const SpeakerService = require("./services/SpeakerService");
 const FeedbackService = require("./services/FeedbackService");
+const AvatarService = require("./services/AvatarService");
 
 const auth = require('./lib/auth');
 
@@ -134,6 +140,7 @@ module.exports = (config) => {
   const app = express();
   const speakers = new SpeakerService(config.data.speakers);
   const feedback = new FeedbackService(config.data.feedback);
+  const avatars = new AvatarService(config.data.avatars);
 
   app.set("view engine", "pug");
   app.set("views", path.join(__dirname, "./views"));
@@ -173,7 +180,7 @@ module.exports = (config) => {
     }
   });
 
-  app.use("/", routes({ speakers, feedback }));
+  app.use("/", routes({ speakers, feedback, avatars }));
 
   // catch 404 and forward to error handler
   app.use((req, res, next) => {

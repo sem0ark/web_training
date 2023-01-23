@@ -1,0 +1,48 @@
+const sharp = require('sharp');
+const uuidv4 = require('uuid/v4');
+
+const util = require('util');
+const path = require('path');
+const fs = require('fs');
+
+const fsUnlink = util.promisify(fs.unlink);
+
+class AvatarService {
+  constructor(directory) {
+    this.directory = directory;
+  }
+
+  async store(buffer) {
+    const filename = AvatarService.filename();
+    const filepath = this.filepath(filename);
+    try {
+      // console.log(`processing file ${filepath}`);
+      await sharp(buffer)
+        .resize(300, 300, {
+          fit: sharp.fit.inside,
+          withoutEnlargement: true,
+        })
+        .toFile(filepath);
+      // console.log(`Finished processing file ${filepath}`);
+    } catch(err) {
+      console.error(`Something went wrong while processing file ${filepath}`);
+    }
+    // console.log(`Finished processing file ${filepath}`);
+    
+    return filename;
+  }
+
+  async delete(filename) {
+    return fsUnlink(this.filepath(filename));
+  }
+
+  static filename() {
+    return `${uuidv4()}.png`;
+  }
+
+  filepath(filename) {
+    return path.resolve(`${this.directory}/${filename}`);
+  }
+}
+
+module.exports = AvatarService;
