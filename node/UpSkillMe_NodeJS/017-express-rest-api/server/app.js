@@ -115,6 +115,25 @@
  * #### Image processing
  * To resize and convert the image we had received from the user we will use
  *    "sharp" module, because it provides good amount of functionality and quite good from the performance perspective.
+ * 
+ * #### Node optimizations
+ * **NODE_ENV**
+ * The node adapts its behavior to the environment it is running in to optimize and ease life of developers,
+ * so we should specify variable *NODE_ENV=production* before the deployment,
+ * it can accelerate the program up to 3 times the speed.
+ * 
+ * **Compress Server responses**
+ * We can use compression of responses, we can speed up the application
+ * by compressing the HTTP responses before sending.
+ * 
+ * Server --- gzip/deflate --> Browser
+ * 
+ * we can use npm package *compression* for it.
+ * const compression = require('compression');
+ * const express = require('express');
+ * const app = express();
+ * ap.use(compression());
+ * 
  */
 
 const path = require("path");
