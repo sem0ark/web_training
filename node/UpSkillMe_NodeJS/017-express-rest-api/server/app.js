@@ -144,6 +144,15 @@
  * Further reading:
  * Setting Up a Node.js Cluster https://stackabuse.com/setting-up-a-node-js-cluster/
  * 
+ * #### Security tips for the Node.js project
+ * 1. using **npm audit** - it is checking whether some of the packages have known vulnerabilities and will fix them if required.
+ * 2. using **helmet** - npm package, that provides additional HTTP headers to prevent attacks on the site
+ * 
+ * Further reading:
+ * 1. Express.js Security Tips - https://www.freecodecamp.org/news/express-js-security-tips/
+ * 
+ * 
+ * 
  */
 
 const path = require("path");
@@ -156,6 +165,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const compression = require('compression');
+const helmet = require('helmet');
 
 const routes = require("./routes");
 
@@ -167,6 +177,7 @@ const auth = require('./lib/auth');
 
 module.exports = (config) => {
   const app = express();
+  app.use(helmet())
   app.use(compression()); // initialize the compression of responses
 
   const speakers = new SpeakerService(config.data.speakers);
