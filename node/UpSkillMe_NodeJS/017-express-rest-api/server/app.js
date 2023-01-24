@@ -166,6 +166,7 @@ const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const compression = require("compression");
 const helmet = require("helmet");
+const mongoose = require('mongoose');
 
 const routes = require("./routes");
 
@@ -192,6 +193,8 @@ module.exports = (config) => {
   const speakers = new SpeakerService(config.data.speakers);
   const feedback = new FeedbackService(config.data.feedback);
   const avatars = new AvatarService(config.data.avatars);
+
+  mongoose.set('strictQuery', true);
 
   app.set("view engine", "pug");
   app.set("views", path.join(__dirname, "./views"));
