@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node bin/www | bunyan",
+    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "dev": "node bin/www | bunyan",
     "test": "npx mocha --exit --recursive test/"
   },
-  "author": "",
+  "author": "Arkadii Semenov",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
