@@ -30,7 +30,7 @@ header
             a(href='/feedback') Feedback
 
           li
-            a.dropdown-toggle(href='/users', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+            a.dropdown-toggle(href='/users/login', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
               if user
                 if(user.avatar)
                   img.img-responsive.usertn(src=`/users/avatartn/${user.avatar}`)

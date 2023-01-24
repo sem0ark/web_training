@@ -69,12 +69,12 @@
  * Further reading:
  * 1. All You Ever Wanted to Know About Sessions In Node.js  https://stormpath.com/blog/everything-you-ever-wanted-to-know-about-node-dot-js-Sessions
  * 2. Are You Using Cookies? Then This Ultimate Guide Is For You https://html.com/resources/cookies-ultimate-guide/
- * 
+ *
  * #### Passport
  * Passport provide an 'authenticate' function, this function uses one of
  *  the whole set of provided strategies (Local, OAuth, Social, ...500+...).
  * Once the user was authenticated it will also store the user's session and data.
- * 
+ *
  * Using in Express:
  * - passport.initialize() -> return a middleware function
  *    that uses the request (req) object to store passport
@@ -82,7 +82,7 @@
  * - passport.session() -> Looks for previously serialized user in the current session
  *    and uses a provided deserialization function to provide the user in req.user
  *    to all following middleware-s and routes.
- * 
+ *
  * we can user different strategies for the authentication and authorization.
  * Further reading:
  * 1. Learn Using JWT with Passport Authentication
@@ -91,68 +91,68 @@
  *    https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokensjwt-and-passport
  * 3. The Ultimate Guide to Passport JS
  *    https://dev.to/zachgoll/the-ultimate-guide-to-passport-js-k2l
- * 
+ *
  * #### Protecting Routes
  * - Authentication -> **Who is this user?**
  *    - we store useful data in local memory to show it on the website, etc.
  * - Authorization -> **What is the user allowed to do?**
  *    - we grant different access to different users.
- * 
+ *
  * without proper authorization we wouldn't able to implement good service
  *    because the user can access some pages without permission, which would result in an error
- * 
+ *
  * #### Protecting Routes
  * EX: On the routes we can check the available data for the user and sed the 403 error if anything isn't right.
- * 
+ *
  * #### Handling file submission and multipart form data
  * Even though we've implemented the registration and form handling, but we are still missing the functionality for the file handling due to one simple reason:
  *  multipart form data is being encoded and processed in binary, which the body-parser can't handle.
  * We can use "multer" package for that purpose.
- * 
+ *
  * Further reading:
  * 1. Handling File Uploads in Node.js with Express and Multer https://stackabuse.com/handling-file-uploads-in-node-js-with-expres-and-multer/
- * 
+ *
  * #### Image processing
  * To resize and convert the image we had received from the user we will use
  *    "sharp" module, because it provides good amount of functionality and quite good from the performance perspective.
- * 
+ *
  * #### Node optimizations
  * **NODE_ENV**
  * The node adapts its behavior to the environment it is running in to optimize and ease life of developers,
  * so we should specify variable *NODE_ENV=production* before the deployment,
  * it can accelerate the program up to 3 times the speed.
- * 
+ *
  * **Compress Server responses**
  * We can use compression of responses, we can speed up the application
  * by compressing the HTTP responses before sending.
- * 
+ *
  * Server --- gzip/deflate --> Browser
- * 
+ *
  * we can use npm package *compression* for it.
  * const compression = require('compression');
  * const express = require('express');
  * const app = express();
  * ap.use(compression());
- * 
+ *
  * **Additional**
  * 1. Cache request results
  * 2. Don't use synchronous functions
  * 3. Don't use log() because it is synchronous
  * 4. Handle errors and exceptions properly
  * 5. Use a cluster -> use Node.js on multiple processes
- * 
+ *
  * Further reading:
  * Setting Up a Node.js Cluster https://stackabuse.com/setting-up-a-node-js-cluster/
- * 
+ *
  * #### Security tips for the Node.js project
  * 1. using **npm audit** - it is checking whether some of the packages have known vulnerabilities and will fix them if required.
  * 2. using **helmet** - npm package, that provides additional HTTP headers to prevent attacks on the site
- * 
+ *
  * Further reading:
  * 1. Express.js Security Tips - https://www.freecodecamp.org/news/express-js-security-tips/
- * 
- * 
- * 
+ *
+ *
+ *
  */
 
 const path = require("path");
@@ -164,8 +164,8 @@ const createError = require("http-errors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
-const compression = require('compression');
-const helmet = require('helmet');
+const compression = require("compression");
+const helmet = require("helmet");
 
 const routes = require("./routes");
 
@@ -173,11 +173,20 @@ const SpeakerService = require("./services/SpeakerService");
 const FeedbackService = require("./services/FeedbackService");
 const AvatarService = require("./services/AvatarService");
 
-const auth = require('./lib/auth');
+const auth = require("./lib/auth");
 
 module.exports = (config) => {
   const app = express();
-  app.use(helmet())
+  app.use(helmet());
+  app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "maxcdn.bootstrapcdn.com", "ajax.googleapis.com"],
+        styleSrc: ["'self'", "maxcdn.bootstrapcdn.com", "ajax.googleapis.com"],
+      },
+    })
+  );
   app.use(compression()); // initialize the compression of responses
 
   const speakers = new SpeakerService(config.data.speakers);
@@ -195,28 +204,32 @@ module.exports = (config) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser()); // initialize Cookie Parser
 
-  if(app.get('env') == 'production') {
-    app.set('trust proxy', 'loopback')
-    app.use(session({
-      secret: 'very secret 23764cbwicqbyowe',
-      name: 'sessionId',
-      proxy: true,
-      cookie: {secure: true},
-      resave: true,
-      saveUninitialized: false,
-      store: MongoStore.create({
-        mongoUrl: process.env.DEVELOPMENT_DB_DSN,
-      }),
-    }));
+  if (app.get("env") == "production") {
+    app.set("trust proxy", "loopback");
+    app.use(
+      session({
+        secret: "very secret 23764cbwicqbyowe",
+        name: "sessionId",
+        proxy: true,
+        cookie: { secure: true },
+        resave: true,
+        saveUninitialized: false,
+        store: MongoStore.create({
+          mongoUrl: process.env.DEVELOPMENT_DB_DSN,
+        }),
+      })
+    );
   } else {
-    app.use(session({
-      secret: 'bpfocnefoahsnlfhaldufhla',
-      resave: true,
-      saveUninitialized: false,
-      store: MongoStore.create({
-        mongoUrl: process.env.DEVELOPMENT_DB_DSN,
-      }),
-    }));
+    app.use(
+      session({
+        secret: "bpfocnefoahsnlfhaldufhla",
+        resave: true,
+        saveUninitialized: false,
+        store: MongoStore.create({
+          mongoUrl: process.env.DEVELOPMENT_DB_DSN,
+        }),
+      })
+    );
   }
 
   app.use(auth.initialize); // Init the passport middleware
