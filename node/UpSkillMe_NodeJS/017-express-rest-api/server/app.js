@@ -134,6 +134,12 @@
  * const app = express();
  * ap.use(compression());
  * 
+ * **Additional**
+ * 1. Cache request results
+ * 2. Don't use synchronous functions
+ * 3. Don't use console.log() because it is synchronous
+ * 4. Handle errors and exceptions properly
+ * 5. Use a cluster -> use Node.js on multiple processes
  */
 
 const path = require("path");
@@ -144,8 +150,8 @@ const session = require("express-session");
 const createError = require("http-errors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-// const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
+const compression = require('compression');
 
 const routes = require("./routes");
 
@@ -157,6 +163,8 @@ const auth = require('./lib/auth');
 
 module.exports = (config) => {
   const app = express();
+  app.use(compression()); // initialize the compression of responses
+
   const speakers = new SpeakerService(config.data.speakers);
   const feedback = new FeedbackService(config.data.feedback);
   const avatars = new AvatarService(config.data.avatars);
