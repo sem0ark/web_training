@@ -195,15 +195,29 @@ module.exports = (config) => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser()); // initialize Cookie Parser
 
-
-  app.use(session({
-    secret: 'very secret 12345',
-    resave: true,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.DEVELOPMENT_DB_DSN,
-    }),
-  }));
+  if(app.get('env') == 'production') {
+    app.set('trust proxy', 'loopback')
+    app.use(session({
+      secret: 'very secret 23764cbwicqbyowe',
+      name: 'sessionId',
+      proxy: true,
+      cookie: {secure: true},
+      resave: true,
+      saveUninitialized: false,
+      store: MongoStore.create({
+        mongoUrl: process.env.DEVELOPMENT_DB_DSN,
+      }),
+    }));
+  } else {
+    app.use(session({
+      secret: 'bpfocnefoahsnlfhaldufhla',
+      resave: true,
+      saveUninitialized: false,
+      store: MongoStore.create({
+        mongoUrl: process.env.DEVELOPMENT_DB_DSN,
+      }),
+    }));
+  }
 
   app.use(auth.initialize); // Init the passport middleware
   app.use(auth.session);
