@@ -137,9 +137,13 @@
  * **Additional**
  * 1. Cache request results
  * 2. Don't use synchronous functions
- * 3. Don't use console.log() because it is synchronous
+ * 3. Don't use log() because it is synchronous
  * 4. Handle errors and exceptions properly
  * 5. Use a cluster -> use Node.js on multiple processes
+ * 
+ * Further reading:
+ * Setting Up a Node.js Cluster https://stackabuse.com/setting-up-a-node-js-cluster/
+ * 
  */
 
 const path = require("path");

@@ -16,18 +16,18 @@ class AvatarService {
     const filename = AvatarService.filename();
     const filepath = this.filepath(filename);
     try {
-      // console.log(`processing file ${filepath}`);
+      // log(`processing file ${filepath}`);
       await sharp(buffer)
         .resize(300, 300, {
           fit: sharp.fit.inside,
           withoutEnlargement: true,
         })
         .toFile(filepath);
-      // console.log(`Finished processing file ${filepath}`);
+      // log(`Finished processing file ${filepath}`);
     } catch(err) {
-      console.error(`Something went wrong while processing file ${filepath}`);
+      log.fatal(`Something went wrong while processing file ${filepath}`);
     }
-    // console.log(`Finished processing file ${filepath}`);
+    // log(`Finished processing file ${filepath}`);
     
     return filename;
   }
