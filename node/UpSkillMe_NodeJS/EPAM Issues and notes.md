@@ -126,6 +126,7 @@ Text of the failed test cases in one of the tries:
 
 ## Node.js and Express
 (2023-02-03 19:53:29) UpSkillMe_Node.js. Node.js and Express
+
 [Link to the page](https://elearn.epam.com/courses/course-v1:EPAM+CIS209DE+0422UpSkillMe/courseware/654d13be16e549aaa2bff4aa0842e178/109e6ee636d64f6eb4c2e1f63c11b011/1?activate_block_id=block-v1%3AEPAM%2BCIS209DE%2B0422UpSkillMe%2Btype%40vertical%2Bblock%40f0446c142a174fd1aab6503dfbd56be2)
 
 Question: is there a possibility that the variants from another question were passed?
@@ -134,9 +135,11 @@ How can we tell multer to handle a single file that will be sent with a form a
 1. `multer({  limits: {  fileSize: 1024 } })`
 2. `multer({ fileSize: 1024  })`
 3. `multer.fileSize = 1024`
+
 Correct: We need to call the function single and specify the field name in the arguments.
 
-(2023-02-03 21:31:46)
+(2023-02-03 21:31:46) UpSkillMe_Node.js. Node.js and Express
+
 The overall course on the creation of REST API with Express is a bit deprecated, so some parts of the code and declarations have changed. Maybe recommendations from the LinkedIn commentaries should be added to the course notes.
 
 [Link to the course](https://www.linkedin.com/learning/advanced-express/)
