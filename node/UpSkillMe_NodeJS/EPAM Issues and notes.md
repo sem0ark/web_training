@@ -1,112 +1,106 @@
-
-Links:
-Tags: #notes/web 
-
-Date: [[20230203]]
-Time: 19:22:12
-____
-
-#### JavaScript Basics
+## JavaScript Basics
 (2023-02-03 19:31:20) UpSkillMe_Node.js. JavaScript Basics, practice task "Asynchronous"
+
 [Link to the page](https://elearn.epam.com/courses/course-v1:EPAM+CIS202DE_Backend+0422UpSkillMe/courseware/da67d9b8314243d0852a6ea1e0786453/4cd64b93bc0b4799beaba05e4cea9184/5?activate_block_id=block-v1%3AEPAM%2BCIS202DE_Backend%2B0422UpSkillMe%2Btype%40vertical%2Bblock%400804c8dc10224873922c8bc3273590eb)
 
 The Autocode quality checker reduces the total points due to bad quality of the code in the test folder, which the student shouldn't touch.
 
 Text of the failed quality cases in one of the tries:
-**File:** test/index.js
-**Line:** 62
+
+**File:** test/index.js;
+**Line:** 62;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 69
+**File:** test/index.js;
+**Line:** 69;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 76
+**File:** test/index.js;
+**Line:** 76;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 84
+**File:** test/index.js;
+**Line:** 84;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 92
+**File:** test/index.js;
+**Line:** 92;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 99
+**File:** test/index.js;
+**Line:** 99;g
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 106
+**File:** test/index.js;
+**Line:** 106;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 114
+**File:** test/index.js;
+**Line:** 114;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 122
+**File:** test/index.js;
+**Line:** 122;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 131
+**File:** test/index.js;
+**Line:** 131;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 138
+**File:** test/index.js;
+**Line:** 138;
 **Message:** Refactor this redundant 'await' on a non-promise.
-**Rule:** javascript:S4123
+**Rule:** javascript:S4123;
 Critical, Code Smell
 
-**File:** test/index.js
-**Line:** 105
+**File:** test/index.js;
+**Line:** 105;
 **Message:** Replace this trivial promise with "Promise.resolve".
-**Rule:** javascript:S4634
+**Rule:** javascript:S4634;
 Major, Code Smell
 
-**File:** test/index.js
-**Line:** 112
+**File:** test/index.js;
+**Line:** 112;
 **Message:** Replace this trivial promise with "Promise.resolve".
-**Rule:** javascript:S4634
+**Rule:** javascript:S4634;
 Major, Code Smell
 
-**File:** test/index.js
-**Line:** 120
+**File:** test/index.js;
+**Line:** 120;
 **Message:** Replace this trivial promise with "Promise.resolve".
-**Rule:** javascript:S4634
+**Rule:** javascript:S4634;
 Major, Code Smell
 
-**File:** test/index.js
-**Line:** 75
+**File:** test/index.js;
+**Line:** 75;
 **Message:** Replace this trivial promise with "Promise.resolve".
-**Rule:** javascript:S4634
+**Rule:** javascript:S4634;
 Major, Code Smell
 
-**File:** test/index.js
-**Line:** 82
+**File:** test/index.js;
+**Line:** 82;
 **Message:** Replace this trivial promise with "Promise.resolve".
-**Rule:** javascript:S4634
+**Rule:** javascript:S4634;
 Major, Code Smell
 
 
@@ -118,16 +112,19 @@ The description of the task should be redefined. Even though in the description 
 After some trial and error was found that adding NotImplementedError with the specific text works fine.
 
 Text of the failed test cases in one of the tries:
-**Test name:** Guest should not implement method createTask
+**Test name:** Guest should not implement method createTask;
+
 **Failure message:** `AssertionError: expected undefined to be a function at Context.<anonymous> (test/index.js:20:38) at processImmediate (internal/timers.js:464:21)`
 
-**Test name:** Guest should not implement method changeType
+**Test name:** Guest should not implement method changeType;
+
 **Failure message:** `AssertionError: expected undefined to be a function at Context.<anonymous> (test/index.js:25:38) at processImmediate (internal/timers.js:464:21)`
 
-**Test name:** User should not implement method changeType
+**Test name:** User should not implement method changeType;
+
 **Failure message:** `AssertionError: expected undefined to be a function at Context.<anonymous> (test/index.js:55:41) at processImmediate (internal/timers.js:464:21)`
 
-#### Node.js and Express
+## Node.js and Express
 (2023-02-03 19:53:29) UpSkillMe_Node.js. Node.js and Express
 [Link to the page](https://elearn.epam.com/courses/course-v1:EPAM+CIS209DE+0422UpSkillMe/courseware/654d13be16e549aaa2bff4aa0842e178/109e6ee636d64f6eb4c2e1f63c11b011/1?activate_block_id=block-v1%3AEPAM%2BCIS209DE%2B0422UpSkillMe%2Btype%40vertical%2Bblock%40f0446c142a174fd1aab6503dfbd56be2)
 
