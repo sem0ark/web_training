@@ -91,7 +91,7 @@ There are even something as _cap collections_, which can store only a limited am
 
 Example:
 
-```
+```js
 > doc = {"title": "Tacos", "desc": "Yummie tacos", cook_time: 20};
 ->> {"title": "Tacos", "desc": "Yummie tacos", "cook_time": 20};
 
