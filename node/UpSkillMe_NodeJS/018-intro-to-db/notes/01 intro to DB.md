@@ -67,7 +67,28 @@ Examples of relational DB's:
    2. IBM Db2
    3. Microsoft SQL Server
 
+#### NoSQL databases
+
+1. Standard, document DB
+   1. MongoDB
+   2. Couchbase
+   3. CouchDB
+   4. Casandra
+2. Key-value store
+   1. Redis
+   2. DynamoDB
+
+- They got very popular with Web 2.0:
+- No integrity through relations
+- By definition not ACID compliant
+- Often synonym for document DB's, but there are also graph DB's
+- They are Schema-less Databases:
+  - No defined data structure
+  - Can store arbitrary data
+  - Schema management moves into the application
+
 Further Reading:
 
 1. [What is a Database? Definition, Meaning, Types](https://www.guru99.com/introduction-to-database-sql.html)
 2. [ACID Explained: Atomic, Consistent, Isolated & Durable](https://www.bmc.com/blogs/acid-atomic-consistent-isolated-durable/)
+3. [What is NoSQL? NoSQL Databases Explained](https://www.mongodb.com/nosql-explained)
