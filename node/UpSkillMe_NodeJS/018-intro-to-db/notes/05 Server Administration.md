@@ -114,6 +114,78 @@ A MongoDB sharded cluster consists of the following components:
 1. Authentication - logging in
 2. Authorization - limiting access, different roles for access control
 
+#### Configuring
+
+1 - Switch to the admin DB
+
+2 - Run teh following command
+
+```js
+db.createUser({
+  user: "username",
+  pwd: passportPrompt(), // ask the passport in the prompt
+  roles: [
+    { role: "userAdminAnyDatabase", db: "admin" },
+    "readWriteAnyDatabase",
+  ],
+});
+
+db.adminCommand({ shutdown: 1 }); // stop the process
+```
+
+Now in the config file:
+
+```yml
+# === === in config file === ===
+security:
+  authorization: enabled
+```
+
+How to authenticate?
+
+```bash
+# run with the connection, enter the credentials, use -p to enter the password
+mongo --authenticationDatabase "admin" -u "username" -p
+
+# === === in case you are already running the DB === ===
+> use admin
+> db.auth("username", passwordPrompt());
+1 # we successfully logged in
+```
+
+## Backups
+
+1. Copying files - manual and boring method
+2. Using mongodump and mongorestore
+
+#### Copying files
+
+1 - Enter your database
+
+2 - Run the following command
+
+```bash
+> db.fsyncLock();
+# things are still writing into the DB, but it is in RAM temporarily
+# so we should quickly copy files and restore the access
+
+$ cd -R /data/db/* ../../another/place/to/store/data # copying recursively
+
+> db.fsyncUnlock();
+# after copying the files return to the DB
+# the only risk
+#  - if anything goes wrong during thr backup unsaved data may be lost
+```
+
+> The best manual solution - copy the data from the replica set.
+> Then you won't have problems with time at all.
+
+#### Using mongodump and mongorestore
+
+```bash
+$ mongodump # it would save all the files into the dump folder
+```
+
 Further reading:
 
 1. [Replication – MongoDB Manual](https://docs.mongodb.com/manual/replication/)
