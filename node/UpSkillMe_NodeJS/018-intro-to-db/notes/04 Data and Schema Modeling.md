@@ -1,5 +1,5 @@
 Notes on the course EPAM UpSkillMe Node.js - Introduction to Data Bases
-Completed by Arkadii Semenov on 2023-02-07
+Completed by Arkadii Semenov on 2023-02-08
 
 ## Data structuring
 
