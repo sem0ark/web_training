@@ -11,11 +11,17 @@ Advantages of MongoDB:
 2. works with objects
 3. very fast
 
+When NOT to use document databases:
+
+1. Highly structured and related -- think of a tax system
+2. Data integrity is the key and has to be enforced at any time
+3. Many different applications manipulate the data, and here again consistency has to be enforced on a database level.
+
 When do you need to use it:
 
-1. Very useful for web applications, to store diverse types of data
-2. Useful usually when the problem can be easily constructed in OOP
-3. Usually it is useful when it is not working quickly with relational DB's
+1. Data is semi/unstructured -- think about items in a shop or metric system
+2. High write performance (possibly sacrificing consistency)
+3. Scaling out to cluster-like systems
 
 Contents:
 
@@ -92,8 +98,8 @@ There are even something as _cap collections_, which can store only a limited am
 Example:
 
 ```js
-> doc = {"title": "Tacos", "desc": "Yummie tacos", cook_time: 20};
-->> {"title": "Tacos", "desc": "Yummie tacos", "cook_time": 20};
+> doc = {"title": "Tacos", "desc": "Yummy tacos", cook_time: 20};
+->> {"title": "Tacos", "desc": "Yummy tacos", "cook_time": 20};
 
 > db.tacos.insertOne(doc); // inserts the specified document
 ->> {

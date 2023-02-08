@@ -184,6 +184,7 @@ $ cd -R /data/db/* ../../another/place/to/store/data # copying recursively
 
 ```bash
 $ mongodump # it would save all the files into the dump folder
+$ mongorestore /dump/directory
 ```
 
 Further reading:
