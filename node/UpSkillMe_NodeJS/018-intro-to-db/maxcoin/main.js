@@ -2,6 +2,9 @@
 const MongoBackend = require("./services/backend/MongoBackend");
 
 
+// Notes on the course EPAM UpSkillMe Node.js - Introduction to Data Bases
+// Completed by Arkadii Semenov on 2023-02-08
+
 /**
  * Introduction to mongoose
  * Working with queries in OOP world is somewhere unnatural

@@ -1,9 +1,17 @@
 #!/usr/bin/env node
 
+// Notes on the course EPAM UpSkillMe Node.js - Introduction to Data Bases
+// Completed by Arkadii Semenov on 2023-02-08
+
 const http = require('http');
+const mongoose = require('mongoose');
 
 const config = require('../config');
 const App = require('../app');
+
+async function connectToMongoose() {
+  return mongoose.connect("");
+}
 
 /* Logic to start the application */
 const app = App(config);

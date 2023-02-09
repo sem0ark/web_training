@@ -4,6 +4,7 @@
     "es6": true,
     "node": true
   },
+  "no-unused-vars": "off",
   "extends": ["airbnb-base", "prettier"],
   "plugins": ["prettier"],
   "globals": {
