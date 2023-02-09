@@ -5,6 +5,7 @@
 
 const http = require('http');
 const mongoose = require('mongoose');
+const Redis = require('ioredis');
 
 const config = require('../config');
 const App = require('../app');
@@ -16,6 +17,27 @@ async function connectToMongoose() {
     // useCreateIndex: true, // -- said that it's not supported right now
   });
 }
+
+function connectToRedis() {
+  const redis = new Redis(config.redis.port);
+  redis.on('connect', () => {
+    console.info("Successfully connected to Redis");
+  });
+
+  redis.on('error', (error) => {
+    console.error(error);
+    process.exit(1); // Stop the process with error arg 
+  })
+
+  return redis;
+}
+
+const redis = connectToRedis();
+// our app will need the application right from the start
+// because redis doesn't use global values under the hood,
+// we would need to specify the redis client object somewhere -> in the config
+config.redis.client = redis;
+
 
 /* Logic to start the application */
 const app = App(config);

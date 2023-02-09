@@ -1,5 +1,6 @@
 // const CoinAPI = require("./services/CoinAPI");
 const MongoBackend = require("./services/backend/MongoBackend");
+const RedisBackend = require("./services/backend/RedisBackend");
 
 
 // Notes on the course EPAM UpSkillMe Node.js - Introduction to Data Bases
@@ -84,9 +85,10 @@ const MongoBackend = require("./services/backend/MongoBackend");
  * 
  * Further reading:
  * 1. [Introduction to Mongoose for MongoDB](https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/#:~:text=Mongoose%20is%20an%20Object%20Data,of%20those%20objects%20in%20MongoDB)
+ * 2. [Performance and N+1 Queries](https://blog.appsignal.com/2020/06/09/n-plus-one-queries-explained.html#:~:text=The%20N%2B1%20query%20antipattern,N%2B1%20%3D%201001%20queries)
  */
 
-async function run() {
+async function runMongo() {
   const mongoBackend = new MongoBackend();
   return mongoBackend.max();
 
@@ -94,7 +96,12 @@ async function run() {
   // return coinAPI.fetch();
 }
 
-run()
+async function runRedis() {
+  const mongoBackend = new RedisBackend();
+  return mongoBackend.max();
+}
+
+runRedis()
   .then((result) => {
     console.log(result);
   })
