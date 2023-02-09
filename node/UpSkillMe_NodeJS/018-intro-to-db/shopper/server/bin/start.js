@@ -10,7 +10,11 @@ const config = require('../config');
 const App = require('../app');
 
 async function connectToMongoose() {
-  return mongoose.connect("");
+  return mongoose.connect(config.mongodb.url, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    // useCreateIndex: true, // -- said that it's not supported right now
+  });
 }
 
 /* Logic to start the application */
@@ -53,4 +57,10 @@ function onListening() {
 server.on('error', onError);
 server.on('listening', onListening);
 
-server.listen(port);
+connectToMongoose()
+  .then(() => {
+    console.info("Successfully Connected to MongoDB");
+    server.listen(port);
+  }).catch((error) => {
+    console.error(error);
+  });
