@@ -1,6 +1,17 @@
 Notes on the course EPAM UpSkillMe Node.js - Introduction to Databases
 Completed by Arkadii Semenov on 2023-02-12
 
+## Typing and TYPEOF function
+
+You should consider the inner operations of conversion of some types to other. We can use TYPEOF function to see what is the type of the value.
+
+```sql
+SELECT TYPEOF(1 + 1); -- -> 'integer'
+SELECT TYPEOF(1 + 1.0); -- -> 'real'
+SELECT TYPEOF('panda'); -- -> 'string'
+SELECT TYPEOF('panda' + 'panda'); -- -> 'string'
+```
+
 ## Strings
 
 STring in SQL - series of characters, but because they are widely used SQL and its implementation present the number of methods to use them.
@@ -56,3 +67,58 @@ SELECT UPPER(Name) AS Name FROM City ORDER BY Name;
 
 -- it is possible to define your own types of conversion
 ```
+
+## Numeric types
+
+Are entirely dependent on the system, so functions will differ too!
+There are Integer and Real values, but we can consider categories:
+
+1. Integer
+   - `INTEGER(precision)` for whole numbers
+   - `DECIMAL(precision, scale)` for fixed precision numbers
+   - `MONEY(precision, scale)` for currency
+2. Real - not precise
+   - `REAL(precision)` for big float numbers
+   - `FLOAT(precision)` for small float numbers
+
+```sql
+SELECT 1 / 2;   -- -> 0, uses integer division
+SELECT 1.0 / 2; -- -> 0.5, uses real division
+SELECT CAST(1 AS REAL) / 2; -- -> 0.5, uses real division
+SELECT 17 / 5, 17 % 5; -- -> integer division and modulo operator
+
+SELECT 2.55555; -- -> 2.55555
+SELECT ROUND(2.55555); -- -> 3
+SELECT ROUND(2.55555, 3); -- -> 2.556
+SELECT ROUND(2.55555, 0); -- -> 3
+```
+
+## Date and time
+
+It is useful for time stamps and can be usually printed in a standard format for SQL -> from most to least significant part: "YYYY-MM-DD HH:mm:ss". It is stored in UTC (Coordinated Universal Time) or string.
+
+SQL doesn't state special types but there are some:
+
+- DATE
+- TIME
+- DATETIME
+- YEAR
+- INTERVAL
+
+Examples for SQLite3:
+
+```sql
+SELECT DATETIME('now'); -- -> current date and time in UTC
+SELECT DATE('now'); -- current date
+
+-- additional operations
+SELECT DATETIME('now', '+1 day'); -- tomorrow UTC
+SELECT DATETIME('now', '-1 day'); -- yesterday UTC
+SELECT DATETIME('now', '+3 days');
+SELECT DATETIME('now', '-1 month', '+1 day');
+SELECT DATETIME('now', '+1 year');
+SELECT DATETIME('now', '+3 hours', '+27 minutes', '-1 day', '+3 years');
+-- we can add different shifts for date ans time
+```
+
+The functions differ from the implementation to implementation, so check the docs!
