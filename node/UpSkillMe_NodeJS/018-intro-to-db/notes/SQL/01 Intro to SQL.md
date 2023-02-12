@@ -48,6 +48,14 @@ DELETE            -- Used for removing data
    WHERE id = 4;  -- which rows we should remove
 ```
 
+### Structure
+
+1. All relational DBs organized into 2d grid of values called _tables_.
+2. Every table consists of _records/rows_ and _fields/columns_.
+3. Every row must have a _primary key_, which is aka unique ID.
+4. Fields can have only a specified type of values.
+5. The key in other fields or _foreign keys_ are used for relating data from different rows in other tables.
+
 Further reading:
 
 1.  [What is a Relational Database Management System?](https://www.codecademy.com/articles/what-is-rdbms-sql)
