@@ -38,6 +38,7 @@ instance of Node.js, so in case we were using the standard session module:
 3. When user enters the site once again, user can connect to another instance of node, and so loose the data.
 
 But redis is available to all the instances + it supports clustering, so the sessions work as needed.
+`connect-redis` module is responsible for session management with Redis DB.
 
 Further reading:
 
