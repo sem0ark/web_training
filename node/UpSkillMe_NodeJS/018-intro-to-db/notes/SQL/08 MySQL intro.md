@@ -18,9 +18,59 @@ In MySQL we need to define the schema (structure of the DB) directly in the data
 3. enter the fields and mark the flags needed for the table
 4. hit apply
 
-## Connecting to Node.js
+Connecting to Node.js:
+`npm install mysql2`
 
-1. npm install mysql2
+## Sequelize
+
+Sequelize is a DB abstraction layer and also ORM (object relational mapper) that can be used in Node.js and can connect to:
+
+- MySQL
+- SQLite
+- PostgreSQL
+- Microsoft SQL Server
+
+Mostly it is working in the same way as `mongoose`.
+
+```js
+const Car = sequelize.define("Car", { make: Sequelize.String });
+
+sequelize
+  .sync() // synchronize the data with the DB, so teh operation can start
+  .then(() =>
+    Car.create({
+      // add a new row into the Car
+      make: "Ford",
+    })
+  )
+  .then((myCar) => {
+    console.log(myCar.get({ plain: true }));
+    // log the data in case of success
+  });
+```
+
+The only thing different from mongoose is transactions, because mongoose doesn't need it at all. In any way check the documentation.
+
+Example:
+
+```js
+return sequelize.transaction((t) => {
+  Car.create(
+    {
+      make: "Ford",
+    },
+    { transaction: t }
+  ).then((myCar) => {
+    myCar.setOwner(
+      {
+        firstname: "Daniel",
+        lastname: "Jones",
+      },
+      { transaction: t }
+    );
+  });
+});
+```
 
 Further reading:
 
