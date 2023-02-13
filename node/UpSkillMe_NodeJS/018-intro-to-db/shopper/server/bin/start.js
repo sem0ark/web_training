@@ -6,6 +6,7 @@
 const http = require('http');
 const mongoose = require('mongoose');
 const Redis = require('ioredis');
+const Sequelize = require('sequelize');
 
 const config = require('../config');
 const App = require('../app');
@@ -32,12 +33,27 @@ function connectToRedis() {
   return redis;
 }
 
+function connectToMySQL() {
+  const sequelize = new Sequelize(config.mysql.options);
+  // connection is lazy, don't need to await
+
+  sequelize.authenticate()
+    .then(() => console.info("Successfully connected to MySQL"))
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    });
+  return sequelize;
+}
+
 const redis = connectToRedis();
 // our app will need the application right from the start
 // because redis doesn't use global values under the hood,
 // we would need to specify the redis client object somewhere -> in the config
 config.redis.client = redis;
 
+const mysql = connectToMySQL();
+config.mysql.client = mysql;
 
 /* Logic to start the application */
 const app = App(config);

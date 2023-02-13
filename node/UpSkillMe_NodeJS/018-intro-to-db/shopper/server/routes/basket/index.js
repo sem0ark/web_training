@@ -2,9 +2,11 @@ const express = require("express");
 
 const ItemService = require("../../services/ItemService");
 const BasketService = require("../../services/BasketService");
+const OrderService = require("../../services/OrderService");
 
 module.exports = (config) => {
   const router = express.Router();
+  const order = new OrderService(config.mysql.client);
 
   router.get("/", async (req, res) => {
     // return res.render("basket", {});
@@ -67,9 +69,9 @@ module.exports = (config) => {
     return res.redirect("/basket");
   });
 
-  router.get("/buy", async (req, res, next) => {
-    return next("Not implemented");
-    /*
+  router.get("/buy", async (req, res) => {
+    // return next("Not implemented");
+
     if (!res.locals.currentUser) {
       req.session.messages.push({
         type: "warning",
@@ -130,7 +132,6 @@ module.exports = (config) => {
       console.error(err);
       return res.redirect("/basket");
     }
-    */
   });
 
   return router;
