@@ -69,7 +69,7 @@ Here we can see that the triggers are stored with the table in SQLite3.
 
 It is actually a nested group of `select` statements, because the result of every `select` is a table we can use it for another select.
 
-It is a good way to store the data organized and not add additional changes to the DB after any checks.
+It is a good way to store the data organized and not add additional changes to the DB after any checks. Usually the view only contain a SQL query, but the optimizer in DBMS can cache the results into the current session.
 
 So, it is working in the same way as functions in e.g. MatLab.
 
@@ -139,4 +139,55 @@ SELECT
   ) AS t
   ON t.album_id = a.id
   ORDER BY a.title, t.track_number;
+```
+
+## Views
+
+We can save our data from queries into views to use the result over and over again.
+
+```sql
+CREATE VIEW trackView AS -- the name of the view
+  SELECT -- and the query code for it
+    id, album_id, title, track_number,
+    duration / 60 AS m, duration % 60 AS s
+  FROM track;
+-- so after running it we create an additional "table"
+-- as the result of a query, so we can use it for other computations
+
+SELECT
+    a.title AS album,
+    a.artist, t.track_number AS seq,
+    t.title, t.m, t.s -- the view work in the same way as a table
+  FROM album AS a
+  JOIN trackView AS t -- so here we are using the view we've created
+    ON t.album_id = a.id
+  ORDER BY a.title, t.track_number;
+
+DROP VIEW IF EXISTS trackView;
+
+-- for example, we can create a joined view and save it for later
+
+CREATE VIEW joinedAlbum AS
+  SELECT
+      a.artist AS artist,
+      a.title AS album,
+      t.title AS track,
+      t.track_number AS trackno,
+      t.duration / 60 AS m,
+      t.duration % 60 AS s
+    FROM track AS t
+    JOIN album AS a
+      ON a.id = t.album_id;
+
+SELECT
+    artist,
+    album,
+    track,
+    trackno,
+    m || ':' || SUBSTR('00' || s, -2, 2)
+    -- here we use the result of the view + create the more pretty
+    -- track length, by using the start 2 from the end.
+  FROM joinedAlbum;
+
+DROP VIEW IF EXISTS joinedAlbum;
 ```
