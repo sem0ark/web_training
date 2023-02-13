@@ -10,6 +10,22 @@ Ideas about that course:
 Used Software:
 
 1. SQLite Studio for running and manipulation DB's
+2. MySQL workbench for running mysql
+3. Run mysql on Docker:
+   - `docker pull mysql`
+   - `docker run --name mysql -p 3406:3306 -e MYSQL_ROOT_PASSWORD=yourpassword -d mysql`
+   - connect to the DB with mysql workbench
+
+When to use the relational DB:
+
+1. When there are multiple different entities are related with data.
+2. When the DB needs to stay in a consistent state.
+3. When the DB should enforce the consistency.
+
+Example:
+
+1. storing the orders of data
+2. the actions should be like "all or nothing"
 
 ### SQL Overview
 
@@ -58,5 +74,5 @@ DELETE            -- Used for removing data
 
 Further reading:
 
-1.  [What is a Relational Database Management System?](https://www.codecademy.com/articles/what-is-rdbms-sql)
-2.
+1. [What is a Relational Database Management System?](https://www.codecademy.com/articles/what-is-rdbms-sql)
+2. [What is Normalization?](https://www.guru99.com/database-normalization.html)

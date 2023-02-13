@@ -42,7 +42,7 @@ class RedisBackend {
   }
 
   async max() {
-    console.info("Connecting to MongoDB");
+    console.info("Connecting to Redis");
     console.time("redis-connect"); // used to check the required time
     const client = this.connect();
     console.timeEnd("redis-connect");

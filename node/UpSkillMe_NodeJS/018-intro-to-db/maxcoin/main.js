@@ -1,6 +1,7 @@
 // const CoinAPI = require("./services/CoinAPI");
 const MongoBackend = require("./services/backend/MongoBackend");
 const RedisBackend = require("./services/backend/RedisBackend");
+const MySQLBackend = require("./services/backend/MySQLBackend");
 
 
 // Notes on the course EPAM UpSkillMe Node.js - Introduction to Data Bases
@@ -97,11 +98,16 @@ async function runMongo() {
 }
 
 async function runRedis() {
-  const mongoBackend = new RedisBackend();
-  return mongoBackend.max();
+  const redisBackend = new RedisBackend();
+  return redisBackend.max();
 }
 
-runRedis()
+async function runMySQL() {
+  const mySQLBackend = new MySQLBackend();
+  return mySQLBackend.max();
+}
+
+runMySQL()
   .then((result) => {
     console.log(result);
   })
