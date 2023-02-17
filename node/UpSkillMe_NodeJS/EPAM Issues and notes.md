@@ -147,6 +147,9 @@ The overall course on the creation of REST API with Express is a bit deprecated,
 [Link to the course](https://www.linkedin.com/learning/advanced-express/)
 
 Possible issues with the code, from the comments:
+[Link to the course](https://www.linkedin.com/learning/advanced-express/)
+
+Possible issues with the code, from the comments:
 
 1. `bcrypt` dependency issues, consider using `--force` flag during the installation. You can also modify package.json as follows: "bcrypt": "^5.0.1", then run: npm install and should work
 2. Logout code (video 3.9) for passport has changed. Refer to https://lnkd.in/gZSbjsjQ
@@ -188,3 +191,16 @@ this.collection = this.client.db("maxcoin").collection("values");
 ```
 
 Also upon creation of insert method -> consider using `insertResult.insertedCount`.
+
+(2023-02-13 19:22:28)
+
+In the test correct answer description [on the page](https://elearn.epam.com/courses/course-v1:EPAM+CIS210DE+0422UpSkillMe/courseware/af06e56898694fd3a2049fd82436059c/3dade428f4c2429f9655c8b8b19f9313/1?activate_block_id=block-v1%3AEPAM%2BCIS210DE%2B0422UpSkillMe%2Btype%40vertical%2Bblock%40af75525650954d319f3eb641af37ec4d)
+`Correct: For example, RTRIM(' Hey! ') will return ' Hey! '.`
+I think, it should be:
+`Correct: For example, RTRIM(' Hey! ') will return ' Hey!'.`
+
+(2023-02-14 17:15:17)
+On the course about GraphQL LinkedIn learning said that there is a newer version of the course. Consider the revision.
+
+(2023-02-17 20:00:03)
+On the practice tasks about GraphQL API it is said that the API should be checked for any issues with the tests, but there are no links to the test file or GitHub repository with the test samples.
