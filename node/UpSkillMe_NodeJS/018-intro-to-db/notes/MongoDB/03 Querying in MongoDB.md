@@ -158,7 +158,7 @@ db.examples.updateOne(
 
 db.examples.updateOne(
   { title: "Tacos" },
-  { $push: { likes: 60 } } // Remove value 60 to the array of likes
+  { $pull: { likes: 60 } } // Remove value 60 to the array of likes
 );
 ```
 
@@ -171,12 +171,12 @@ Sometimes we need to delete unnecessary information, so we can use:
 
 ```js
 db.example.deleteOne(
-  {"_id": ObjectId("...")};
+  {"_id": ObjectId("...")}
 ) // would delete the document with the specified id
 
 
 db.example.deleteMany(
-  {"likes": []};
+  {"likes": []}
 ) // would delete all documents
 
 ```
