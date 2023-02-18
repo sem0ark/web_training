@@ -1,6 +1,8 @@
 Notes on the course Node.js Testing and code quality from EPAM UpSkillMe program
 Completed by Arkadii Semenov on 2023-02-18
 
+## Testing frameworks and automation
+
 Different testing can be automated with the usage of testing framework:
 
 - Separate software from application
@@ -104,3 +106,54 @@ describe("reservation creation", () => {
   });
 });
 ```
+
+> Further reading:
+>
+> 1. [TDD vs BDD vs ATDD: Key Differences](https://www.browserstack.com/guide/tdd-vs-bdd-vs-atdd)
+
+## Assertion for correctness
+
+Assertions:
+
+1. validate the correctness of a unit
+2. Declares predicate to be boolean TRUE
+
+Assertion library:
+
+1. Collections of assertions
+   - More than in Node.js `assert` module
+   - Comparison for many structures
+2. Provides APIs to create predicates
+   - interfaces like TDD and BDD
+3. Assertion chaining
+   - supported by some APIs
+   - special kind of assertion
+   - natural language descriptions
+   - have multiple aliases - to build readable sentences from tests
+
+Examples of assertions:
+
+1. toBeDefined - not undefined
+2. any - created by a given constructor, like Number
+3. toBeInstanceOf - instance of constructor
+4. toHaveProperty - nested properties
+5. resolves - object is a promise and will resolve to a value
+
+Example of chaining:
+
+```js
+it("should create a reservation with a valid email", () => {
+  const email = "useremail@example.com";
+  const reservation = new Reservation({ email });
+  reservation.should.have.property("email").and.equal(email);
+});
+```
+
+#### Assertion libraries
+
+- `Assert` - native for Node.js
+- `Chai`
+- `should.js`
+- Built-in
+  - `Jasmine` - matchers
+  - `Jest` - expect methods
