@@ -16,3 +16,7 @@ Used:
 
 1. Express
 2. Knex and SQLite
+
+Additional notes:
+
+1. use `npm config set production false` to switch to development mode
