@@ -157,3 +157,25 @@ it("should create a reservation with a valid email", () => {
 - Built-in
   - `Jasmine` - matchers
   - `Jest` - expect methods
+
+## Challenge - Organize your tests
+
+Unit tests:
+
+- Within the project
+- like FILE.test.js
+
+Integration tests:
+
+- Inside the project
+- like tests/route.js
+
+Functional tests:
+
+- outside/within the project
+- like tests/workflow.js
+
+System tests:
+
+- Outside the project
+- like target-load-test.js
