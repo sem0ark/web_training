@@ -108,6 +108,7 @@ describe("reservation creation", () => {
 ```
 
 > Further reading:
+> **TDD describes when, BDD describes how and why**
 >
 > 1. [TDD vs BDD vs ATDD: Key Differences](https://www.browserstack.com/guide/tdd-vs-bdd-vs-atdd)
 
