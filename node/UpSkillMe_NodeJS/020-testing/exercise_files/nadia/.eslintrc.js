@@ -2,6 +2,7 @@ module.exports = {
   env: {
     node: true,
     es2020: true,
+    jest: true, // adding env for Jest testing framework
   },
   extends: "eslint:recommended",
   rules: {
