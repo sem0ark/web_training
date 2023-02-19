@@ -30,4 +30,31 @@ describe('validate', () => {
     return Reservations.validate(reservation)
       .catch(error => expect(error).toBeInstanceOf(Error));
   });
-})
+});
+
+describe('validate async/await', () => {
+  it('should resolve with no optional fields', async () => {
+    const reservation = new Reservation({
+      date: '2017/06/10',
+      time: '06:02 AM',
+      party: 4,
+      name: 'Family',
+      email: 'username@example.com',
+    });
+
+    await expect(Reservations.validate(reservation))
+      .resolves.toEqual(reservation); // we here use resolves
+  });
+
+  it('should reject with invalid email', async () => {
+    const reservation = new Reservation({
+      date: '2017/06/10',
+      time: '06:02 AM',
+      party: 4,
+      name: 'Family',
+      email: 'username',
+    });
+    await expect(Reservations.validate(reservation))
+      .rejects.toBeInstanceOf(Error);
+  });
+});

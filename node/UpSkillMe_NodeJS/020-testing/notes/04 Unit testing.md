@@ -171,3 +171,17 @@ Useful functions:
 
 - `resolves` -> wait for promise to be resolved. Rejected -> test fails
 - `rejects` -> wait for promise to be rejected. Resolved -> test fails, don't have to specify the number of assertions
+
+#### Testing async/await
+
+```js
+//......
+// Run the function, expect the it's been resolved,
+// and resolved value == reservation
+await expect(Reservations.validate(reservation)).resolves.toEqual(reservation);
+
+//......
+// Run the function, expect the it's been rejected,
+// and rejected `error instanceof Error`
+await expect(Reservations.validate(reservation)).rejects.toBeInstanceOf(Error);
+```
