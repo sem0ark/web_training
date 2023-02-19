@@ -124,7 +124,7 @@ _Jest also supports async code_:
 
 Because Jest runs the code as is, we should write our tests in slightly different way.
 
-#### How to test callbacks?
+#### Testing callbacks
 
 Jest uses the alternative version of `it`.
 
@@ -157,3 +157,17 @@ test("the right way to test a callback", (done) => {
 
 > **NB!** if you try to write tests in sync way with callbacks it si an unsertain behavior!
 > So be careful!
+
+#### Testing promises
+
+How to test?
+
+- -> Return the promise and put the assertion in the `.then` or `.catch`.
+- -> Don't use callbacks like `done`, of you give a promise to done, the test will automatically fail
+- -> If you test catching rejections -> `expect.assertions(n)` to specify the number of assertions, otherwise the fulfilled promise would pass
+- **Timeouts or unhandled rejections - unexpected behavior**
+
+Useful functions:
+
+- `resolves` -> wait for promise to be resolved. Rejected -> test fails
+- `rejects` -> wait for promise to be rejected. Resolved -> test fails, don't have to specify the number of assertions

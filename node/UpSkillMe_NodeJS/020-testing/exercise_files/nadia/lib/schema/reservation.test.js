@@ -20,6 +20,10 @@ describe('combineDateTime', () => {
 });
 
 describe('validate', () => {
+  // validate receives a callback which returns
+  // the reservation object upon the success (the reservation is valid),
+  // otherwise - error
+
   it('should validate with no optional fields', done => {
     const reservation = new Reservation({
       date: '2017/06/10',
