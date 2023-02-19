@@ -48,15 +48,16 @@ module.exports = class Reservation {
       datetime: Joi.date().iso().required().raw(),
       party: Joi.number().min(1).max(7).required(),
       name: Joi.string().max(255).required(),
-      email: Joi.string().max(255).required(),
+      // email: Joi.string().max(255).required(), // here is an error
+      email: Joi.string().email().required(), // here is an error
       phone: Joi.string().max(50).allow(''),
       message: Joi.string().max(1000).allow(''),
     })
-    .options({
-      abortEarly: false,
-      stripUnknown: true,
-    })
-    .validate(this)
+      .options({
+        abortEarly: false,
+        stripUnknown: true,
+      })
+      .validate(this)
 
     // Intentionally making this callback asynchronous for demonstration purposes.
     setImmediate(() => callback(error, value));
