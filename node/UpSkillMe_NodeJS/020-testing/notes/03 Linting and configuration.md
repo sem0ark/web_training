@@ -239,3 +239,13 @@ Goals of linting the project:
 - Leave code better than you found it
 - avoid using the feature on existing code bases
 - Instead, manually execute commands
+
+#### Challenge
+
+1. Open folder
+2. Create new NPM module `npm init -y`
+3. Add config file to the index.js
+4. Add peerDependencies "eslint": ">=7"
+5. Add readme
+6. Link module to the project `npm link eslint-config-nadia`
+7. Add "extends": "nadia"
