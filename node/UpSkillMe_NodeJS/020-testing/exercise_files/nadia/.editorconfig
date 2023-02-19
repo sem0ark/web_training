@@ -1,0 +1,24 @@
+# file '.editorconfig'
+root = true
+
+# the file is in the root folder,
+# it is the top-most Editor Config file
+
+[*] # for all files define:
+indent_style = space # what to use as indent
+indent_size = 2 # single-spaced character
+# tab_width = 2 # if you are using tabs, defaults to indent_size
+
+end_of_line = LF
+# LF - Unix / Linux - usual
+# CRLF - DOS and Windows
+# CR - Mac
+
+charset = utf-8 # which encoding to use, recommended utf-8
+
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md] # later, for all .md files define:
+trim_trailing_whitespace = false
+indent_size = 3 # single-spaced character
