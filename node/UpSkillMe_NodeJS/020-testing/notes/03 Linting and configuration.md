@@ -130,7 +130,7 @@ It is not recommended to install the linter globally because:
 How to install locally:
 
 - Add to development dependencies `npm install eslint -D`
-- Install and execute with `npx`
+- Execute with `npx eslint ./some/path/to_the_file.js`
 
 Advices:
 
@@ -186,3 +186,56 @@ module.exports = {
   },
 };
 ```
+
+## ESLint Shareable Configs
+
+- It is a npm package that exports as ESLint config object.
+  - It should begin with `eslint-config-`
+- Can be published on npm to share
+- Can be private
+  Organizational standards
+
+How to install it?
+
+1. Add to dev dependencies
+2. ESlint configuration property "extends" to your file:
+   - `"extends": "eslint-config-myconfig"`
+   - shorter `"extends": "myconfig"`
+3. **Recommended**:
+   - `"extends": "eslint:recommended"`
+   - includes ES6 configuration and possible errors
+
+Additional shareable configs:
+
+- `eslint-config-airbnb` - Airbnb JS and react Style Guide
+- `eslint-config-standard` - JS Standard Style
+- `eslint-config-google` - Google JS Style Guide
+- `github.com/dustinspecker/awesome-eslint` - list of additional configurations
+
+#### Creating shareable config
+
+- check the documentation
+- it can extend another config (even multiple)
+- start with existing shareable config, then customize
+- use package.json peerDependencies -> extended configs and plugins
+- use semantic versioning
+- include readme with instructions and justifications
+
+For private shareable configs:
+
+1. Don't use git submodules -> use package manager
+2. use git+ssh to add
+
+#### Linting the entire codebase
+
+1. Add recursive changes to the eslint configuration
+   - in different folders to support different styles (for node.js, front-end, testing)
+2. Exclude 3rd party code from linting use `.eslintignore`.
+
+Goals of linting the project:
+
+- Eliminate fatal errors
+- Avoid trying to fix all errors at once
+- Leave code better than you found it
+- avoid using the feature on existing code bases
+- Instead, manually execute commands
