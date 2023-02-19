@@ -58,3 +58,22 @@ describe('validate async/await', () => {
       .rejects.toBeInstanceOf(Error);
   });
 });
+
+describe('create', () => {
+  it('should reject if validation failed', async () => {
+    // store the original function
+    const original = Reservations.validate;
+    const error = new Error('faile');
+
+    // mock the validate function
+    Reservations.validate = jest.fn(() => Promise.reject(error));
+
+    await expect(Reservations.create())
+      .rejects.toBe(error);
+
+    expect(Reservations.validate).toBeCalledTimes(1);
+
+    // restore
+    Reservations.validate = original;
+  });
+});

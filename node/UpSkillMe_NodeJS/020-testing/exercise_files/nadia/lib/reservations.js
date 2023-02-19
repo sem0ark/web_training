@@ -18,7 +18,8 @@ function fetch() {
  * @return {Promise<number>} Newly created reservation ID.
  */
 function create(reservation) {
-  return validate(reservation)
+  // return validate(reservation) is an error for mocking because we mock cached version of validate
+  return module.exports.validate(reservation) // we are now accessing the function from the exports object
     .then(save)
     .then(result => result[0])
 }

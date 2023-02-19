@@ -113,6 +113,7 @@ const actual = mockFunction("text");
 
 expect(mockFunction.mock.calls.length).toBe(1);
 expect(mockFunction).toHaveBeenCalled();
+expect(mockFunction).toHaveBeenCalledTimes(1);
 
 expect(mockFunction.mock.calls[0]).toEqual(["text"]);
 expect(mockFunction).toHaveBeenCalledWith("text");
@@ -137,3 +138,9 @@ expect(instanceEmpty).toBe(mockFunction.mock.instances[0]);
 expect(instanceValue).toBe(mockFunction.mock.instances[1]);
 expect(mockFunction.mock.instances.length).toBe(2);
 ```
+
+Backup while mocking:
+
+1. `jest.fn()` doesn't automatically backup/restore
+2. If skipped, will alter the function being tested for other tests in the same file
+3. Backup/restore is npt requires if all tests use the same mock
