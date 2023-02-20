@@ -203,3 +203,15 @@ Desirable CI features, it should...:
 - be easy to configure and use
 - be scalable
 - integrate with your workflow, like reporting problems on pull requests
+
+## Improving a codebase
+
+- set achievable and reasonable goals
+- research how
+- write a plan
+- focus on choices that improve code quality
+- getting team buy-in
+- collaborating standards
+- making decisions that are good for the group
+- write brief but accurate documentation
+- try to alternate approaches
