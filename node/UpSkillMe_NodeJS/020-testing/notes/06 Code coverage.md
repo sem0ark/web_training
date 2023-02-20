@@ -67,8 +67,11 @@ Functional testing tools:
 2. SuperAgent - faster and lighter
    - SuperTest -> easy to get started and doesn't require software or servers running + compatible with Jest
 
+> we can also run `npm test -- --verbose` to see all the passing and not passing test messages
+
 #### Using SuperTest
 
+- install with `npm install supertest -D`
 - Accepts http.Server or function
 - if server not listening on a port, picks a random port, so don't need to specify port in tests
 - use http verbs to interact
@@ -80,3 +83,14 @@ Functional tests - As a user, I want to:
 - see a reservation form -> book a table
 - submit a valid reservation -> thanked on success
 - submit an invalid reservation -> informed of problem
+
+NB!
+
+- -> functional tests may be slow because they require much more code to be executed!
+- requiring all app is slow
+
+**The solution**:
+
+- in test, create a simple express app to run the server
+- Add just the route to test
+- Code isolation speeds execution, but requires some
