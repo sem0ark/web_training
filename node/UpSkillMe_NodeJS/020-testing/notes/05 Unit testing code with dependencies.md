@@ -65,7 +65,7 @@ In Jest everything is a Mock:
 - Jest mocks provide expectations around usage
 - Jest mocks include fake times
 
-## Mocking functions for test code in Jest
+## Mocking in Jest
 
 Jest provides mock functions:
 
@@ -88,6 +88,17 @@ Mocking functions and modules:
 3. `jest.spyOn(object, methodName)`
    - mocks a module
    - spies on methodName
+
+#### Test setup and cleanup functions
+
+- beforeAll(fn, ?timeout) -> runs before all tests in file/group
+- beforeEach(fn, ?timeout)
+- afterAll(fn, ?timeout) -> runs after all tests in file/group
+- afterEach(fn, ?timeout)
+- `fn` -> task to be performed
+- `timeout` -> optional, in milliseconds
+
+#### Mocking functions
 
 Example of function mocking:
 
@@ -144,3 +155,59 @@ Backup while mocking:
 1. `jest.fn()` doesn't automatically backup/restore
 2. If skipped, will alter the function being tested for other tests in the same file
 3. Backup/restore is npt requires if all tests use the same mock
+
+#### Mocking modules
+
+Units often have dependencies:
+
+- Reusability and modularity
+- Testing dependencies - integration testing, not unit testing
+
+**Solution** -> substitute code in require cache
+
+- needs almost no code changes to require target
+- can be done manually -> messy and fragile
+
+Use `jest.mock(moduleNameOrPath, ?factory, ?options)`
+
+- moduleName - relative path,community/core module name
+- factory
+- -> overrides auto-mocking, return you own structure
+- -> provide with a function tht returns structure
+- options -> create virtual mocks
+
+Example:
+`{foo: ()=>{}, bar: ()=>{}}` --> `{foo: jest.fn(), bar: jest.fn()}`
+
+How to use jest.mock()?:
+
+- mock before require
+- after you done unmock all modules -> `jest.unmock(moduleName)`
+
+Example:
+
+```js
+describe("fetch", () => {
+  // describe the test suite
+  let Reservations; // Add variable for the dependency
+
+  beforeAll(() => {
+    jest.mock("./reservations.js"); // first we mock the module
+    Reservations = require("./reservations"); // only after that require module
+  });
+
+  afterAll(() => {
+    jest.unmock("./reservations.js"); // after all the tests unmock the module
+  });
+
+  it("should be mocked and not create a Db record", () => {
+    expect(Reservations.fetch()).toBeUndefined();
+  });
+});
+```
+
+#### Mocking module dependencies
+
+1. jest.mock manipulates require cache
+2. use jest.mock on module dependencies before requiring
+3. then require target module

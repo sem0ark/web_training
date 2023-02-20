@@ -1,7 +1,30 @@
-const Reservations = require('./reservations');
+// const Reservations = require('./reservations');
 const Reservation = require('./schema/reservation');
 
+describe('fetch', () => {
+  let Reservations;
+
+  beforeAll(() => {
+    jest.mock('./reservations.js');
+    Reservations = require('./reservations');
+  });
+
+  afterAll(() => {
+    jest.unmock('./reservations.js');
+  });
+
+  it('should be mocked and not create a Db record', () => {
+    expect(Reservations.fetch()).toBeUndefined();
+  });
+});
+
 describe('validate', () => {
+  let Reservations;
+
+  beforeAll(() => {
+    Reservations = require('./reservations');
+  });
+
   it('should resolve with no optional fields', () => {
     const reservation = new Reservation({
       date: '2017/06/10',
@@ -33,6 +56,12 @@ describe('validate', () => {
 });
 
 describe('validate async/await', () => {
+  let Reservations;
+
+  beforeAll(() => {
+    Reservations = require('./reservations');
+  });
+
   it('should resolve with no optional fields', async () => {
     const reservation = new Reservation({
       date: '2017/06/10',
@@ -60,6 +89,12 @@ describe('validate async/await', () => {
 });
 
 describe('create', () => {
+  let Reservations;
+
+  beforeAll(() => {
+    Reservations = require('./reservations');
+  });
+
   it('should reject if validation failed', async () => {
     // store the original function
     const original = Reservations.validate;
