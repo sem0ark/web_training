@@ -211,3 +211,33 @@ describe("fetch", () => {
 1. jest.mock manipulates require cache
 2. use jest.mock on module dependencies before requiring
 3. then require target module
+4. we can use factory to override the default mocking
+
+Example:
+
+```js
+let Reservations;
+const mockDebug = jest.fn();
+// don't forget to add 'mock' or reference error
+
+const mockInsert = jest.fn().mockResolvedValue([1]);
+// the function is returning a Promise which resolve with [1]
+
+beforeAll(() => {
+  jest.mock("debug", () => () => mockDebug);
+  // first ()-> factory, second -> initialization function
+
+  jest.mock("./knex.js", () => () => ({
+    insert: mockInsert,
+  })); // Here the initialization returns an object with method
+
+  Reservations = require("./reservations");
+  // only after that require reservations
+});
+
+afterAll(() => {
+  // don't forget to cleanup
+  jest.unmock("debug");
+  jest.unmock("./knex");
+});
+```

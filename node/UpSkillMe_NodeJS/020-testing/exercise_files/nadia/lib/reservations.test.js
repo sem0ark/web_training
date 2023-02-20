@@ -18,6 +18,38 @@ describe('fetch', () => {
   });
 });
 
+describe('save', () => {
+  let Reservations;
+  const mockDebug = jest.fn(); // don't forget to add 'mock' or reference error
+  const mockInsert = jest.fn().mockResolvedValue([1]);
+  // the function is returning a Promise which resolve with [1]
+
+  beforeAll(() => {
+    jest.mock('debug', () => () => mockDebug); // first ()-> factory, second -> initialization function
+    jest.mock('./knex.js', () => () => ({
+      insert: mockInsert,
+    }));
+
+    Reservations = require('./reservations');
+  });
+
+  afterAll(() => {
+    jest.unmock('debug');
+    jest.unmock('./knex');
+  });
+
+  it('should resolve with the id upon success', async () => {
+    const value = { foo: 'bar' };
+    const expected = [1];
+
+    const actual = await Reservations.save(value);
+
+    expect(actual).toStrictEqual(expected);
+    expect(mockDebug).toBeCalledTimes(1);
+    expect(mockInsert).toBeCalledWith(value);
+  })
+});
+
 describe('validate', () => {
   let Reservations;
 
