@@ -215,3 +215,20 @@ Desirable CI features, it should...:
 - making decisions that are good for the group
 - write brief but accurate documentation
 - try to alternate approaches
+
+Avoid
+
+- trying to do too much at once
+- fixating on making tools happy
+- being pedantic
+- demanding compliance
+- "not invented here"
+
+## Further learning
+
+- implement a coding standard
+- try eslint plugins like `jsdoc`, `jest`
+- try different testing frameworks
+- try functional testing tools like `casperjs` or `selenium`
+- consider coverage as a service for commercial like codacy, codecov, code climate, coveralls
+- try CI/CD
