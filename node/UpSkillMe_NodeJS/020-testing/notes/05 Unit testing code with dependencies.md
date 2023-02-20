@@ -249,3 +249,48 @@ Use `jest.spyOn(object, methodName)`
 - creates a mock similar jest.fn() + tracks calls to methodName
 - -> calls spied method, if you want something else use mockImplementation
 - -> `mock` -> restore method after usage with `mockRestore`
+
+Example:
+
+```js
+const mock = jest.spyOn(Reservations, "validate");
+
+const error = new Error("fail");
+mock.mockImplementation(() => Promise.reject(error));
+
+const value = "puppy";
+
+await expect(Reservations.create(value)).rejects.toEqual(error);
+expect(mock).toBeCalledTimes(1);
+expect(mock).toBeCalledWith(value);
+
+mock.mockRestore();
+```
+
+#### Challenge solution
+
+```js
+// prepare to require
+const expectedInsertId = 1;
+const mockInsert = jest.fn().mockResolvedValue([expectedInsertId]);
+
+jest.mock("./knex", () => () => ({
+  insert: mockInsert,
+}));
+Reservations = require("./reservations");
+
+// mock validation
+const mockValidation = jest.spyOn(Reservations, "validate");
+mockValidation.mockImplementation((value) => Promise.resolve(value));
+
+const reservation = { foo: "bar" };
+// execute an check
+await expect(Reservations.create(reservation)).resolves.toStrictEqual(
+  expectedInsertId
+);
+expect(mockValidation).toBeCalledWith(reservation);
+expect(mockValidation).toBeCalledTimes(1);
+
+mockValidation.mockRestore();
+jest.mock("./knex");
+```

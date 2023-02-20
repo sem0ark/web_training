@@ -135,11 +135,9 @@ describe('validate async/await', () => {
 describe('create', () => {
   let Reservations;
 
-  beforeAll(() => {
-    Reservations = require('./reservations');
-  });
-
   it('should reject if validation failed', async () => {
+    Reservations = require('./reservations');
+
     // store the original function
     const original = Reservations.validate;
     const error = new Error('fail');
@@ -157,6 +155,8 @@ describe('create', () => {
   });
 
   it('should reject if validation fails using spyOn', async () => {
+    Reservations = require('./reservations');
+
     const mock = jest.spyOn(Reservations, 'validate');
 
     const error = new Error('fail');
@@ -169,5 +169,32 @@ describe('create', () => {
     expect(mock).toBeCalledWith(value);
 
     mock.mockRestore();
+  });
+
+  it('should create a reservation if there are no validation problems', async () => {
+    // prepare to require
+    const expectedInsertId = 1;
+    const mockInsert = jest.fn().mockResolvedValue([expectedInsertId]);
+
+    jest.mock('./knex', () => () => ({
+      insert: mockInsert,
+    }));
+    Reservations = require('./reservations');
+
+    // mock validation
+    const mockValidation = jest.spyOn(Reservations, 'validate');
+    mockValidation.mockImplementation(value => Promise.resolve(value));
+
+    const reservation = { foo: 'bar' };
+
+    // execute an check
+    await expect(Reservations.create(reservation))
+      .resolves.toStrictEqual(expectedInsertId);
+
+    expect(mockValidation).toBeCalledWith(reservation);
+    expect(mockValidation).toBeCalledTimes(1);
+
+    mockValidation.mockRestore();
+    jest.mock('./knex');
   });
 });
