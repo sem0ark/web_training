@@ -10,7 +10,7 @@ beforeAll(() => {
   jest.mock('../lib/knex', () => () => ({
     insert: mockInsert,
   }));
-  app = request(require('../app'))
+  app = request(require('../app')); // get the working server to test
 });
 
 afterAll(() => {
@@ -44,7 +44,7 @@ describe('POST', () => {
     expect(response.status).toBe(400);
   });
 
-  it('should a vaild reservation request', async () => {
+  it('should a valid reservation request', async () => {
     const response = await app.post('/reservations')
       .type('form')
       .send({
