@@ -85,6 +85,17 @@ describe('validate', () => {
     return Reservations.validate(reservation)
       .catch(error => expect(error).toBeInstanceOf(Error));
   });
+
+  it('should be called and reject empty input', async () => {
+    const mock = jest.spyOn(Reservations, 'validate');
+    const value = undefined;
+
+    await expect(Reservations.validate(value))
+      .rejects.toThrow("Cannot read properties of undefined (reading 'validate')");
+
+    expect(mock).toBeCalledWith(value);
+    mock.mockRestore();
+  });
 });
 
 describe('validate async/await', () => {
@@ -120,6 +131,7 @@ describe('validate async/await', () => {
   });
 });
 
+
 describe('create', () => {
   let Reservations;
 
@@ -130,7 +142,7 @@ describe('create', () => {
   it('should reject if validation failed', async () => {
     // store the original function
     const original = Reservations.validate;
-    const error = new Error('faile');
+    const error = new Error('fail');
 
     // mock the validate function
     Reservations.validate = jest.fn(() => Promise.reject(error));
@@ -142,5 +154,20 @@ describe('create', () => {
 
     // restore
     Reservations.validate = original;
+  });
+
+  it('should reject if validation fails using spyOn', async () => {
+    const mock = jest.spyOn(Reservations, 'validate');
+
+    const error = new Error('fail');
+    mock.mockImplementation(() => Promise.reject(error));
+
+    const value = 'puppy';
+
+    await expect(Reservations.create(value)).rejects.toEqual(error);
+    expect(mock).toBeCalledTimes(1);
+    expect(mock).toBeCalledWith(value);
+
+    mock.mockRestore();
   });
 });

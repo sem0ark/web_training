@@ -246,6 +246,6 @@ afterAll(() => {
 
 Use `jest.spyOn(object, methodName)`
 
-- creates a mock like jest.fn()
-- tracks calls to methodName -> calls spied method, if you want something else use mockImplementation
-- -> `mock` -> restore method
+- creates a mock similar jest.fn() + tracks calls to methodName
+- -> calls spied method, if you want something else use mockImplementation
+- -> `mock` -> restore method after usage with `mockRestore`
