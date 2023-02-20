@@ -241,3 +241,11 @@ afterAll(() => {
   jest.unmock("./knex");
 });
 ```
+
+#### Spies -> What about keeping the original + tracking?
+
+Use `jest.spyOn(object, methodName)`
+
+- creates a mock like jest.fn()
+- tracks calls to methodName -> calls spied method, if you want something else use mockImplementation
+- -> `mock` -> restore method
