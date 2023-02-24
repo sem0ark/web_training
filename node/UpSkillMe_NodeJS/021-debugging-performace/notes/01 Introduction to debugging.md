@@ -80,3 +80,32 @@ Possible problems:
 4. It can be overkill for very small applications
 
 NB! **Don't share databases across multiple services!**
+
+#### How to run Node.js microservices
+
+If we run with node:
+
+- one process at a time
+- doesn't watch for changes
+
+If we run with nodemon:
+
+- one process at a time
+- only for development
+
+We should use `pm2` which is a process manager: -> used in the course
+
+1. Runs a background service
+2. Controls and manage Node.js processes
+3. It supports starting and stopping on changes/error
+4. Monitors recourses.
+5. Gathers logs in one place.
+6. Can be also used for more prompt debugging:
+   - number of restarts
+   - amount of resources used
+   - controlling the process without knowing the id
+
+Other process managers:
+
+- StrongLoop Process manager
+- forever
