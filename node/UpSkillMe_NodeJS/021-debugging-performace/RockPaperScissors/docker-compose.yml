@@ -1,8 +1,8 @@
 version: "3"
 services:
   db:
-    image: mysql:5.7
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;'
+    image: mysql:latest
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;' --connect-timeout=100
     restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"

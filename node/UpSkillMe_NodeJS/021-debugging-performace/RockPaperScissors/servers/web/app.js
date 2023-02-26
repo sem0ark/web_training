@@ -38,6 +38,11 @@ app.use(async (request, response, next) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use((req, res, next) => { // adding basic request logging
+  console.log(new Date().toISOString(), req.method, req.originalUrl);
+  return next();
+});
+
 app.use(require('./router'));
 
 module.exports = app;
