@@ -5,7 +5,7 @@ services:
     command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;' --connect-timeout=100
     restart: always
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: "root" # used for simplicity
       MYSQL_DATABASE: "rps"
     ports:
       - 33306:3306

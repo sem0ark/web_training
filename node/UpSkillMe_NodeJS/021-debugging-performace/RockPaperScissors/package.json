@@ -35,7 +35,7 @@
     "jquery": "^3.3.1",
     "knex": "^2.4.2",
     "lodash": "^4.17.5",
-    "mysql": "^2.15.0",
+    "mysql2": "^2.3.3",
     "pm2": "^5.2.2",
     "popper.js": "^1.14.1",
     "pug": "^3.0.2",
@@ -51,7 +51,7 @@
     "mocha": "^5.0.4",
     "mock-knex": "^0.4.0",
     "nyc": "^15.1.0",
-    "package-json-validator": "^0.6.3",
+    "package-json-validator": "^0.2.0",
     "proxyquire": "^2.0.0",
     "supertest": "^3.0.0"
   }

@@ -1,10 +1,11 @@
 module.exports = {
   database: {
-    client: 'mysql',
+    client: 'mysql2',
     connection: {
       host: 'localhost',
       port: '33306',
       user: 'root',
+      password: "root",
       database: 'rps',
     },
     migrations: {

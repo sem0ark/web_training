@@ -45,4 +45,21 @@ app.use((req, res, next) => { // adding basic request logging
 
 app.use(require('./router'));
 
+app.use((request, response) => { // error handling: 404
+  console.warn(new Date().toISOString(), request.method, request.originalUrl, '404');
+  return response.status(404).render('404', {
+    title: 404,
+  });
+});
+
+app.use((error, request, response, next) => { // error handling: 404
+  if (response.headersSent) {
+    return next(error);
+  }
+  console.error(error);
+  return response.status(500).render('500', {
+    title: '500',
+  });
+});
+
 module.exports = app;
