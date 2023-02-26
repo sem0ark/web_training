@@ -21,14 +21,14 @@ pm2 start ./pm2.config.js
 [http://localhost:5000/]()
 
 1. First Window
-    1. Click Start New
-    2. Make a choice
+   1. Click Start New
+   2. Make a choice
 2. Second Window
-    1. Click an available game
-    2. Click Join
-    3. Make a choice
+   1. Click an available game
+   2. Click Join
+   3. Make a choice
 3. First Window
-    1. Reload to see result 
+   1. Reload to see result
 
 ## Manual
 
@@ -67,4 +67,3 @@ docker-compose down
 # Turn off PM2.
 pm2 kill
 ```
-

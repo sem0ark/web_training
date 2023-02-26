@@ -23,29 +23,29 @@ But what to do when the site is just slow?
 Advices for monitoring performance:
 
 1. Measuring web applications:
-   - Response duration in seconds
-   - Response size
-   - number of file requested
-   - HTTP status codes
+   -  Response duration in seconds
+   -  Response size
+   -  number of file requested
+   -  HTTP status codes
 2. Response times -> useful when the error only in front- or back-end
-   - time until connection to remote host is complete
-   - time for all redirections
-   - from start to first byte
-   - from first byte received to page fully loaded
+   -  time until connection to remote host is complete
+   -  time for all redirections
+   -  from start to first byte
+   -  from first byte received to page fully loaded
 
 #### Documenting errors
 
-- describe it clearly
-- be brief but thorough
-- give context and steps to replicate
-- include raw data like performance measurements
+-  describe it clearly
+-  be brief but thorough
+-  give context and steps to replicate
+-  include raw data like performance measurements
 
 Best practices:
 
-- document as promptly and ASAP
-- keep errors in central location
-- track progress and resolution
-- use some way to track problems like GitHub, Jira or simply a text file
+-  document as promptly and ASAP
+-  keep errors in central location
+-  track progress and resolution
+-  use some way to track problems like GitHub, Jira or simply a text file
 
 Further reading:
 
@@ -53,24 +53,24 @@ Further reading:
 
 Resolving problems:
 
-- document the issue
-- determine the slope of the problem
-- determine the severity of the problem
-- settle or find solution by solving and not solving the issue
+-  document the issue
+-  determine the slope of the problem
+-  determine the severity of the problem
+-  settle or find solution by solving and not solving the issue
 
 ### Introduction to Microservices
 
 It is a high performance architecture patters where:
 
-- The application is built from independent, modular services.
-- Services communicate with standard protocols.
-- Each service is distinct and purpose-built.
-- Loosely coupled for simplicity and sustainability.
+-  The application is built from independent, modular services.
+-  Services communicate with standard protocols.
+-  Each service is distinct and purpose-built.
+-  Loosely coupled for simplicity and sustainability.
 
 Why to use?
 
-- different teams can work on services independently
-- problems can be localized
+-  different teams can work on services independently
+-  problems can be localized
 
 Possible problems:
 
@@ -85,13 +85,13 @@ NB! **Don't share databases across multiple services!**
 
 If we run with node:
 
-- one process at a time
-- doesn't watch for changes
+-  one process at a time
+-  doesn't watch for changes
 
 If we run with nodemon:
 
-- one process at a time
-- only for development
+-  one process at a time
+-  only for development
 
 We should use `pm2` which is a process manager: -> used in the course
 
@@ -101,11 +101,47 @@ We should use `pm2` which is a process manager: -> used in the course
 4. Monitors recourses.
 5. Gathers logs in one place.
 6. Can be also used for more prompt debugging:
-   - number of restarts
-   - amount of resources used
-   - controlling the process without knowing the id
+   -  number of restarts
+   -  amount of resources used
+   -  controlling the process without knowing the id
 
 Other process managers:
 
-- StrongLoop Process manager
-- forever
+-  `StrongLoop` Process manager
+-  `forever`
+
+#### Using `pm2`
+
+First you need to configure `pm2.config.js` in root folder, and so create the configuration file for `pm2` as:
+
+```js
+const path = require("path");
+module.exports = {
+   apps: ["web", "games", "players"].map((name) => ({
+      // we need to create objects for all services
+      name, // the name of the service
+      cwd: path.resolve(__dirname, `./servers/${name}`), // access path
+      script: "./index.js", // how to run the service from teh folder
+      watch: [".", "../shared", "../../node_modules"], // what need to also include
+      instance_var: "INSTANCE_ID",
+      env: {
+         // additional environmental variables
+         NODE_ENV: "development",
+         NODE_PATH: path.resolve(__dirname, "./node_modules"),
+      },
+   })),
+};
+```
+
+In the course we've installed pm2 globally. `npm install -g pm2`
+
+Commands for `pm2` managing services:
+
+-  Starting the services: `pm2 start ./pm2.config.js`
+   -  would start services print general data about their status
+-  Show general info about all services `pm2 list`
+-  Show specific info about the service `pm2 show serviceName`
+-  `pm2 stop serviceName` - stop the service
+-  `pm2 start serviceName --watch` - start the service + watch for changes
+-  `pm2 kill` - stop all the services + stops `pm2`
+-  `pm2 -h` - to get help (the list of commands)
