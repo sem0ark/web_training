@@ -1,10 +1,17 @@
-const config = require('./config');
 const express = require('express');
-const playersClient = require('./lib/playersClient')(config.players);
+const expressRequestId = require('express-request-id');
 const path = require('path');
+
+
+const config = require('./config');
+const playersClient = require('./lib/playersClient')(config.players);
 const session = require('./session');
 
+const requestLogger = require('../shared/lib/requestLogger');
+
 const app = express();
+
+app.use(expressRequestId);
 
 app.set('x-powered-by', false);
 
@@ -30,7 +37,7 @@ app.use(async (request, response, next) => {
   if (request.session.playerId) {
     return next();
   }
-  const result = await playersClient.create();
+  const result = await playersClient.create(request.id);
   request.session.playerId = result.body.id;
   return next();
 });
@@ -38,10 +45,12 @@ app.use(async (request, response, next) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use((req, res, next) => { // adding basic request logging
-  console.log(new Date().toISOString(), req.method, req.originalUrl);
-  return next();
-});
+// app.use((req, res, next) => { // adding basic request logging
+//   console.log(new Date().toISOString(), req.method, req.originalUrl);
+//   return next();
+// });
+app.use(requestLogger);
+
 
 app.use(require('./router'));
 
