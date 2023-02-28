@@ -3,15 +3,17 @@ const util = require('util');
 const request = util.promisify(require('request'));
 
 module.exports = (userOptions, requestId) => {
+  if (!requestId) { // adding the required requestId for logging
+    throw new TypeError('httpClient requires requestId');
+  }
+
   const options = merge({
     json: true,
   }, userOptions);
 
-  if (requestId) { // adding the requestId for logging
-    options.headers = merge(options.headers, {
-      'X-Request-Id': requestId,
-    });
-  }
+  options.headers = merge(options.headers, {
+    'X-Request-Id': requestId,
+  });
 
   return request(options);
 };
