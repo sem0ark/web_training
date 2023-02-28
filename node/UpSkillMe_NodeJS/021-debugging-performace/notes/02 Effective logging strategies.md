@@ -115,3 +115,21 @@ The usual practice - _Creating a shared logging library_
 -  typically separate modules
 
 1. `npm add winston`
+2. Create the main logger file (somewhere like shared/lib/logger.js)
+
+```js
+module.exports = new winston.Logger({
+   transports: [
+      new winston.transports.Console({
+         timestamp: new Date().toISOString(), // include time and date
+         colorize: true, // add color
+      }),
+   ], // where to send data
+});
+```
+
+3. Include the logger where needed
+
+Further reading:
+
+1. [Node.js Logging Best Practices](https://blog.logrocket.com/node-js-logging-best-practices/)
