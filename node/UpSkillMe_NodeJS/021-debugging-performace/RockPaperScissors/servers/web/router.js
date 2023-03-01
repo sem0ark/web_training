@@ -9,7 +9,7 @@ router.route('/')
   .get((request, response) =>
     Promise.all([
       gamesClient.fetch({ state: 'pending', limit: 3, order: 'asc' }, request.id),
-      gamesClient.fetch({ state: 'final', limit: 3, order: 'desc' }), request.id,
+      gamesClient.fetch({ state: 'final', limit: 3, order: 'desc' }, request.id),
     ]).then(([pendingFetch, finalFetch]) => [
       pendingFetch.body,
       finalFetch.body,
@@ -34,7 +34,6 @@ router.route('/games/:game_id')
     if (!request.game) {
       return next();
     }
-
     const { body: rules } = await gamesClient.rules(request.id);
 
     const messages = [];

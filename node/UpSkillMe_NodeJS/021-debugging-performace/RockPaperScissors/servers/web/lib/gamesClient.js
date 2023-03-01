@@ -5,7 +5,7 @@ module.exports = (config) => {
    * Create a game.
    *
    * @param {integer} player1id - first player ID.
-   * @param {string} requestId - X-Request-Id
+   * @param {string} requestId - X-Request-Id.
    * @returns {Promise<Game>} New game.
    */
   function create(player1id, requestId) {
@@ -22,7 +22,7 @@ module.exports = (config) => {
    * Get a game by ID.
    *
    * @param {integer} id - target identifier.
-   * @param {string} requestId - X-Request-Id
+   * @param {string} requestId - X-Request-Id.
    * @returns {Promise<Game>} Game matched by id.
    */
   function get(id, requestId) {
@@ -36,7 +36,7 @@ module.exports = (config) => {
    * Fetch config.
    *
    * @param {Object} criteria - criteria for filtering results.
-   * @param {string} requestId - X-Request-Id
+   * @param {string} requestId - X-Request-Id.
    * @returns {Promise<Array.<Game>>} Games matching criteria.
    */
   function fetch(criteria, requestId) {
@@ -52,7 +52,7 @@ module.exports = (config) => {
    *
    * @param {integer} id - target identifier.
    * @param {object} body - fields to update.
-   * @param {string} requestId - X-Request-Id
+   * @param {string} requestId - X-Request-Id.
    * @returns {Promise<Game>} Updated game.
    */
   function update(id, body, requestId) {
@@ -67,7 +67,7 @@ module.exports = (config) => {
    * Judge the outcome of a game.
    *
    * @param {integer} id - target identifier.
-   * @param {string} requestId - X-Request-Id
+   * @param {string} requestId - X-Request-Id.
    * @returns {Promise<Game>} Game with updated state and playerWinnerId.
    */
   function judge(id, requestId) {
@@ -80,7 +80,7 @@ module.exports = (config) => {
   /**
    * Get the game rules.
    *
-   * @param {string} requestId - X-Request-Id
+   * @param {string} requestId - X-Request-Id.
    * @returns {Promise<Array>} Collection of rules.
    */
   function rules(requestId) {

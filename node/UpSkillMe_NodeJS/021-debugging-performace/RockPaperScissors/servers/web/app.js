@@ -1,13 +1,10 @@
-const express = require('express');
-const expressRequestId = require('express-request-id');
-const path = require('path');
-
-
 const config = require('./config');
+const express = require('express');
 const playersClient = require('./lib/playersClient')(config.players);
+const path = require('path');
 const session = require('./session');
-
 const requestLogger = require('../shared/lib/requestLogger');
+const expressRequestId = require('express-request-id')();
 
 const app = express();
 
@@ -45,23 +42,18 @@ app.use(async (request, response, next) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// app.use((req, res, next) => { // adding basic request logging
-//   console.log(new Date().toISOString(), req.method, req.originalUrl);
-//   return next();
-// });
 app.use(requestLogger);
-
 
 app.use(require('./router'));
 
-app.use((request, response) => { // error handling: 404
+app.use((request, response) => {
   console.warn(new Date().toISOString(), request.method, request.originalUrl, '404');
   return response.status(404).render('404', {
-    title: 404,
+    title: '404',
   });
 });
 
-app.use((error, request, response, next) => { // error handling: 404
+app.use((error, request, response, next) => {
   if (response.headersSent) {
     return next(error);
   }

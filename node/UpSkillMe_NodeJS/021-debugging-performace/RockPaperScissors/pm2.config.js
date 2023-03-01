@@ -7,7 +7,7 @@ module.exports = {
     script: './index.js',
     watch: ['.', '../shared', '../../node_modules'],
     instance_var: 'INSTANCE_ID',
-    restart_delay: 20000,
+    restart_delay: 5000,
     env: {
       NODE_ENV: 'development',
       NODE_PATH: path.resolve(__dirname, './node_modules'),
