@@ -133,3 +133,59 @@ module.exports = new winston.Logger({
 Further reading:
 
 1. [Node.js Logging Best Practices](https://blog.logrocket.com/node-js-logging-best-practices/)
+
+#### request logging with `morgan`
+
+```js
+//... import your logger and morgan
+const format = "dev"; // format preset
+
+const options = {
+   stream: {
+      write: (message) => logger.info(message.trim()),
+      // specify the destination of the data
+   },
+};
+module.exports = morgan(format, options);
+```
+
+_NB! - write the requests in the same format across all the application._
+
+### Relating logs by requests
+
+Use per-request ID, which can be included into request, so we could later group all logs into groups by the request. We can use `express-request-id`:
+
+1. `npm install express-request-id`
+2. import `express-request-id`
+3. add the middleware
+
+#### Cross-application log correlation
+
+Include requestId to track down the behavior of services:
+
+1. Customize logging system to include requestId
+2. Add unified system to make requests
+3. Client libraries should require requestId or throw an error
+4. Continuous improvement over time
+
+Update http client and later add header like `X-request-Id`:
+
+```js
+module.exports = (userOptions, requestId) => {
+   const options = merge(
+      {
+         json: true,
+      },
+      userOptions
+   );
+
+   if (requestId) {
+      // adding the requestId for logging
+      options.headers = merge(options.headers, {
+         "X-Request-Id": requestId,
+      });
+   }
+
+   return request(options);
+};
+```
