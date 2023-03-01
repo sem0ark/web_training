@@ -28,3 +28,16 @@ There are four standard types of bug locating:
    -  Programmer carries a rubber duck
    -  He explains the program line by line
    -  -> Act of explaining reveals the problem
+
+#### What does the debugger?
+
+-  Watch expression and variable values
+-  Place breakpoint to pause and evaluate watchers
+-  See values when paused and control execution
+
+#### Node.js debugger
+
+-  out-of-process debugging utility
+-  controls and inspects node processes
+-  accessible by `V8 Inspector` agent
+-  chrome devTools or VS Code as a client
