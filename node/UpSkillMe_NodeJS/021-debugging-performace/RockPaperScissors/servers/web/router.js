@@ -3,6 +3,8 @@ const express = require('express');
 const isNull = require('lodash/isNull');
 const gamesClient = require('./lib/gamesClient')(config.games);
 
+const logger = require('../shared/lib/logger'); // get the winston logger
+
 const router = new express.Router();
 
 router.route('/')
@@ -24,8 +26,10 @@ router.route('/games')
     .then(result => response.redirect(`/games/${result.body.id}`)));
 
 router.param('game_id', async (request, response, next, id) => {
+  const timer = logger.startTimer();
   const result = await gamesClient.get(id, request.id);
   request.game = result.body;
+  timer.done(`${request.id} Get game by id #${id}`);
   next();
 });
 

@@ -1,0 +1,321 @@
+Statistical profiling result from .\isolate-000001F7A9F25D20-18844-v8.log, (6210 ticks, 3 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   5167   83.2%          C:\WINDOWS\SYSTEM32\ntdll.dll
+    939   15.1%          D:\programming\nodejs\node.exe
+      2    0.0%          C:\WINDOWS\System32\KERNELBASE.dll
+      1    0.0%          C:\WINDOWS\System32\WS2_32.dll
+      1    0.0%          C:\WINDOWS\System32\KERNEL32.DLL
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      5    0.1%    5.0%  LazyCompile: *base.AssignmentExpression.base.AssignmentPattern D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\walk.js:299:63
+      4    0.1%    4.0%  LazyCompile: *walkAST D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-walk\index.js:4:17
+      4    0.1%    4.0%  LazyCompile: *resolve node:path:158:10
+      3    0.0%    3.0%  LazyCompile: *processTicksAndRejections node:internal/process/task_queues:68:35
+      3    0.0%    3.0%  LazyCompile: *pp$6.processComment D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\babylon\lib\index.js:4498:32
+      3    0.0%    3.0%  LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      2    0.0%    2.0%  LazyCompile: *updateContext D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\babylon\lib\index.js:1541:61
+      2    0.0%    2.0%  LazyCompile: *toConstant D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\constantinople\lib\index.js:9:24
+      2    0.0%    2.0%  LazyCompile: *skipThrough D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\walk.js:162:21
+      2    0.0%    2.0%  LazyCompile: *pp$7.next D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:2676:21
+      2    0.0%    2.0%  LazyCompile: *pp$3.parseMaybeAssign D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:1735:33
+      2    0.0%    2.0%  LazyCompile: *parseChar D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\character-parser\index.js:76:19
+      2    0.0%    2.0%  LazyCompile: *isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\index.js:14:22
+      2    0.0%    2.0%  LazyCompile: *attributeValue D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1151:27
+      2    0.0%    2.0%  Function: ^pp$3.parseExprAtom D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:1931:30
+      1    0.0%    1.0%  RegExp: [ \n\t]
+      1    0.0%    1.0%  LazyCompile: *yield D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:717:20
+      1    0.0%    1.0%  LazyCompile: *visit D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-code-gen\index.js:256:18
+      1    0.0%    1.0%  LazyCompile: *tokEnd D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:134:19
+      1    0.0%    1.0%  LazyCompile: *stringify D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\js-stringify\index.js:4:19
+      1    0.0%    1.0%  LazyCompile: *stat node:internal/modules/cjs/loader:151:14
+      1    0.0%    1.0%  LazyCompile: *skipThrough D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\walk.js:162:23
+      1    0.0%    1.0%  LazyCompile: *pp.expect D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:596:23
+      1    0.0%    1.0%  LazyCompile: *pp$7.readWord1 D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:3304:26
+      1    0.0%    1.0%  LazyCompile: *pp$7.readToken D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:2471:28
+      1    0.0%    1.0%  LazyCompile: *pp$7.readString D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:2925:29
+      1    0.0%    1.0%  LazyCompile: *pp$7.readString D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:3182:27
+      1    0.0%    1.0%  LazyCompile: *pp$7.next D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:2405:23
+      1    0.0%    1.0%  LazyCompile: *pp$7.next D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:2676:21
+      1    0.0%    1.0%  LazyCompile: *pp$7.getTokenFromCode D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:2942:33
+      1    0.0%    1.0%  LazyCompile: *pp$7.getTokenFromCode D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:2942:33
+      1    0.0%    1.0%  LazyCompile: *pp$5.startNodeAt D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:2254:30
+      1    0.0%    1.0%  LazyCompile: *pp$3.parseMaybeUnary D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:1674:34
+      1    0.0%    1.0%  LazyCompile: *pp$3.parseMaybeUnary D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:1828:32
+      1    0.0%    1.0%  LazyCompile: *pp$3.parseMaybeAssign D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:1586:35
+      1    0.0%    1.0%  LazyCompile: *pp$3.parseMaybeAssign D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\babylon\lib\index.js:3322:34
+      1    0.0%    1.0%  LazyCompile: *pp$2.checkLVal D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:1466:28
+      1    0.0%    1.0%  LazyCompile: *indent D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1316:19
+      1    0.0%    1.0%  LazyCompile: *getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+      1    0.0%    1.0%  LazyCompile: *blockCode D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1046:22
+      1    0.0%    1.0%  LazyCompile: *block D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-parser\index.js:987:18
+      1    0.0%    1.0%  LazyCompile: *base.MemberExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\walk.js:313:34
+      1    0.0%    1.0%  LazyCompile: *base.ExpressionStatement.base.ParenthesizedExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\walk.js:176:12
+      1    0.0%    1.0%  LazyCompile: *attribute D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1059:22
+      1    0.0%    1.0%  LazyCompile: *advance D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1469:20
+      1    0.0%    1.0%  LazyCompile: *Parser D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:432:29
+      1    0.0%    1.0%  LazyCompile: *Node D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:2501:25
+      1    0.0%    1.0%  Function: ^tt.parenL.updateContext D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:2356:37
+      1    0.0%    1.0%  Function: ^tryConvertToPromise D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\bluebird\js\release\thenables.js:7:29
+      1    0.0%    1.0%  Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      1    0.0%    1.0%  Function: ^toConstant D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\constantinople\lib\index.js:9:24
+      1    0.0%    1.0%  Function: ^read node:internal/modules/package_json_reader:16:14
+      1    0.0%    1.0%  Function: ^prepend D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:627:20
+      1    0.0%    1.0%  Function: ^pp$7.skipSpace D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:2781:26
+      1    0.0%    1.0%  Function: ^pp$7.readInt D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:3102:24
+      1    0.0%    1.0%  Function: ^pp$7.getTokenFromCode D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:2942:33
+      1    0.0%    1.0%  Function: ^pp$3.parseExprOp D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\node_modules\acorn\dist\acorn.js:1648:30
+      1    0.0%    1.0%  Function: ^pp$2.checkLVal D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\babylon\lib\index.js:3148:27
+      1    0.0%    1.0%  Function: ^pp$1.parseEmptyStatement D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\acorn-globals\node_modules\acorn\dist\acorn.js:994:36
+      1    0.0%    1.0%  Function: ^openSync node:fs:576:18
+      1    0.0%    1.0%  Function: ^onwrite node:internal/streams/writable:425:17
+      1    0.0%    1.0%  Function: ^onSocket D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\morgan\node_modules\on-finished\index.js:106:20
+      1    0.0%    1.0%  Function: ^lookupAndConnect node:net:995:26
+      1    0.0%    1.0%  Function: ^loadPlugins D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\babylon\lib\index.js:1618:54
+      1    0.0%    1.0%  Function: ^isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\index.js:14:22
+      1    0.0%    1.0%  Function: ^indent D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1316:19
+      1    0.0%    1.0%  Function: ^handleErrorFromBinding node:internal/fs/utils:340:32
+      1    0.0%    1.0%  Function: ^decycle D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\cycle\cycle.js:24:33
+      1    0.0%    1.0%  Function: ^compileFunction node:vm:308:25
+      1    0.0%    1.0%  Function: ^append D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:653:19
+      1    0.0%    1.0%  Function: ^advance D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1469:20
+      1    0.0%    1.0%  Function: ^Request.clearTimeout D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\request\request.js:1537:43
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+     97    1.6%   97.0%  JavaScript
+      0    0.0%    0.0%  C++
+     16    0.3%   16.0%  GC
+   6110   98.4%          Shared libraries
+      3    0.0%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   5167   83.2%  C:\WINDOWS\SYSTEM32\ntdll.dll
+
+    939   15.1%  D:\programming\nodejs\node.exe
+    636   67.7%    D:\programming\nodejs\node.exe
+     72   11.3%      Function: ^compileFunction node:vm:308:25
+     72  100.0%        Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+     72  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+     71   98.6%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1    1.4%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1112:37
+     61    9.6%      Function: ^stat node:internal/modules/cjs/loader:151:14
+     31   50.8%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+     29   93.5%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+     28   96.6%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1    3.4%            LazyCompile: ~tryPackage node:internal/modules/cjs/loader:338:20
+      1    3.2%          LazyCompile: ~finalizeEsmResolution node:internal/modules/cjs/loader:939:31
+      1  100.0%            Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      1    3.2%          Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+     30   49.2%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+     29   96.7%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+     29  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1    3.3%          LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+     40    6.3%      D:\programming\nodejs\node.exe
+     13   32.5%        LazyCompile: *Parser D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:432:29
+     10   76.9%          Function: ^isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\index.js:14:22
+     10  100.0%            Function: ^isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:67:26
+      3   23.1%          LazyCompile: *isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\index.js:14:22
+      3  100.0%            Function: ^isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:67:26
+      7   17.5%        Function: ^unwrapReturns D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\index.js:73:23
+      7  100.0%          Function: ^addWith D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\index.js:24:17
+      7  100.0%            Function: ^compile D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-code-gen\index.js:111:20
+      3    7.5%        LazyCompile: *syncExports node:internal/bootstrap/loaders:287:14
+      3  100.0%          Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      3  100.0%            Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      3    7.5%        Function: ^getOwn node:internal/bootstrap/loaders:180:16
+      3  100.0%          Function: ^syncExports node:internal/bootstrap/loaders:287:14
+      2   66.7%            Function: ^<anonymous> node:internal/bootstrap/loaders:273:15
+      1   33.3%            Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      2    5.0%        LazyCompile: ~unwrapReturns D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\index.js:73:23
+      2  100.0%          LazyCompile: ~addWith D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\with\index.js:24:17
+      2  100.0%            LazyCompile: ~compile D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-code-gen\index.js:111:20
+      2    5.0%        LazyCompile: *walkAST D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-walk\index.js:4:17
+      2  100.0%          LazyCompile: *walkAST D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-walk\index.js:4:17
+      1   50.0%            LazyCompile: *walkAST D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-walk\index.js:4:17
+      1   50.0%            Function: ^handleFilters D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-filters\lib\handle-filters.js:10:23
+      2    5.0%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1   50.0%          Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   50.0%          Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%            Function: ^trySelf node:internal/modules/cjs/loader:441:17
+      1    2.5%        LazyCompile: ~_setExports D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\assert-plus\assert.js:98:21
+      1  100.0%          Function: ~<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\assert-plus\assert.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+      1    2.5%        LazyCompile: *stringify D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\js-stringify\index.js:4:19
+      1  100.0%          Function: ^visit D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-code-gen\index.js:256:18
+      1  100.0%            Function: ^visitBlock D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-code-gen\index.js:369:23
+      1    2.5%        Function: ~<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\sshpk\lib\formats\x509.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1057:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      1    2.5%        Function: ^toNamespacedPath node:path:618:19
+      1  100.0%          Function: ^stat node:internal/modules/cjs/loader:151:14
+      1  100.0%            Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1    2.5%        Function: ^start D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\mysql2\lib\commands\query.js:47:8
+      1  100.0%          Function: ^execute D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\mysql2\lib\commands\command.js:23:10
+      1  100.0%            Function: ^handlePacket D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\mysql2\lib\connection.js:400:15
+      1    2.5%        Function: ^realpathSync node:fs:2410:22
+      1  100.0%          Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%            Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1    2.5%        Function: ^attributesBlock D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1296:29
+      1  100.0%          LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      1  100.0%            LazyCompile: *advance D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1469:20
+      1    2.5%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+     38    6.0%      Function: ^realpathSync node:fs:2410:22
+     38  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+     33   86.8%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+     28   84.8%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      5   15.2%            Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      5   13.2%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      5  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+     35    5.5%      Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:10:13
+     35  100.0%        Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:89:19
+     34   97.1%          Function: ^loadString D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:40:34
+     12   35.3%            Function: ^compileBody D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:81:21
+     11   32.4%            LazyCompile: *<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:13:29
+     10   29.4%            Function: ^<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:13:29
+      1    2.9%            LazyCompile: ~compileBody D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:81:21
+      1    2.9%          LazyCompile: ~loadString D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:40:34
+      1  100.0%            Function: ^<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:13:29
+     33    5.2%      LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+     28   84.8%        LazyCompile: *advance D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1469:20
+     18   64.3%          LazyCompile: *getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+     18  100.0%            Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:10:13
+     10   35.7%          LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+     10  100.0%            Function: ^getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+      2    6.1%        Function: ^assertExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:73:30
+      1   50.0%          Function: ^conditional D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:892:24
+      1  100.0%            LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      1   50.0%          Function: ^addText D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:462:21
+      1  100.0%            Function: ^text D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:574:17
+      2    6.1%        Function: ^advance D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1469:20
+      2  100.0%          LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      2  100.0%            Function: ^getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+      1    3.0%        LazyCompile: *attributeValue D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1151:27
+      1  100.0%          LazyCompile: *attribute D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1059:22
+      1  100.0%            LazyCompile: *attrs D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1269:18
+     31    4.9%      Function: ^handleWriteReq node:internal/stream_base_commons:45:24
+     31  100.0%        Function: ^writeGeneric node:internal/stream_base_commons:147:22
+     31  100.0%          Function: ^Socket._writeGeneric node:net:769:42
+     27   87.1%            Function: ^Socket._write node:net:806:35
+      4   12.9%            Function: ^connect node:net:776:42
+     23    3.6%      Function: ^openSync node:fs:576:18
+     23  100.0%        Function: ^readFileSync node:fs:450:22
+     10   43.5%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1112:37
+      9   90.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1   10.0%            LazyCompile: *Module._load node:internal/modules/cjs/loader:757:24
+      8   34.8%          Function: ^read D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:68:26
+      7   87.5%            Function: ^read D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:138:20
+      1   12.5%            LazyCompile: ~read D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:138:20
+      5   21.7%          Function: ^handleTemplateCache D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:209:30
+      5  100.0%            Function: ^exports.renderFile D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:409:30
+     19    3.0%      Function: ^internalConnect node:net:875:25
+     19  100.0%        Function: ^defaultTriggerAsyncIdScope node:internal/async_hooks:456:36
+     19  100.0%          Function: ^emitLookup node:net:1052:46
+     19  100.0%            Function: ^onlookup node:dns:69:18
+     17    2.7%      Function: ^parse D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-parser\index.js:10:15
+     17  100.0%        Function: ^parse D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:102:21
+     17  100.0%          Function: ^loadString D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:40:34
+      7   41.2%            Function: ^<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:13:29
+      6   35.3%            LazyCompile: *<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:13:29
+      4   23.5%            Function: ^compileBody D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:81:21
+     15    2.4%      Function: ^load D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:9:14
+     15  100.0%        Function: ^loadString D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:40:34
+      6   40.0%          Function: ^<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:13:29
+      6  100.0%            LazyCompile: *walkAST D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-walk\index.js:4:17
+      5   33.3%          Function: ^compileBody D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:81:21
+      5  100.0%            Function: ^exports.compile D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:237:27
+      4   26.7%          LazyCompile: *<anonymous> D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:13:29
+      4  100.0%            LazyCompile: *walkAST D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-walk\index.js:4:17
+     12    1.9%      LazyCompile: *parseChar D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\character-parser\index.js:76:19
+      5   41.7%        LazyCompile: *parseUntil D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\character-parser\index.js:47:20
+      2   40.0%          Function: ^bracketExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:233:30
+      1   50.0%            Function: ^call D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:828:17
+      1   50.0%            Function: ^attrs D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1269:18
+      2   40.0%          Function: ^addText D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:462:21
+      2  100.0%            Function: ^addText D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:462:21
+      1   20.0%          LazyCompile: *attrs D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1269:18
+      1  100.0%            LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      4   33.3%        LazyCompile: *parse D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\character-parser\index.js:28:15
+      3   75.0%          LazyCompile: *attrs D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1269:18
+      3  100.0%            LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      1   25.0%          Function: ^assertNestingCorrect D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:91:34
+      1  100.0%            Function: ^attrs D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1269:18
+      2   16.7%        LazyCompile: *attributeValue D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1151:27
+      2  100.0%          LazyCompile: *attribute D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1059:22
+      2  100.0%            LazyCompile: *attrs D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1269:18
+      1    8.3%        Function: ^parseUntil D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\character-parser\index.js:47:20
+      1  100.0%          Function: ^bracketExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:233:30
+      1  100.0%            Function: ^attrs D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1269:18
+     12    1.9%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     10   83.3%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2   20.0%          Function: ~<anonymous> node:crypto:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   10.0%          LazyCompile: ~lazyLoadStreams node:fs:2843:25
+      1  100.0%            LazyCompile: ~get ReadStream node:fs:2986:17
+      1   10.0%          Function: ~<anonymous> node:tty:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   10.0%          Function: ~<anonymous> node:tls:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   10.0%          Function: ~<anonymous> node:internal/child_process:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   10.0%          Function: ~<anonymous> node:https:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   10.0%          Function: ~<anonymous> node:http:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   10.0%          Function: ~<anonymous> node:cluster:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   10.0%          Function: ~<anonymous> node:_http_client:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2   16.7%        Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      2  100.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      2  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      8    1.3%      LazyCompile: *Parser D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:432:29
+      5   62.5%        Function: ^isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\index.js:14:22
+      5  100.0%          Function: ^isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:67:26
+      3   60.0%            LazyCompile: *attributeValue D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1151:27
+      2   40.0%            LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      3   37.5%        LazyCompile: *isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\index.js:14:22
+      3  100.0%          Function: ^isExpression D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:67:26
+      2   66.7%            LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      1   33.3%            LazyCompile: *attributeValue D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1151:27
+      7    1.1%      LazyCompile: ~pp$4.raise D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:2485:22
+      7  100.0%        LazyCompile: ~pp.unexpected D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:622:25
+      4   57.1%          LazyCompile: *pp$3.parseExprAtom D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:1931:30
+      4  100.0%            LazyCompile: *pp$3.parseExprSubscripts D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:1870:36
+      3   42.9%          Function: ^pp$3.parseExprAtom D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:1931:30
+      3  100.0%            Function: ^pp$3.parseExprSubscripts D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\is-expression\node_modules\acorn\dist\acorn.js:1870:36
+     12    1.3%    LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+     10   83.3%      LazyCompile: *advance D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1469:20
+      9   90.0%        LazyCompile: *getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+      9  100.0%          Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:10:13
+      9  100.0%            Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:89:19
+      1   10.0%        LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      1  100.0%          Function: ^getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+      1  100.0%            Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:10:13
+      1    8.3%      Function: ^getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+      1  100.0%        Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:10:13
+      1  100.0%          Function: ^lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug\lib\index.js:89:19
+      1  100.0%            Function: ^loadString D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-load\index.js:40:34
+      1    8.3%      Function: ^advance D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1469:20
+      1  100.0%        LazyCompile: *callLexerFunction D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1448:31
+      1  100.0%          Function: ^getTokens D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:1514:23
+      1  100.0%            LazyCompile: ~lex D:\programming\_coding\web_training\node\UpSkillMe_NodeJS\021-debugging-performace\RockPaperScissors\node_modules\pug-lexer\index.js:10:13
+
