@@ -57,6 +57,9 @@ Resolving problems:
 -  determine the slope of the problem
 -  determine the severity of the problem
 -  settle or find solution by solving and not solving the issue
+   -  Fixed
+   -  Won't fix
+   -  Can't replicate
 
 ### Introduction to Microservices
 
