@@ -101,3 +101,59 @@ Running the debugger:
 Further reading:
 
 1. [Node.js Debugging Tips](https://stackify.com/node-js-debugging-tips/)
+
+## Measuring site performance
+
+Benchmarking performance:
+
+-  measures operation times
+-  can be external and internal
+
+**Benchmark** - measurement of time needed to complete the whole operation, such as:
+
+1. Server response time by route
+2. Function call
+3. One iteration through a loop
+4. Database queries
+
+Types of benchmarking tools:
+
+1. HTTP (external)
+   -  Don't require code modification
+   -  Measures granular response times
+   -  Can simulate server load
+   -  Useful for stress testing
+   -  Examples of tools:
+      -  `ab` -> httpd.apache.org
+      -  `httperf`
+      -  `wrk` - good for stress testing
+2. Core (internal)
+   -  Require code modification, like:
+      -  Place a timer at start, end; log result
+      -  Report that measures specific functions
+   -  Granular measurement of parts of a system
+   -  _does not_ measure latency like network response times
+   -  Examples of tools:
+      -  `node.js` console time/timeEnd
+      -  `winston` timer
+      -  `Debug` module
+
+Benchmark module:
+
+-  compares operations to each other
+
+#### Benchmarking ApacheBench
+
+-  `ApacheBench` can be used on any HTTP server.
+-  It is included with apache http server. (can be installed with XAMPP)
+-  It produces report on completed and failed requests, you can also measure requests per second.
+-  It can compare to measure progress of the optimization process.
+
+Using apache bench:
+
+1. `ab -n 1000 -c 5 http://localhost:5000/
+   -  -> run 1000 requests to http://localhost:5000/, running 5 requests concurrently
+   -  highlights:
+      -  average time was relatively fast
+      -  a session and player was created for every new request
+      -  should session and player creation be automatic?
