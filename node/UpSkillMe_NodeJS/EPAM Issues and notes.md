@@ -204,3 +204,67 @@ On the course about GraphQL LinkedIn learning said that there is a newer version
 
 (2023-02-17 20:00:03)
 On the practice tasks about GraphQL API it is said that the API should be checked for any issues with the tests, but there are no links to the test file or GitHub repository with the test samples.
+
+
+#### Node.js Testing and Code Quality
+(2023-02-26 21:31:35)
+Problem: the code from the project got already deprecated and `adminer` now doesn't support the `MYSQL_ALLOW_EMPTY_PASSWORD="yes"` flag, so it allows access only with password.
+
+Consider doing:
+
+1. Change `docker-compose.yml` to:
+```yml
+version: "3"
+services:
+  db:
+    image: mysql:latest
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;' --connect-timeout=100
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root" # used for simplicity
+      MYSQL_DATABASE: "rps"
+    ports:
+      - 33306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+```
+
+Here we've added the dummy password to the mysql configuration. Don't forget to recreate the container after that.
+
+2. Update `mysql` to `mysql2` using npm: `npm un mysql --force && npm install mysql2`.
+3. Update knex configuration in the configuration files of services:
+
+```js
+database: {
+	client: 'mysql', -> 'mysql2'
+	connection: {
+		host: '127.0.0.1', -> 'localhost',
+		port: '33306',
+		user: 'root',
+		password: 'root', new line
+		database: 'rps',
+	},
+	migrations: {
+		tableName: '_knex_migrations',
+	},
+}
+```
+
+Issue solution with knex:
+https://github.com/knex/knex/issues/3233#issuecomment-988579036
+
+(2023-03-01 14:50:50)
+During the course we are installing different packages such as `express-request-id`, but NPM install as new version as possible. It looks like the newest version uses CommonJS functionality which conflicts with `pm2`, that is why the versions upon installing should be gathered from `package.json` file from the course files to avoid any problems (consider adding the notice in the course).
+With installing new dependencies appears error `consider using import with CommonJS functionality` `ESMODULE REQUIRE ERR`.
+
+Also in *Windows10*, when in such configuration `pm2` runs the services, which contain a fatal error, so they exit with code 1 immediately, `pm2` automatically restarts them. Every restart created instances of terminal per every service, so it is hard to stop the program in such conditions. I would suggest also adding `restart_delay: 5000, ` into pm2 config js file.
+
+The configuration working for me:
+1. Install all old modules from the course files `package.json`,
+2. change `mysql` to `mysql2`,
+3. update `knex` and run the migrations,
+3. add the previously specified configuration for `knex` in services.

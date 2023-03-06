@@ -195,6 +195,6 @@ describe('create', () => {
     expect(mockValidation).toBeCalledTimes(1);
 
     mockValidation.mockRestore();
-    jest.mock('./knex');
+    jest.unmock('./knex');
   });
 });
