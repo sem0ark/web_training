@@ -9,7 +9,7 @@ indent_style = space # what to use as indent
 indent_size = 2 # single-spaced character
 # tab_width = 2 # if you are using tabs, defaults to indent_size
 
-end_of_line = LF
+end_of_line = CRLF
 
 charset = utf-8 # which encoding to use, recommended utf-8
 
