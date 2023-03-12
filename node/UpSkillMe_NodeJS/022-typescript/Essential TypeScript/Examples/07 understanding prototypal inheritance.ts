@@ -13,38 +13,45 @@
 //    3 - else JS checks if it is in object's prototype's prototype
 //    4 - ...
 
-function TodoService() {
-  // it is basically a constructor
-  this.todos = []; // this keyword specifies the pointer to the object
-}
-
-TodoService.prototype.getAll = function () {
-  // it is a prototype definition
-  // so we could use that method in every object
-  return this.todos;
-};
-
-let service = new TodoService();
-// with new keyword we specify that this keyword should now point on the constructor function
-service.getAll();
-
-// now how it looks as in TS
-
-class TodoService_2 {
-  // todos: Todo[] = []; // specifying the property and the initial value
-  // todos2: Todo[];
-  // constructor(todos2: Todo[]) {
-  //   this.todos = [];
-  //   this.todos2 = todos2; // adding a changing property
-  // }
-
-  // Adding the changing property can be compressed into
-  constructor(private todos: Todo[]) {
-    // here we've added an access modifier to the property
-    // it would work in the same way as before
+(() => {
+  interface Todo {
+    name: string;
+    completed?: boolean;
   }
 
-  getAll() {
+  function TodoServiceJS() {
+    // it is basically a constructor
+    this.todos = []; // this keyword specifies the pointer to the object
+  }
+
+  TodoServiceJS.prototype.getAll = function () {
+    // it is a prototype definition
+    // so we could use that method in every object
     return this.todos;
+  };
+
+  let service = new TodoServiceJS();
+  // with new keyword we specify that this keyword should now point on the constructor function
+  service.getAll();
+
+  // now how it looks as in TS
+
+  class TodoServiceTS {
+    // todos: Todo[] = []; // specifying the property and the initial value
+    // todos2: Todo[];
+    // constructor(todos2: Todo[]) {
+    //   this.todos = [];
+    //   this.todos2 = todos2; // adding a changing property
+    // }
+
+    // Adding the changing property can be compressed into
+    constructor(private todos: Todo[]) {
+      // here we've added an access modifier to the property
+      // it would work in the same way as before
+    }
+
+    getAll() {
+      return this.todos;
+    }
   }
-}
+})();
