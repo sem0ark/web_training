@@ -1,2 +1,3 @@
 node_modules
-*.js # we are using only TS in the course
+**.js
+# we are using only TS in the course
