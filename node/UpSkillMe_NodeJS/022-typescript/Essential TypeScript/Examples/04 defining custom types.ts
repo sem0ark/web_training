@@ -27,3 +27,48 @@ let todo: Todo = {
   name: "Pick up drycleaning",
   completed: false,
 };
+
+// Making interfaces for functions
+// because in JS we usually use functions
+
+interface jQuery_1 {
+  (selector: string | any): jQueryElement; // the form of the lambda function
+  version: number;
+  fn: any; // Here we are also looking on the pattern from jQuery library
+  // we can add properties to fn element to extend the functionality
+  // of the standard definition
+}
+
+// Extending interfaces
+interface jQueryElement {
+  data(name: string): any;
+  data(name: string, data: any): jQueryElement;
+}
+
+interface jQueryElement {
+  // we don't conflict to with the first interface
+  // any additional definitions would be added to the already defined interface
+  todo(): Todo;
+  todo(todo: Todo): jQueryElement;
+}
+// Use this approach ONLY with the code you don't own to add some custom functionality
+
+let $ = <jQuery_1>function (selector) {
+  // Here we are using type casting, so we force the type of the data we use
+  // Find DOM element
+};
+
+$.fn.todo = function (todo?: Todo): Todo {
+  if (todo) {
+    $(this).data("todo", todo);
+  } else {
+    return $(this).data("todo");
+  }
+};
+
+$.version = 1.12;
+let container = $("#container");
+container.data("todo", todo);
+let savedTodo = container.data("todo");
+
+container.todo(todo);
