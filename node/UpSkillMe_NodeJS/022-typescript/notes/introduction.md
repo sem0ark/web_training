@@ -14,3 +14,31 @@ Dynamic vs. Static:
 JS is now has much more functionality than it was first intended, so developers now think about its dynamic nature more as a curse.
 
 TypeScript adds typing in JS and allows to more quickly analyze the code for errors. You don't always have to use typing, so it isn't really a constraint for coding. TypeScript is a transpiler that allows to use the latest ECMAScript standards, but allows to run the code anywhere.
+
+#### How to try out TS?
+
+Go to typescript playground and check the code examples here without installing anything.
+
+Code example:
+
+```typescript
+function speak(value: string): string {
+   // as we can see it adds some typing functionality
+   // and code checking to the standard javascript
+   document.write(value);
+   return value;
+}
+
+let greeted = "World";
+let greeting = "Hello, ";
+let whatToSay: string = greeting + greeted;
+
+speak(whatToSay);
+```
+
+### Installing TypeScript
+
+> Further reading:
+>
+> 1. [Why TypeScript](https://basarat.gitbook.io/typescript/getting-started/why-typescript)
+> 2. [The TypeScript Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
