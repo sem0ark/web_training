@@ -38,7 +38,35 @@ speak(whatToSay);
 
 ### Installing TypeScript
 
+You can use any text editor and the TS compiler.
+
 > Further reading:
 >
 > 1. [Why TypeScript](https://basarat.gitbook.io/typescript/getting-started/why-typescript)
 > 2. [The TypeScript Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
+
+Installing TypeScript with CLI:
+
+-  install the compiler: `npm install -g typescript`
+-  use `tsc` TS compiler to compile files to JS
+-  use something like lite-server or live-server to run your web pages without hitting refresh all the time
+
+### Using TypeScript
+
+We can compile the code on the fly with `tsc -w` command, which would automatically compile the files in directory + watch for later changes.
+
+We can also add the `tsconfig.json` file for configuring the typescript compiler.
+
+### Types in TS
+
+ECMAScript types:
+
+-  immutable
+   -  number
+   -  string
+   -  boolean
+   -  null / undefined
+-  all other
+   -  object -> lists of key-value pairs
+
+JS uses prototypal inheritance to specify the shared data and methods for objects.
