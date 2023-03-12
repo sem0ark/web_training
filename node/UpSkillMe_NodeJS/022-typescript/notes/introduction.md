@@ -1,6 +1,13 @@
 Notes on the course Typescript for Node.js from EPAM UpSkillMe Node.js program
 Completed by Arkadii Semenov on 2023-03-12
 
+> Further reading:
+>
+> 1. [Why TypeScript](https://basarat.gitbook.io/typescript/getting-started/why-typescript)
+> 2. [The TypeScript Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
+> 3. [TS Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+> 4. [TS interfaces](https://basarat.gitbook.io/typescript/type-system/interfaces)
+
 ### Introduction
 
 TypeScript - superset of JS, it adds new features and syntax to JS.
@@ -39,11 +46,6 @@ speak(whatToSay);
 ### Installing TypeScript
 
 You can use any text editor and the TS compiler.
-
-> Further reading:
->
-> 1. [Why TypeScript](https://basarat.gitbook.io/typescript/getting-started/why-typescript)
-> 2. [The TypeScript Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 
 Installing TypeScript with CLI:
 
