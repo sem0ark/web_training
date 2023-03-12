@@ -20,7 +20,8 @@ function calculateAge(birthYear) {
     return Date.now() - birthYear;
 }
 // even if we understand that it is a function that gets two arrays and returns the total length
-// TS can't understand what to do with it, so it just gives up and places
+// TS can't understand what to do with it, so it just gives up
+// and places the most ambiguous type `any`
 function totalLength(x, y) {
     var total = x.length + y.length;
     return total;
