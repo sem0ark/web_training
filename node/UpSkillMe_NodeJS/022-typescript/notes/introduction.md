@@ -7,6 +7,8 @@ Completed by Arkadii Semenov on 2023-03-12
 > 2. [The TypeScript Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 > 3. [TS Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 > 4. [TS interfaces](https://basarat.gitbook.io/typescript/type-system/interfaces)
+> 5. [TS Classes 1](https://basarat.gitbook.io/typescript/future-javascript/classes)
+> 6. [TS Classes 2](https://www.typescriptlang.org/docs/handbook/2/classes.html)
 
 ### Introduction
 

@@ -6,7 +6,7 @@
 interface Todo {
   // we would use it to describe the todo type
   name: string;
-  completed: boolean;
+  completed?: boolean;
   description?: string; // specifies the optional parameters
 }
 
