@@ -14,31 +14,44 @@
     Deleted,
   }
 
+  // In the previous examples we've got some functionality logic
+  //  for the one of the states, but what is there are many of them?
 
-  class SmartTodo {
-    _state: TodoState;
+  // We cna implement a design patters called state machine to simplify the behavior of the
+  //  system.
 
-    constructor(public name: string) {
-      this._state = TodoState.New;
-    }
+  abstract class TodoStateChanger {
+    // Here we define an abstract class to inherit but not use, works in the same way as Java
+    // a base class for the structure
+    constructor(private newState: TodoState) {}
 
-    get state(): TodoState | undefined {
-      // Here we define the getter method for some property for the object
-      return this._state;
-    }
+    abstract canChangeState(todo: Todo): boolean;
+    // here is an abstract method, we must to implement it in inherited classes
 
-    set state(newState: TodoState) {
-      // Here we define a setter method for some property for the object
-      // as you can see we can add more functionality to that methods
-
-      if (
-        newState == TodoState.Complete &&
-        (this.state == TodoState.Active || this.state == TodoState.Deleted)
-      ) {
-        throw "Todo must be Active or Deleted in order to be marked as Complete";
+    changeState(todo: Todo): Todo {
+      if (this.canChangeState(todo)) {
+        todo.state = this.newState;
       }
 
-      this._state = newState;
+      return todo;
+    }
+  }
+
+  class CompleteTodoStateChanger extends TodoStateChanger {
+    // here is everything we need to inherit the class
+    // NB! also we don't need to implement the constructor, it is also inherited
+
+    constructor() {
+      // if we've implemented the constructor
+      super(TodoState.Complete);
+    }
+
+    canChangeState(todo: Todo): boolean {
+      // we can also use super to access the base class methods
+      return (
+        !!todo &&
+        (todo.state == TodoState.Active || todo.state == TodoState.Deleted)
+      );
     }
   }
 })();
