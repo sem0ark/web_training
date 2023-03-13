@@ -205,14 +205,15 @@ On the course about GraphQL LinkedIn learning said that there is a newer version
 (2023-02-17 20:00:03)
 On the practice tasks about GraphQL API it is said that the API should be checked for any issues with the tests, but there are no links to the test file or GitHub repository with the test samples.
 
-
 #### Node.js Testing and Code Quality
+
 (2023-02-26 21:31:35)
 Problem: the code from the project got already deprecated and `adminer` now doesn't support the `MYSQL_ALLOW_EMPTY_PASSWORD="yes"` flag, so it allows access only with password.
 
 Consider doing:
 
 1. Change `docker-compose.yml` to:
+
 ```yml
 version: "3"
 services:
@@ -261,10 +262,23 @@ https://github.com/knex/knex/issues/3233#issuecomment-988579036
 During the course we are installing different packages such as `express-request-id`, but NPM install as new version as possible. It looks like the newest version uses CommonJS functionality which conflicts with `pm2`, that is why the versions upon installing should be gathered from `package.json` file from the course files to avoid any problems (consider adding the notice in the course).
 With installing new dependencies appears error `consider using import with CommonJS functionality` `ESMODULE REQUIRE ERR`.
 
-Also in *Windows10*, when in such configuration `pm2` runs the services, which contain a fatal error, so they exit with code 1 immediately, `pm2` automatically restarts them. Every restart created instances of terminal per every service, so it is hard to stop the program in such conditions. I would suggest also adding `restart_delay: 5000, ` into pm2 config js file.
+Also in _Windows10_, when in such configuration `pm2` runs the services, which contain a fatal error, so they exit with code 1 immediately, `pm2` automatically restarts them. Every restart created instances of terminal per every service, so it is hard to stop the program in such conditions. I would suggest also adding `restart_delay: 5000, ` into pm2 config js file.
 
 The configuration working for me:
+
 1. Install all old modules from the course files `package.json`,
 2. change `mysql` to `mysql2`,
 3. update `knex` and run the migrations,
-3. add the previously specified configuration for `knex` in services.
+4. add the previously specified configuration for `knex` in services.
+
+#### Node.js Intro to Typescript for Node.js
+
+(2023-03-13 21:00)
+[Practice task 1 Language Features for TypeScript](https://elearn.epam.com/courses/course-v1:EPAM+CIS212DE+0422UpSkillMe/courseware/8ff181639d68478da61780599582c7d2/17a77fd28a4041249861b4ed6c9da816/2?activate_block_id=block-v1%3AEPAM%2BCIS212DE%2B0422UpSkillMe%2Btype%40vertical%2Bblock%40c8c6af54fbd64455bc5deceaabcec662)
+
+The task was finally completed and tested with 100% passing score, but I had to specify the array types as any[] compared to number[], because autocode also tests with objects and strings.
+
+Practice task 2 Types for TypeScript:
+
+Had to use any for implementing custom safe guards for the last tasks.
+It may be useful to add note in the course about custom safe guards in union type data proper handling.
