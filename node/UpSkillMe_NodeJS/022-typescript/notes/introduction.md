@@ -86,3 +86,25 @@ JS uses prototypal inheritance to specify the shared data and methods for object
 > 5. [TS Modules](https://basarat.gitbook.io/typescript/project/modules)
 > 6. [TS Namespaces](https://basarat.gitbook.io/typescript/project/namespaces)
 > 7. [TS Namespaces 2](https://www.typescriptlang.org/docs/handbook/namespaces.html)
+
+_External modules_ is a different way to do the same thing - encapsulate and manage data access
+in _implicit modules_ approach we used namespaces to create a scope for data and control it
+but in external modules we use file scope as our base
+Internal VS External
+
+-  Both encourage encapsulation and organization
+-  Both require components to be exported
+-  Both require components to be imported
+
+-> Internal -> namespace - function scope
+-> Internal -> - file scope
+
+**NB!** don't forget to add "module" configuration to typescript config file.
+
+> Further reading:
+>
+> 1. [File Module Details](https://basarat.gitbook.io/typescript/project/modules/external-modules)
+> 2. [Namespaces and Modules](https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html)
+> 3. []()
+> 4. []()
+> 5. []()
