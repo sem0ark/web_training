@@ -1,7 +1,7 @@
 // Notes on the course Typescript for Node.js from EPAM UpSkillMe Node.js program
 // Completed by Arkadii Semenov on 2023-03-18
 
-namespace TodoApp1.Model {
+namespace TodoApp.Model {
   // we also need to specify what we are showing on the level of namespaces
 
   // we can also nest namespaces

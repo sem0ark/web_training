@@ -1,7 +1,7 @@
 // import Model = require("./02 Modules and namespaces"); // example of require syntax
 // import Todo = Model.Todo;
 
-import { Todo } from "./03 01 model.ts";
+import { Todo } from "./03 01 model";
 
 let _lastId: number = 0;
 
