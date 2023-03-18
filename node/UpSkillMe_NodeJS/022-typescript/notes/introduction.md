@@ -83,3 +83,6 @@ JS uses prototypal inheritance to specify the shared data and methods for object
 > 2. [Generic use cases](https://rossbulat.medium.com/typescript-generics-explained-15c6493b510f)
 > 3. [Generics](https://basarat.gitbook.io/typescript/type-system/generics)
 > 4. [Understanding TypeScript Generics](https://www.smashingmagazine.com/2020/10/understanding-typescript-generics/)
+> 5. [TS Modules](https://basarat.gitbook.io/typescript/project/modules)
+> 6. [TS Namespaces](https://basarat.gitbook.io/typescript/project/namespaces)
+> 7. [TS Namespaces 2](https://www.typescriptlang.org/docs/handbook/namespaces.html)
