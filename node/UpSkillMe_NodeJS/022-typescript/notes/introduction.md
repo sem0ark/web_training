@@ -74,3 +74,12 @@ ECMAScript types:
    -  object -> lists of key-value pairs
 
 JS uses prototypal inheritance to specify the shared data and methods for objects.
+
+#### Advanced TS
+
+> Further reading:
+>
+> 1. [Basic Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+> 2. [Generic use cases](https://rossbulat.medium.com/typescript-generics-explained-15c6493b510f)
+> 3. [Generics](https://basarat.gitbook.io/typescript/type-system/generics)
+> 4. [Understanding TypeScript Generics](https://www.smashingmagazine.com/2020/10/understanding-typescript-generics/)
