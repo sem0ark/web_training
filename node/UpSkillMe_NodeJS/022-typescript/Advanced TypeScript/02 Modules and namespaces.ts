@@ -1,7 +1,9 @@
 // Notes on the course Typescript for Node.js from EPAM UpSkillMe Node.js program
 // Completed by Arkadii Semenov on 2023-03-18
 
-namespace TodoApp.Model {
+namespace TodoApp1.Model {
+  // we also need to specify what we are showing on the level of namespaces
+
   // we can also nest namespaces
 
   // here is the example of a namespace
@@ -33,13 +35,10 @@ namespace DataAccess {
   //   if the name would be used in multiple places in the code
 
   interface ITodoService {
-    // Here we've specified a service as an object with some methods
     add(todo: TodoApp.Model.Todo): TodoApp.Model.Todo;
-    delete(todoId: number): void; // void - doesn't return anything
+    delete(todoId: number): void;
     getAll(): TodoApp.Model.Todo[];
     getById(todoId: number): TodoApp.Model.Todo;
-    // to use come data from another namespace
-    //    we need to explicitly specify the path to it
   }
 }
 
