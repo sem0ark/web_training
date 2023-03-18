@@ -105,6 +105,20 @@ Internal VS External
 >
 > 1. [File Module Details](https://basarat.gitbook.io/typescript/project/modules/external-modules)
 > 2. [Namespaces and Modules](https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html)
-> 3. []()
-> 4. []()
-> 5. []()
+
+#### Module loaders
+
+Why do we need module loaders?
+
+There is still no specified standard support for modules in browsers
+So, to run the application in a compatible way we use module loaders
+
+Choosing a module loader:
+
+-  There are many to choose from
+-  TS generates code that is compatible with almost all of them
+
+In the course used -> `System.js`:
+
+-  because it attempts to implement the proposed ECMAScript specification
+-  Provides a temp fix until native browser support is available

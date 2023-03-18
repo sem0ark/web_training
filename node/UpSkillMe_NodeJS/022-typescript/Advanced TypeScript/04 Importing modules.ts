@@ -18,23 +18,19 @@ export interface ITodoService {
 
 export class TodoService implements ITodoService {
   constructor(private todos: Todo[]) {}
-  // we use the access specifiers to quickly create a variable
-
   add(todo: Todo): Todo {
     todo.id = getNextId();
-    // we run the static method by accessing to it through the class
-
     this.todos.push(todo);
     return todo;
   }
 
   getAll() {
     let clone = JSON.stringify(this.todos);
-    return JSON.parse(clone); // so we don't give access to the inner data
+    return JSON.parse(clone);
   }
 
   getById(todoId: number): Todo {
-    let found = this.todos.filter((e) => e.id === todoId); // here we use some ES6 functionality
+    let found = this.todos.filter((e) => e.id === todoId);
 
     if (found.length) return found[0];
     return null; // we can return null as a object
