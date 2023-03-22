@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "module": "system"
+    "declaration": true,
+    "module": "system",
+    "sourceMap": true,
+    "experimentalDecorators": true
     // "allowImportingTsExtensions": true,
     // "noEmit": true
   }
