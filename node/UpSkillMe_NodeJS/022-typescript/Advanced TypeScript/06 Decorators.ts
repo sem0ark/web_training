@@ -155,8 +155,8 @@ function log(
 export class ValidatableTodo implements Todo {
   id: number;
 
-  @regex(`^[a-zA-Z ]*$`)
-  @required
+  @regex(`^[a-zA-Z ]*$`) // we use factory pattern to create a decorator with custom properties
+  @required // we can add multiple decorators
   name: string;
   state: TodoState;
 }
@@ -249,5 +249,7 @@ function regex(pattern: string) {
 // 4. we add property decorators,  which:
 //     1) initialize the _validators array, which would contain all the functions for validation
 //     2) define our own function of validation for that specific occurrence
-// 5. we want to add a decorator with the custom parameter
-//    1) we define factory function, which creates the decorator, which can be applied to the functions
+// 5. if we want to add a decorator with the custom parameter
+//    1) we define factory function,
+//    2) which creates the decorator,
+//    3) which can be applied to the functions

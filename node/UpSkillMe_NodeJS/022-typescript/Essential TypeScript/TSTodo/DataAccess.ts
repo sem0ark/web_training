@@ -1,7 +1,7 @@
 // import Model = require("./model");
 // import Todo = Model.Todo;
 
-import { Todo } from "./model";
+import { Todo } from "./Model";
 
 let _lastId: number = 0;
 

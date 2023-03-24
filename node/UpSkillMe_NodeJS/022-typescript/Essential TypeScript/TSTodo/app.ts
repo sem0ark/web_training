@@ -1,4 +1,4 @@
-import { Todo as TodoTask, TodoState } from "./model";
+import { Todo as TodoTask, TodoState } from "./Model";
 import { TodoService } from "./DataAccess";
 
 let service = new TodoService([]);
