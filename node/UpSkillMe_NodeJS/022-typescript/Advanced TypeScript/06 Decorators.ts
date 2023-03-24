@@ -53,11 +53,10 @@ export default class TodoService implements ITodoService {
 
   @log // applying the method decorator to the method
   add(input): Todo {
-    var todo: Todo = {
-      id: generateTodoId(),
-      name: null,
-      state: TodoState.Active,
-    };
+    let todo: ValidatableTodo = new ValidatableTodo();
+    todo.id = generateTodoId();
+    todo.name = null;
+    todo.state = TodoState.Active;
 
     if (typeof input === "string") {
       todo.name = input;
@@ -65,6 +64,13 @@ export default class TodoService implements ITodoService {
       todo.name = input.name;
     } else {
       throw "Invalid Todo name!";
+    }
+
+    let errors = todo.validate();
+
+    if (errors.length) {
+      let combinedErrors = errors.map((x) => `${x.property} : ${x.message}`);
+      throw `Invalid Todo: ${combinedErrors}`;
     }
 
     this.todos.push(todo);
@@ -142,3 +148,106 @@ function log(
     return returnValue;
   };
 }
+
+/// --------------------------------------------------------
+
+@validatable // adding the class decorator, which dynamically
+export class ValidatableTodo implements Todo {
+  id: number;
+
+  @regex(`^[a-zA-Z ]*$`)
+  @required
+  name: string;
+  state: TodoState;
+}
+
+export interface IValidatable {
+  validate(): IValidationResult[];
+}
+
+export interface IValidationResult {
+  isValid: boolean;
+  message: string;
+  property?: string; // ? - may be undefined
+}
+
+export interface IValidator {
+  (instance: Object): IValidationResult;
+}
+
+export interface ValidatableTodo extends IValidatable {}
+
+export function validate(): IValidationResult[] {
+  let validators: IValidator[] = [].concat(this._validators);
+  let errors: IValidationResult[] = [];
+
+  for (let validator of validators) {
+    let result = validator(this);
+    if (!result.isValid) {
+      errors.push(result);
+    }
+  }
+  return errors;
+}
+
+// ValidatableTodo.prototype.validate = validate;
+
+export function validatable(target: Function) {
+  target.prototype.validate = validate;
+}
+
+/// -----------------------------------------------------
+
+export function required(target: Object, propertyName: string) {
+  let validatable = <{ _validators: IValidator[] }>target; // here we specify that target definitely has thr property
+  let validators = validatable._validators || (validatable._validators = []);
+
+  validators.push(function (instance): IValidationResult {
+    let propertyValue = instance[propertyName];
+    let isValid = propertyValue != undefined;
+
+    if (typeof propertyValue === "string") {
+      isValid = propertyValue && propertyValue.length > 0;
+    }
+
+    return {
+      isValid,
+      message: `${propertyName} is required`,
+      property: propertyName,
+    };
+  });
+}
+
+function regex(pattern: string) {
+  let expression = new RegExp(pattern);
+
+  return function regex(target: Object, propertyName: string) {
+    let validatable = <{ _validators: IValidator[] }>target; // here we specify that target definitely has thr property
+    let validators = validatable._validators || (validatable._validators = []);
+
+    validators.push(function (instance): IValidationResult {
+      let propertyValue = instance[propertyName];
+      let isValid = expression.test(propertyValue);
+
+      if (typeof propertyValue === "string") {
+        isValid = propertyValue && propertyValue.length > 0;
+      }
+
+      return {
+        isValid,
+        message: `${propertyName} does not match ${expression}`,
+        property: propertyName,
+      };
+    });
+  };
+}
+
+/// The whole idea:
+// 1. we need to create the validation to the current functionality
+// 2. we still want to use Todo, but avoid adding functionality directly
+// 3. we create the class decorator that adds the functionality `validate` to the class
+// 4. we add property decorators,  which:
+//     1) initialize the _validators array, which would contain all the functions for validation
+//     2) define our own function of validation for that specific occurrence
+// 5. we want to add a decorator with the custom parameter
+//    1) we define factory function, which creates the decorator, which can be applied to the functions
