@@ -2,7 +2,14 @@
 // Completed by Arkadii Semenov on 2023-03-25
 
 (() => {
-  let num: number;
+  let num!: number; // use !: to suppress that error
 
-  function apply() {}
+  apply();
+
+  console.log(num);
+  // would be an error, because we `apply` would work only after logging
+
+  function apply() {
+    num = 210;
+  }
 })();
