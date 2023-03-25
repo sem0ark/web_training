@@ -1,3 +1,5 @@
 node_modules
 **.js
 # we are using only TS in the course
+**.d.ts
+**.js.map
