@@ -14,6 +14,16 @@ export enum Settings {
 
 let messenger = new Messenger(Settings.port);
 
+interface Name {
+  firstName: string;
+}
+
+function nameCreator(name: Name): string {
+  return `Hello, ${name.firstName}, `;
+}
+
+const myName: Name = { firstName: "Arkadii" };
+
 // mongoose connection
 // mongoose.Promise = global.Promise; // don't need to use in that course
 mongoose.connect(Settings.databaseUrl, {
@@ -34,4 +44,6 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => res.send(messenger.messagePrint()));
 
-app.listen(Settings.port, () => console.log(messenger.messagePrint()));
+app.listen(Settings.port, () =>
+  console.log(nameCreator(myName), messenger.messagePrint())
+);
