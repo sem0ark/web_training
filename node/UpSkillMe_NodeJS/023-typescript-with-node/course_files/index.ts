@@ -18,8 +18,14 @@ interface Name {
   firstName: string;
 }
 
+interface Name {
+  // we can create multiple interfaces with the same name
+  // they would merge together
+  lastName?: string;
+}
+
 function nameCreator(name: Name): string {
-  return `Hello, ${name.firstName}, `;
+  return `Hello, ${name.firstName},`;
 }
 
 const myName: Name = { firstName: "Arkadii" };
