@@ -4,8 +4,9 @@
     // "declaration": true,
     "module": "system",
     // "sourceMap": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
     // "allowImportingTsExtensions": true,
     // "noEmit": true
+    "downlevelIteration": true
   }
 }
