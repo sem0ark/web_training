@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js --exec babel-node -e js"
+    "build": "tsc -w",
+    "start": "tsc && ts-node ./dist/index.js"
   },
   "author": "Emmanuel Henri + Arkadii Semenov (taking course and adding notes)",
   "license": "ISC",
@@ -16,8 +16,9 @@
     "nodemon": "^1.12.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.2.19",
+    "@types/node": "^10.12.0"
   }
 }
